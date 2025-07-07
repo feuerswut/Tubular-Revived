@@ -10,7 +10,7 @@ import java.io.IOException
 import java.io.ObjectOutputStream
 import java.util.zip.ZipOutputStream
 import kotlin.io.path.createDirectories
-import kotlin.io.path.deleteExisting
+import kotlin.io.path.deleteIfExists
 import org.schabi.newpipe.streams.io.SharpOutputStream
 import org.schabi.newpipe.streams.io.StoredFileHelper
 import org.schabi.newpipe.util.ZipHelper
@@ -77,9 +77,9 @@ class ImportExportManager(private val fileLocator: BackupFileLocator) {
         val success = ZipHelper.extractFileFromZip(file, name, fileLocator.db)
 
         if (success) {
-            fileLocator.dbJournal.deleteExisting()
-            fileLocator.dbWal.deleteExisting()
-            fileLocator.dbShm.deleteExisting()
+            fileLocator.dbJournal.deleteIfExists()
+            fileLocator.dbWal.deleteIfExists()
+            fileLocator.dbShm.deleteIfExists()
         }
 
         return success
