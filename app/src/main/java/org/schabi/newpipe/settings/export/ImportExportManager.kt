@@ -9,7 +9,7 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.ObjectOutputStream
 import java.util.zip.ZipOutputStream
-import kotlin.io.path.createDirectories
+import kotlin.io.path.createParentDirectories
 import kotlin.io.path.deleteIfExists
 import org.schabi.newpipe.streams.io.SharpOutputStream
 import org.schabi.newpipe.streams.io.StoredFileHelper
@@ -63,7 +63,7 @@ class ImportExportManager(private val fileLocator: BackupFileLocator) {
      */
     @Throws(IOException::class)
     fun ensureDbDirectoryExists() {
-        fileLocator.dbDir.createDirectories()
+        fileLocator.db.createParentDirectories()
     }
 
     /**
