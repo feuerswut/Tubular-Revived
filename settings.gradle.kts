@@ -2,6 +2,7 @@
  * SPDX-FileCopyrightText: 2025 NewPipe e.V. <https://newpipe-ev.de>
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
@@ -19,7 +20,9 @@ dependencyResolutionManagement {
         maven(url = "https://repo.clojars.org")
     }
 }
-include (":app")
+include (":app") // androidApp
+include(":desktopApp")
+include("shared")
 
 // Use a local copy of NewPipe Extractor by uncommenting the lines below.
 // We assume, that NewPipe and NewPipe Extractor have the same parent directory.
