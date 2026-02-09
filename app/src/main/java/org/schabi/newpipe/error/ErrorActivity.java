@@ -85,8 +85,6 @@ public class ErrorActivity extends AppCompatActivity {
         activityErrorBinding = ActivityErrorBinding.inflate(getLayoutInflater());
         setContentView(activityErrorBinding.getRoot());
 
-        final Intent intent = getIntent();
-
         setSupportActionBar(activityErrorBinding.toolbarLayout.toolbar);
 
         final ActionBar actionBar = getSupportActionBar();
@@ -96,13 +94,12 @@ public class ErrorActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(true);
         }
 
-        errorInfo = IntentCompat.getParcelableExtra(intent, ERROR_INFO, ErrorInfo.class);
+        errorInfo = IntentCompat.getParcelableExtra(getIntent(), ERROR_INFO, ErrorInfo.class);
 
         // important add guru meditation
         addGuruMeditation();
         // print current time, as zoned ISO8601 timestamp
-        final ZonedDateTime now = ZonedDateTime.now();
-        currentTimeStamp = now.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        currentTimeStamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
         activityErrorBinding.errorReportEmailButton.setOnClickListener(v ->
                 openPrivacyPolicyDialog(this, "EMAIL"));
@@ -160,9 +157,7 @@ public class ErrorActivity extends AppCompatActivity {
                         final Intent i = new Intent(Intent.ACTION_SENDTO)
                                 .setData(Uri.parse("mailto:")) // only email apps should handle this
                                 .putExtra(Intent.EXTRA_EMAIL, new String[]{ERROR_EMAIL_ADDRESS})
-                                .putExtra(Intent.EXTRA_SUBJECT, ERROR_EMAIL_SUBJECT
-                                        + getString(R.string.app_name) + " "
-                                        + BuildConfig.VERSION_NAME)
+                                .putExtra(Intent.EXTRA_SUBJECT, getErrorEmailSubject())
                                 .putExtra(Intent.EXTRA_TEXT, buildJson());
                         ShareUtils.openIntentInApp(context, i);
                     } else if (action.equals("GITHUB")) { // open the NewPipe issue page on GitHub
@@ -180,12 +175,10 @@ public class ErrorActivity extends AppCompatActivity {
     }
 
     private void buildInfo(final ErrorInfo info) {
-        String text = "";
-
         activityErrorBinding.errorInfoLabelsView.setText(getString(R.string.info_labels)
                 .replace("\\n", "\n"));
 
-        text += getUserActionString(info.getUserAction()) + "\n"
+        final String text = info.getUserAction().getMessage() + "\n"
                 + info.getRequest() + "\n"
                 + getContentLanguageString() + "\n"
                 + getContentCountryString() + "\n"
@@ -203,7 +196,7 @@ public class ErrorActivity extends AppCompatActivity {
         try {
             return JsonWriter.string()
                     .object()
-                    .value("user_action", getUserActionString(errorInfo.getUserAction()))
+                    .value("user_action", errorInfo.getUserAction().getMessage())
                     .value("request", errorInfo.getRequest())
                     .value("content_language", getContentLanguageString())
                     .value("content_country", getContentCountryString())
@@ -239,7 +232,7 @@ public class ErrorActivity extends AppCompatActivity {
             htmlErrorReport
                     .append("## Exception")
                     .append("\n* __User Action:__ ")
-                        .append(getUserActionString(errorInfo.getUserAction()))
+                        .append(errorInfo.getUserAction().getMessage())
                     .append("\n* __Request:__ ").append(errorInfo.getRequest())
                     .append("\n* __Content Country:__ ").append(getContentCountryString())
                     .append("\n* __Content Language:__ ").append(getContentLanguageString())
@@ -286,14 +279,6 @@ public class ErrorActivity extends AppCompatActivity {
         }
     }
 
-    private String getUserActionString(final UserAction userAction) {
-        if (userAction == null) {
-            return "Your description is in another castle.";
-        } else {
-            return userAction.getMessage();
-        }
-    }
-
     private String getContentCountryString() {
         return Localization.getPreferredContentCountry(this).getCountryCode();
     }
@@ -304,6 +289,10 @@ public class ErrorActivity extends AppCompatActivity {
 
     private String getAppLanguage() {
         return Localization.getAppLocale().toString();
+    }
+
+    private String getErrorEmailSubject() {
+        return ERROR_EMAIL_SUBJECT + getString(R.string.app_name) + " " + BuildConfig.VERSION_NAME;
     }
 
     private String getOsString() {
