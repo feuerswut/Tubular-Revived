@@ -10,15 +10,12 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.grack.nanojson.JsonObject
 import com.grack.nanojson.JsonParser
-import com.grack.nanojson.JsonParserException
 import java.util.concurrent.TimeUnit
 import org.schabi.newpipe.R
 import org.schabi.newpipe.extractor.NewPipe
 import org.schabi.newpipe.extractor.ServiceList
 import org.schabi.newpipe.extractor.StreamingService
-import org.schabi.newpipe.extractor.exceptions.ExtractionException
 import org.schabi.newpipe.extractor.services.peertube.PeertubeInstance
 import org.schabi.newpipe.ktx.getStringSafe
 
@@ -133,8 +130,8 @@ object ServiceHelper {
     }
 
     private fun setSelectedServicePreferences(context: Context, serviceName: String?) {
-        val sp = PreferenceManager.getDefaultSharedPreferences(context)
-        sp.edit { putString(context.getString(R.string.current_service_key), serviceName) }
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences.edit { putString(context.getString(R.string.current_service_key), serviceName) }
     }
 
     @JvmStatic
@@ -152,17 +149,15 @@ object ServiceHelper {
             val json = sharedPreferences.getString(
                 context.getString(R.string.peertube_selected_instance_key),
                 null
-            )
-            if (null == json) {
-                return
-            }
+            ) ?: return
 
             val jsonObject = runCatching { JsonParser.`object`().from(json) }
                 .getOrElse { return@initService }
 
-            val name = jsonObject.getString("name")
-            val url = jsonObject.getString("url")
-            ServiceList.PeerTube.instance = PeertubeInstance(url, name)
+            ServiceList.PeerTube.instance = PeertubeInstance(
+                jsonObject.getString("url"),
+                jsonObject.getString("name")
+            )
         }
     }
 

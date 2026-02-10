@@ -16,14 +16,17 @@ import org.schabi.newpipe.extractor.ServiceList
 import org.schabi.newpipe.extractor.services.peertube.PeertubeInstance
 
 object PeertubeHelper {
+
+    @JvmStatic
+    val currentInstance: PeertubeInstance
+        get() = ServiceList.PeerTube.instance
+
     @JvmStatic
     fun getInstanceList(context: Context): List<PeertubeInstance> {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         val savedInstanceListKey = context.getString(R.string.peertube_instance_list_key)
         val savedJson = sharedPreferences.getString(savedInstanceListKey, null)
-        if (savedJson == null) {
-            return listOf(currentInstance)
-        }
+            ?: return listOf(currentInstance)
 
         return runCatching {
             JsonParser.`object`().from(savedJson).getArray("instances")
@@ -46,8 +49,4 @@ object PeertubeHelper {
         ServiceList.PeerTube.instance = instance
         return instance
     }
-
-    @JvmStatic
-    val currentInstance: PeertubeInstance
-        get() = ServiceList.PeerTube.instance
 }

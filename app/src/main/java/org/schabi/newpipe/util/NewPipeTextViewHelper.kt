@@ -54,7 +54,7 @@ object NewPipeTextViewHelper {
         selectedText: CharSequence?
     ) {
         if (!selectedText.isNullOrEmpty()) {
-            ShareUtils.shareText(textView.getContext(), "", selectedText.toString())
+            ShareUtils.shareText(textView.context, "", selectedText.toString())
         }
     }
 }

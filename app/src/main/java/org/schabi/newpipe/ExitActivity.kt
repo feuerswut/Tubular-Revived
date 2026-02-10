@@ -10,13 +10,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import org.schabi.newpipe.util.NavigationHelper
+
 class ExitActivity : Activity() {
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         finishAndRemoveTask()
-
         NavigationHelper.restartApp(this)
     }
 
@@ -24,7 +23,6 @@ class ExitActivity : Activity() {
         @JvmStatic
         fun exitAndRemoveFromRecentApps(activity: Activity) {
             val intent = Intent(activity, ExitActivity::class.java)
-
             intent.addFlags(
                 Intent.FLAG_ACTIVITY_NEW_TASK
                     or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
