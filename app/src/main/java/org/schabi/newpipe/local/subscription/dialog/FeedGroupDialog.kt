@@ -327,7 +327,7 @@ class FeedGroupDialog : DialogFragment(), BackPressable {
         groupIcon = feedGroupEntity?.icon
         groupSortOrder = feedGroupEntity?.sortOrder ?: -1
 
-        val feedGroupIcon = if (selectedIcon == null) icon else selectedIcon!!
+        val feedGroupIcon = selectedIcon ?: icon
         feedGroupCreateBinding.iconPreview.setImageResource(feedGroupIcon.getDrawableRes())
 
         if (feedGroupCreateBinding.groupNameInput.text.isNullOrBlank()) {
