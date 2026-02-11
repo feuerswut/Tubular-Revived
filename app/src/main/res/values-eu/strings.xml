@@ -494,8 +494,8 @@
     <string name="detail_sub_channel_thumbnail_view_description">Kanalaren avatarraren miniatura</string>
     <string name="feed_group_show_only_ungrouped_subscriptions">Erakutsi taldekatuta ez dauden harpidetzak soilik</string>
     <string name="remove_watched_popup_partially_watched_streams">Bai, partzialki ikusitako bideoak ere bai</string>
-    <string name="remove_watched_popup_warning">Dagoeneko ikusi eta gero erreprodukzio-zerrendara gehitu diren bideoak kendu egingo dira. \nJarraitu nahi duzu? Ekintza hau ezin da desegin!</string>
-    <string name="remove_watched_popup_title">Ikusitako bideoak kendu?</string>
+    <string name="remove_watched_popup_warning">Dagoeneko ikusi eta gero erreprodukzio-zerrendara gehitu diren igorpenak kendu egingo dira. \nJarraitu nahi duzu?</string>
+    <string name="remove_watched_popup_title">Ikusitako igorpenak kendu?</string>
     <string name="remove_watched">Kendu ikusitako bideoak</string>
     <string name="never">Inoiz ez</string>
     <string name="wifi_only">WiFi-arekin soilik</string>
