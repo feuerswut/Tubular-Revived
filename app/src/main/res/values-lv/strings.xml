@@ -151,7 +151,7 @@
     <string name="detail_thumbnail_view_description">Atskaņot video, ilgums:</string>
     <string name="error_details_headline">Detaļas:</string>
     <string name="your_comment">Jūsu komentārs (Angliski):</string>
-    <string name="info_labels">Kas:\\nRequest:\\nContent Valoda:\\nContent Valsts:\\nApp Valoda:\\nService:\\nGMT Laiks:\\nPackage:\\nVersion:\\nOS versija:</string>
+    <string name="info_labels">Kas:\nRequest:\nContent Valoda:\nContent Valsts:\nApp Valoda:\nService:\nGMT Laiks:\nPackage:\nVersion:\nOS versija:</string>
     <string name="hash_channel_description">Paziņojumi video apstrādes progresam</string>
     <string name="hash_channel_name">Video haša paziņojums</string>
     <string name="popup_remember_size_pos_summary">Atcerēties pēdējo uznirstošā loga izmēru un pozīciju</string>

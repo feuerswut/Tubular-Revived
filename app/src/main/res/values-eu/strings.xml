@@ -78,7 +78,7 @@
     <string name="error_snackbar_action">Salatu</string>
     <string name="what_device_headline">Informazioa:</string>
     <string name="what_happened_headline">Zer gertatu da:</string>
-    <string name="info_labels">Zer:\\nEskaria:\\nEdukiaren hizkuntza:\\nEdukiaren herrialdea:\\nAplikazioaren hizkuntza:\\nZerbitzua:\\nDenbora-zigilua:\\nPaketea:\\nBertsioa:\\nSE bertsioa:</string>
+    <string name="info_labels">Zer:\nEskaria:\nEdukiaren hizkuntza:\nEdukiaren herrialdea:\nAplikazioaren hizkuntza:\nZerbitzua:\nDenbora-zigilua:\nPaketea:\nBertsioa:\nSE bertsioa:</string>
     <string name="your_comment">Zure iruzkina (Ingelesez):</string>
     <string name="error_details_headline">Xehetasunak:</string>
     <string name="video">Bideoa</string>

@@ -268,7 +268,7 @@
     <string name="error_snackbar_action">Prijavi</string>
     <string name="what_device_headline">Info:</string>
     <string name="what_happened_headline">Šta se dogodilo:</string>
-    <string name="info_labels">Šta:\\nZahtjev:\\nJezik sadržaja:\\nZemlja sadržaja:\\nJezik aplikacije:\\nUsluga:\\nVremenska oznaka:\\nPaket:\\nVerzija:\\nVerzija OS-a:</string>
+    <string name="info_labels">Šta:\nZahtjev:\nJezik sadržaja:\nZemlja sadržaja:\nJezik aplikacije:\nUsluga:\nVremenska oznaka:\nPaket:\nVerzija:\nVerzija OS-a:</string>
     <string name="your_comment">Vaš komentar (na engleskom):</string>
     <string name="error_details_headline">Detalji:</string>
     <string name="detail_thumbnail_view_description">Reproduciraj video, trajanje:</string>

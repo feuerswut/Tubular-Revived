@@ -146,7 +146,7 @@
     <string name="error_snackbar_action">Справаздача</string>
     <string name="what_device_headline">Інфармацыя:</string>
     <string name="what_happened_headline">Што адбылося:</string>
-    <string name="info_labels">Што:\\nЗапыт:\\nМова кантэнту:\\nКраіна кантэнту:\\nМова праграмы:\\nСэрвіс:\\nЧас GMT:\\nПакет:\\nВерсія:\\nВерсія АС:</string>
+    <string name="info_labels">Што:\nЗапыт:\nМова кантэнту:\nКраіна кантэнту:\nМова праграмы:\nСэрвіс:\nЧас GMT:\nПакет:\nВерсія:\nВерсія АС:</string>
     <string name="your_comment">Ваш каментарый (па-англійску):</string>
     <string name="error_details_headline">Падрабязнасці:</string>
     <string name="detail_thumbnail_view_description">Прайграць відэа, працягласць:</string>
