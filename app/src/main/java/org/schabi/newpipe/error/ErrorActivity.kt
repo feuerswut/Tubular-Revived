@@ -208,8 +208,8 @@ class ErrorActivity : AppCompatActivity() {
     private fun buildMarkdown(): String {
         try {
             return buildString(1024) {
-                val userComment = binding.errorCommentBox.getText().toString()
-                if (!userComment.isEmpty()) {
+                val userComment = binding.errorCommentBox.text.toString()
+                if (userComment.isNotEmpty()) {
                     appendLine(userComment)
                 }
 
@@ -229,28 +229,27 @@ class ErrorActivity : AppCompatActivity() {
 
                 // Collapse all logs to a single paragraph when there are more than one
                 // to keep the GitHub issue clean.
-                if (errorInfo.stackTraces.size > 1) {
+                if (errorInfo.stackTraces.isNotEmpty()) {
                     append("<details><summary><b>Exceptions (")
                     append(errorInfo.stackTraces.size)
                     append(")</b></summary><p>\n")
-                }
 
-                // add the logs
-                for (i in errorInfo.stackTraces.indices) {
-                    append("<details><summary><b>Crash log ")
-                    if (errorInfo.stackTraces.size > 1) {
-                        append(i + 1)
+                    // add the logs
+                    errorInfo.stackTraces.forEachIndexed { index, stacktrace ->
+                        append("<details><summary><b>Crash log ")
+                        if (errorInfo.stackTraces.isNotEmpty()) {
+                            append(index + 1)
+                        }
+                        append("</b>")
+                        append("</summary><p>\n")
+                        append("\n```\n${stacktrace}\n```\n")
+                        append("</details>\n")
                     }
-                    append("</b>")
-                    append("</summary><p>\n")
-                    append("\n```\n${errorInfo.stackTraces[i]}\n```\n")
-                    append("</details>\n")
-                }
 
-                // make sure to close everything
-                if (errorInfo.stackTraces.size > 1) {
+                    // make sure to close everything
                     append("</p></details>\n")
                 }
+
                 append("<hr>\n")
             }
         } catch (exception: Exception) {
