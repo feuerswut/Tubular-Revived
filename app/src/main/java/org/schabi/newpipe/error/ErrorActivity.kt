@@ -34,7 +34,7 @@ class ErrorActivity : AppCompatActivity() {
     private lateinit var errorInfo: ErrorInfo
     private lateinit var currentTimeStamp: String
 
-    private lateinit var activityErrorBinding: ActivityErrorBinding
+    private lateinit var binding: ActivityErrorBinding
 
     private val contentCountryString: String
         get() = Localization.getPreferredContentCountry(this).countryCode
@@ -69,10 +69,10 @@ class ErrorActivity : AppCompatActivity() {
         ThemeHelper.setDayNightMode(this)
         ThemeHelper.setTheme(this)
 
-        activityErrorBinding = ActivityErrorBinding.inflate(layoutInflater)
-        setContentView(activityErrorBinding.getRoot())
+        binding = ActivityErrorBinding.inflate(layoutInflater)
+        setContentView(binding.getRoot())
 
-        setSupportActionBar(activityErrorBinding.toolbarLayout.toolbar)
+        setSupportActionBar(binding.toolbarLayout.toolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setTitle(R.string.error_report_title)
@@ -86,22 +86,22 @@ class ErrorActivity : AppCompatActivity() {
         // print current time, as zoned ISO8601 timestamp
         currentTimeStamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
 
-        activityErrorBinding.errorReportEmailButton.setOnClickListener { _ ->
+        binding.errorReportEmailButton.setOnClickListener { _ ->
             openPrivacyPolicyDialog(this, "EMAIL")
         }
 
-        activityErrorBinding.errorReportCopyButton.setOnClickListener { _ ->
+        binding.errorReportCopyButton.setOnClickListener { _ ->
             ShareUtils.copyToClipboard(this, buildMarkdown())
         }
 
-        activityErrorBinding.errorReportGitHubButton.setOnClickListener { _ ->
+        binding.errorReportGitHubButton.setOnClickListener { _ ->
             openPrivacyPolicyDialog(this, "GITHUB")
         }
 
         // normal bugreport
         buildInfo(errorInfo)
-        activityErrorBinding.errorMessageView.text = errorInfo.getMessage(this)
-        activityErrorBinding.errorView.text = formErrorText(errorInfo.stackTraces)
+        binding.errorMessageView.text = errorInfo.getMessage(this)
+        binding.errorView.text = formErrorText(errorInfo.stackTraces)
 
         // print stack trace once again for debugging:
         errorInfo.stackTraces.forEach { Log.e(TAG, it) }
@@ -143,12 +143,12 @@ class ErrorActivity : AppCompatActivity() {
             }
             .setPositiveButton(R.string.accept) { _, _ ->
                 if (action == "EMAIL") { // send on email
-                    val i = Intent(Intent.ACTION_SENDTO)
+                    val intent = Intent(Intent.ACTION_SENDTO)
                         .setData("mailto:".toUri()) // only email apps should handle this
                         .putExtra(Intent.EXTRA_EMAIL, arrayOf(ERROR_EMAIL_ADDRESS))
                         .putExtra(Intent.EXTRA_SUBJECT, errorEmailSubject)
                         .putExtra(Intent.EXTRA_TEXT, buildJson())
-                    ShareUtils.openIntentInApp(context, i)
+                    ShareUtils.openIntentInApp(context, intent)
                 } else if (action == "GITHUB") { // open the NewPipe issue page on GitHub
                     ShareUtils.openUrlInApp(this, ERROR_GITHUB_ISSUE_URL)
                 }
@@ -157,13 +157,13 @@ class ErrorActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun formErrorText(el: Array<String>): String {
+    private fun formErrorText(stacktrace: Array<String>): String {
         val separator = "-------------------------------------"
-        return el.joinToString(separator + "\n", separator + "\n", separator)
+        return stacktrace.joinToString(separator + "\n", separator + "\n", separator)
     }
 
     private fun buildInfo(info: ErrorInfo) {
-        activityErrorBinding.errorInfoLabelsView.text = getString(R.string.info_labels)
+        binding.errorInfoLabelsView.text = getString(R.string.info_labels)
             .replace("\\n", "\n")
 
         val text = info.userAction.message + "\n" +
@@ -177,7 +177,7 @@ class ErrorActivity : AppCompatActivity() {
             BuildConfig.VERSION_NAME + "\n" +
             osString
 
-        activityErrorBinding.errorInfosView.text = text
+        binding.errorInfosView.text = text
     }
 
     private fun buildJson(): String {
@@ -195,7 +195,7 @@ class ErrorActivity : AppCompatActivity() {
                 .value("os", osString)
                 .value("time", currentTimeStamp)
                 .array("exceptions", errorInfo.stackTraces.toList())
-                .value("user_comment", activityErrorBinding.errorCommentBox.getText().toString())
+                .value("user_comment", binding.errorCommentBox.getText().toString())
                 .end()
                 .done()
         } catch (error: Throwable) {
@@ -208,7 +208,7 @@ class ErrorActivity : AppCompatActivity() {
     private fun buildMarkdown(): String {
         try {
             return buildString(1024) {
-                val userComment = activityErrorBinding.errorCommentBox.getText().toString()
+                val userComment = binding.errorCommentBox.getText().toString()
                 if (!userComment.isEmpty()) {
                     appendLine(userComment)
                 }
@@ -261,21 +261,21 @@ class ErrorActivity : AppCompatActivity() {
 
     private fun addGuruMeditation() {
         // just an easter egg
-        var text = activityErrorBinding.errorSorryView.getText().toString()
+        var text = binding.errorSorryView.text.toString()
         text += "\n" + getString(R.string.guru_meditation)
-        activityErrorBinding.errorSorryView.text = text
+        binding.errorSorryView.text = text
     }
 
     companion object {
         // LOG TAGS
-        val TAG: String = ErrorActivity::class.java.toString()
+        private val TAG = ErrorActivity::class.java.toString()
 
         // BUNDLE TAGS
-        const val ERROR_INFO: String = "error_info"
+        const val ERROR_INFO = "error_info"
 
-        const val ERROR_EMAIL_ADDRESS: String = "crashreport@newpipe.schabi.org"
-        const val ERROR_EMAIL_SUBJECT: String = "Exception in "
+        private const val ERROR_EMAIL_ADDRESS = "crashreport@newpipe.schabi.org"
+        private const val ERROR_EMAIL_SUBJECT = "Exception in "
 
-        const val ERROR_GITHUB_ISSUE_URL: String = "https://github.com/TeamNewPipe/NewPipe/issues"
+        private const val ERROR_GITHUB_ISSUE_URL = "https://github.com/TeamNewPipe/NewPipe/issues"
     }
 }
