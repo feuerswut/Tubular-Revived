@@ -198,8 +198,8 @@ class ErrorActivity : AppCompatActivity() {
                 .value("user_comment", binding.errorCommentBox.getText().toString())
                 .end()
                 .done()
-        } catch (error: Throwable) {
-            Log.e(TAG, "Error while erroring: Could not build json", error)
+        } catch (exception: Exception) {
+            Log.e(TAG, "Error while erroring: Could not build json", exception)
         }
 
         return ""
@@ -253,8 +253,8 @@ class ErrorActivity : AppCompatActivity() {
                 }
                 append("<hr>\n")
             }
-        } catch (error: Throwable) {
-            Log.e(TAG, "Error while erroring: Could not build markdown", error)
+        } catch (exception: Exception) {
+            Log.e(TAG, "Error while erroring: Could not build markdown", exception)
             return ""
         }
     }
