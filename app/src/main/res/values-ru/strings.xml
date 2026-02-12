@@ -87,7 +87,7 @@
     <string name="popup_playing_toast">Воспроизведение во всплывающем окне</string>
     <string name="clear">Очистить</string>
     <string name="all">Всё</string>
-    <string name="info_labels">Что:\\nЗапрос:\\nЯзык контента:\\nСтрана контента:\\nЯзык приложения:\\nСервис:\\nВремя по Гринвичу:\\nПакет:\\nВерсия пакета:\\nВерсия ОС:</string>
+    <string name="info_labels">Что:\nЗапрос:\nЯзык контента:\nСтрана контента:\nЯзык приложения:\nСервис:\nВремя по Гринвичу:\nПакет:\nВерсия пакета:\nВерсия ОС:</string>
     <string name="msg_popup_permission">Это разрешение нужно для
 \nвоспроизведения в окне</string>
     <string name="open_in_popup_mode">Открыть во всплывающем окне</string>

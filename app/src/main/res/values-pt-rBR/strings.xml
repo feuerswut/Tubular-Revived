@@ -81,7 +81,7 @@
     <string name="use_external_audio_player_title">Usar player de áudio externo</string>
     <string name="use_external_video_player_title">Usar player de vídeo externo</string>
     <string name="show_play_with_kodi_title">Mostrar opção \"Reproduzir no Kodi\"</string>
-    <string name="info_labels">O que aconteceu:\\nPedido:\\nIdioma do conteúdo:\\nPaís do conteúdo:\\nIdioma do aplicativo:\\nServiço:\\nHora GMT:\\nPacote:\\nVersão:\\nVersão do SO:</string>
+    <string name="info_labels">O que aconteceu:\nPedido:\nIdioma do conteúdo:\nPaís do conteúdo:\nIdioma do aplicativo:\nServiço:\nHora GMT:\nPacote:\nVersão:\nVersão do SO:</string>
     <string name="open_in_popup_mode">Abrir no modo Popup</string>
     <string name="default_popup_resolution_title">Resolução padrão do Popup</string>
     <string name="show_higher_resolutions_title">Mostrar resoluções mais altas</string>

@@ -256,7 +256,7 @@
     <string name="restore_defaults">இயல்பிருப்புகளை மீட்டெடு</string>
     <string name="error_report_notification_title">NewPipe பிழையைச் எதிர்கொண்டது, புகாரளிக்க தட்டு</string>
     <string name="error_snackbar_action">புகாரளி</string>
-    <string name="info_labels">என்ன:\\nகோரிக்கை:\\nஉள்ளடக்க மொழி:\\nஉள்ளடக்க நாடு:\\nசெயலி மொழி:\\nசேவை:\\nGMT நேரம்:\\nசிப்பம்:\\nபதிப்பு:\\nOS பதிப்பு:</string>
+    <string name="info_labels">என்ன:\nகோரிக்கை:\nஉள்ளடக்க மொழி:\nஉள்ளடக்க நாடு:\nசெயலி மொழி:\nசேவை:\nGMT நேரம்:\nசிப்பம்:\nபதிப்பு:\nOS பதிப்பு:</string>
     <string name="detail_thumbnail_view_description">காணொளியை இயக்கு, காலவளவு:</string>
     <string name="comments_tab_description">கருத்தளிப்புகள்</string>
     <string name="crash_the_player">இயக்கியைச் சிதை</string>

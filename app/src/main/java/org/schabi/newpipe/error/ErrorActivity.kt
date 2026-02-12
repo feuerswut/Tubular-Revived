@@ -164,7 +164,6 @@ class ErrorActivity : AppCompatActivity() {
 
     private fun buildInfo(info: ErrorInfo) {
         binding.errorInfoLabelsView.text = getString(R.string.info_labels)
-            .replace("\\n", "\n")
 
         val text = info.userAction.message + "\n" +
             info.request + "\n" +

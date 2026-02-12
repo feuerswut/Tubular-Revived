@@ -212,7 +212,7 @@
     <string name="error_snackbar_message">Því miður fór eitthvað úrskeiðis.</string>
     <string name="detail_likes_img_view_description">Líkar við</string>
     <string name="what_happened_headline">Það sem gerðist:</string>
-    <string name="info_labels">Hvað:\\nBeiðni:\\nTungumál Efnis:\\nLand Efnis:\\nTungumál forrits:\\nÞjónusta:\\nGMT Tími:\\nPakki:\\nÚtgáfa:\\nÚtgáfu Stýrikerfis:</string>
+    <string name="info_labels">Hvað:\nBeiðni:\nTungumál Efnis:\nLand Efnis:\nTungumál forrits:\nÞjónusta:\nGMT Tími:\nPakki:\nÚtgáfa:\nÚtgáfu Stýrikerfis:</string>
     <string name="your_comment">Athugasemd þín (á ensku):</string>
     <string name="search_no_results">Engar niðurstöður</string>
     <string name="video">Myndskeið</string>

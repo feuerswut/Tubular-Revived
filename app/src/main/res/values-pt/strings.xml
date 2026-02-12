@@ -78,7 +78,7 @@
     <string name="msg_threads">Processos</string>
     <string name="msg_running">Descarga NewPipe</string>
     <string name="app_ui_crash">Aplicação terminou em erro</string>
-    <string name="info_labels">O quê:\\nPedido:\\nIdioma do conteúdo:\\nPaís do conteúdo\\nIdioma da aplicação\\nServiço:\\nHora GMT:\\nPacote:\\nVersão:\\nSO Versão:</string>
+    <string name="info_labels">O quê:\nPedido:\nIdioma do conteúdo:\nPaís do conteúdo\nIdioma da aplicação\nServiço:\nHora GMT:\nPacote:\nVersão:\nSO Versão:</string>
     <string name="open_in_popup_mode">Abrir no modo popup</string>
     <string name="black_theme_title">Preto</string>
     <string name="all">Tudo</string>
