@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.kapt)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.jetbrains.kotlin.parcelize)
+    alias(libs.plugins.jetbrains.kotlinx.serialization)
     alias(libs.plugins.sonarqube)
     checkstyle
 }
@@ -245,6 +246,12 @@ dependencies {
     implementation(libs.androidx.work.rxjava3)
     implementation(libs.google.android.material)
     implementation(libs.androidx.webkit)
+
+    // Coroutines interop
+    implementation(libs.kotlinx.coroutines.rx3)
+
+    // Kotlinx Serialization
+    implementation(libs.kotlinx.serialization.json)
 
     /** Third-party libraries **/
     implementation(libs.livefront.bridge)

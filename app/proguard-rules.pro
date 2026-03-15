@@ -44,3 +44,18 @@
 -keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite {
     <fields>;
 }
+
+## Keep Kotlinx Serialization classes
+-keepclassmembers class kotlinx.serialization.json.** {
+    *** Companion;
+}
+-keepclasseswithmembers class kotlinx.serialization.json.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+-keep,includedescriptorclasses class org.schabi.newpipe.**$$serializer { *; }
+-keepclassmembers class org.schabi.newpipe.** {
+    *** Companion;
+}
+-keepclasseswithmembers class org.schabi.newpipe.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
