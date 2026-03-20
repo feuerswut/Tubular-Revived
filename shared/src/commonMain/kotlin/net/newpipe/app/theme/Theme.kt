@@ -7,11 +7,15 @@
 package net.newpipe.app.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialExpressiveTheme
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalInspectionMode
+import com.russhwolf.settings.Settings
+import org.koin.compose.koinInject
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -89,13 +93,43 @@ private val darkScheme = darkColorScheme(
     surfaceContainerHighest = surfaceContainerHighestDark
 )
 
+private val blackScheme = darkScheme.copy(surface = Color.Black)
+
+/**
+ * Gets current color scheme chosen by the user
+ */
 @Composable
-fun AppTheme(useDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun currentColorScheme(
+    useDarkTheme: Boolean = isSystemInDarkTheme(),
+    settings: Settings = koinInject()
+): ColorScheme {
+    val nightScheme = when (settings.getString("night_theme", "dark_theme")) {
+        "black_theme" -> blackScheme
+        else -> darkScheme
+    }
+
+    return when (settings.getString("theme", "auto_device_theme")) {
+        "light_theme" -> lightScheme
+        "dark_theme" -> darkScheme
+        "black_theme" -> blackScheme
+        else -> if (!useDarkTheme) lightScheme else nightScheme
+    }
+}
+
+/**
+ * Default app theme for the NewPipe composables
+ * @param isPreview Whether the theme is being used in preview mode
+ * @param colorScheme Color scheme to use for theme, defaults to light in preview mode
+ * @param content Composable content to show to the user
+ */
+@Composable
+fun AppTheme(
+    isPreview: Boolean = LocalInspectionMode.current,
+    colorScheme: ColorScheme = if (isPreview) lightScheme else currentColorScheme(),
+    content: @Composable () -> Unit
+) {
     MaterialExpressiveTheme(
-        colorScheme = when {
-            !useDarkTheme -> lightScheme
-            else -> darkScheme
-        },
+        colorScheme = colorScheme,
         content = content
     )
 }

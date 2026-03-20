@@ -55,6 +55,7 @@ runner = "1.7.0"
 rxandroid = "3.0.2"
 rxbinding = "4.0.0"
 rxjava = "3.1.12"
+settings = "1.3.0"
 sonarqube = "7.3.0.8198"
 statesaver = "1.4.1" # TODO: Drop because it is deprecated and incompatible with KSP2
 stetho = "1.6.0"
@@ -156,6 +157,7 @@ pinterest-ktlint = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "
 puppycrawl-checkstyle = { module = "com.puppycrawl.tools:checkstyle", version.ref = "checkstyle" }
 reactivex-rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
 reactivex-rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+russhwolf-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "settings" }
 squareup-leakcanary-core = { module = "com.squareup.leakcanary:leakcanary-android-core", version.ref = "leakcanary" }
 squareup-leakcanary-plumber = { module = "com.squareup.leakcanary:plumber-android", version.ref = "leakcanary" }
 squareup-leakcanary-watcher = { module = "com.squareup.leakcanary:leakcanary-object-watcher-android", version.ref = "leakcanary" }
