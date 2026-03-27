@@ -343,7 +343,7 @@
     <string name="generate_unique_name">生成獨特的名稱</string>
     <string name="overwrite">覆寫</string>
     <string name="overwrite_finished_warning">有已下載的同名檔案</string>
-    <string name="download_already_running">已有進行中的下載與此同名</string>
+    <string name="download_already_running">已有正在進行的下載與此同名</string>
     <string name="show_error">顯示錯誤</string>
     <string name="error_file_creation">無法建立檔案</string>
     <string name="error_path_creation">無法建立目的地資料夾</string>
@@ -377,7 +377,7 @@
     <string name="missing_file">檔案已被移動或刪除</string>
     <string name="overwrite_unrelated_warning">同名的檔案已存在</string>
     <string name="overwrite_failed">無法覆寫檔案</string>
-    <string name="download_already_pending">已有擱置中的下載與此同名</string>
+    <string name="download_already_pending">已有正在擱置的下載與此同名</string>
     <string name="error_postprocessing_stopped">NewPipe 在處理檔案時被關閉</string>
     <string name="error_insufficient_storage_left">裝置上沒有剩餘的空間</string>
     <string name="error_progress_lost">進度遺失，因為檔案已被刪除</string>
@@ -811,6 +811,23 @@
     <string name="player_http_403">播放時收到來自伺服器的 HTTP 錯誤 403，可能因串流網址過期或 IP 封鎖所致</string>
     <string name="player_http_invalid_status">播放時收到來自伺服器的 HTTP 錯誤 %1$s</string>
     <string name="youtube_player_http_403">播放時收到來自伺服器的 HTTP 錯誤 403，可能因 IP 封鎖或串流網址去混淆化問題所致</string>
-    <string name="sign_in_confirm_not_bot_error">%1$s 拒絕提供資料，要求登入以確認請求者並非機器人。\n\n您的 IP 位址可能已被 %1$s 暫時封鎖，您可稍候片刻或切換至其他 IP 位址（例如開啟/關閉 VPN，或從 Wi-Fi 切換至行動數據）。</string>
+    <string name="sign_in_confirm_not_bot_error">%1$s 拒絕提供資料，要求登入以確認請求者並非機器人。\n\n您的 IP 位址可能已被 %1$s 暫時封鎖，您可稍候片刻或切換至其他 IP 位址（例如開啟/關閉 VPN，或從 Wi-Fi 切換至行動數據）。\n\n更多資訊請參見<a href="%2$s">此 FAQ 條目</a>。</string>
     <string name="unsupported_content_in_country">此內容目前無法於您所選的國家/地區提供。\n\n請至「設定」→「內容」→「預設內容國家」變更您的選擇。</string>
+    <string name="kao_dialog_warning">2025年8月，Google 宣佈自2026年9月起，所有經認證裝置上的 Android 應用程式（包含不是透過 Play 商店安裝的應用程式）皆須通過開發者驗證方可安裝。由於 NewPipe 開發團隊不接受此項要求，該應用程式屆時將無法在經認證的 Android 裝置上運作。</string>
+    <string name="kao_dialog_more_info">詳細資訊</string>
+    <string name="kao_solution">解決方案</string>
+    <plurals name="export_subscriptions">
+        <item quantity="other">正在匯出 %d 個訂閱…</item>
+    </plurals>
+    <plurals name="load_subscriptions">
+        <item quantity="other">正在載入 %d 個訂閱…</item>
+    </plurals>
+    <plurals name="import_subscriptions">
+        <item quantity="other">正在匯入 %d 個訂閱…</item>
+    </plurals>
+    <string name="import_subscriptions_title">匯入訂閱</string>
+    <string name="export_subscriptions_title">匯出訂閱</string>
+    <string name="export_subscriptions_summary">匯出您的訂閱至 .json 檔案</string>
+    <string name="import_subscriptions_summary">從先前匯出的 .json 匯入訂閱</string>
+    <string name="import_from_previous_export">從先前的匯出檔案匯入</string>
 </resources>

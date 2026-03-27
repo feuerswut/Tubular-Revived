@@ -847,4 +847,9 @@
     <string name="youtube_player_http_403">HTTP-fout 403 ontvangen van de server tĳdens het afspelen, waarschĳnlĳk veroorzaakt door een ip-blokkade of problemen met de deobfuscatie van de streaming-url</string>
     <string name="sign_in_confirm_not_bot_error">%1$s weigerde gegevens te verstrekken en vroeg om een login om te bevestigen dat de aanvrager geen bot is.\n\nUw ip-adres is mogelĳk tĳdelĳk geblokkeerd door %1$s. U kunt even wachten of overschakelen naar een ander ip-adres (bĳvoorbeeld door een vpn in of uit te schakelen, of door over te schakelen van wifi naar mobiele data).</string>
     <string name="unsupported_content_in_country">Deze inhoud is niet beschikbaar voor het momenteel geselecteerde inhouds­land.\n\nWijzig uw selectie via ‘Instellingen &gt; Inhoud &gt; Standaard­land voor inhoud’.</string>
+    <string name="kao_dialog_more_info">Details</string>
+    <string name="kao_solution">Oplossing</string>
+    <string name="import_subscriptions_title">Abonnementen importeren</string>
+    <string name="export_subscriptions_title">Abonnementen exporteren</string>
+    <string name="import_from_previous_export">Importeren vanuit vorige export</string>
 </resources>
