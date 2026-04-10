@@ -864,4 +864,24 @@
     <string name="kao_dialog_warning">Em agosto de 2025, o Google anunciou que, a partir de setembro de 2026, a instalação de apps exigirá a verificação do programador para todas as apps Android em dispositivos certificados, incluindo aqueles instalados fora da Play Store. Como os programadores do NewPipe não concordam com este requisito, o NewPipe já não funcionará em dispositivos Android certificados após essa data.</string>
     <string name="kao_dialog_more_info">Detalhes</string>
     <string name="kao_solution">Solução</string>
+    <plurals name="export_subscriptions">
+        <item quantity="one">A exportar %d subscrição…</item>
+        <item quantity="many">A exportar %d subscrições…</item>
+        <item quantity="other">A exportar %d subscrições…</item>
+    </plurals>
+    <plurals name="load_subscriptions">
+        <item quantity="one">A carregar %d subscrição…</item>
+        <item quantity="many">A carregar %d subscrições…</item>
+        <item quantity="other">A carregar %d subscrições…</item>
+    </plurals>
+    <plurals name="import_subscriptions">
+        <item quantity="one">A importar %d subscrição…</item>
+        <item quantity="many">A importar %d subscrições…</item>
+        <item quantity="other">A importar %d subscrições…</item>
+    </plurals>
+    <string name="import_subscriptions_title">Importar subscrições</string>
+    <string name="export_subscriptions_title">Exportar subscrições</string>
+    <string name="import_subscriptions_summary">Importar subscrições do ficheiro .json anteriormente exportado</string>
+    <string name="export_subscriptions_summary">Exportar subscrições para um ficheiro .json</string>
+    <string name="import_from_previous_export">Importar da exportação anterior</string>
 </resources>

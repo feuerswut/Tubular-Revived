@@ -845,9 +845,22 @@
     <string name="player_http_403">HTTP-fel 403 mottogs från servern under uppspelning, troligen orsakat av att streaming-URL:en har löpt ut eller att en IP-adress har blockerats</string>
     <string name="player_http_invalid_status">HTTP-fel %1$s mottogs från servern under spelning</string>
     <string name="youtube_player_http_403">HTTP-fel 403 mottogs från servern under spelning, troligen orsakat av en IP-avstängning eller problem med deobfuskering av streaming-URL:er</string>
-    <string name="sign_in_confirm_not_bot_error">%1$s vägrade att tillhandahålla data och bad om en inloggning för att bekräfta att den som begärde detta inte är en bot.\n\nDin IP-adress kan ha blivit tillfälligt avstängd av %1$s. Du kan vänta en stund eller byta till en annan IP-adress (till exempel genom att slå på/av ett VPN eller genom att byta från WiFi till mobildata).</string>
+    <string name="sign_in_confirm_not_bot_error">%1$s vägrade att lämna ut data och bad om en inloggning för att bekräfta att den som begärde detta inte är en bot.\n\nDin IP-adress kan ha blivit tillfälligt avstängd av %1$s. Du kan vänta en stund eller byta till en annan IP-adress (till exempel genom att slå på/av ett VPN eller genom att byta från Wi-Fi till mobildata).\n\nSe <a href="%2$s">denna FAQ-post</a> för mer information.</string>
     <string name="unsupported_content_in_country">Detta innehåll är inte tillgängligt för det valda innehållslandet.\n\nÄndra ditt val från \"Inställningar &gt; Innehåll &gt; Standardinnehållsland\".</string>
-    <string name="kao_dialog_warning">Google har meddelat att från och med 2026/2027 kommer alla appar på certifierade Android-enheter att kräva att utvecklarna lämnar sina personliga identitetsuppgifter direkt till Google. Eftersom utvecklarna av denna app inte accepterar detta krav kommer appen inte längre att fungera på certifierade Android-enheter efter den tiden.</string>
+    <string name="kao_dialog_warning">I augusti 2025 meddelade Google att från och med september 2026 kommer installation av appar att kräva utvecklarverifiering för alla Android-appar på certifierade enheter, inklusive de som installerats utanför Play Store. Eftersom utvecklarna av NewPipe inte godkänner detta krav kommer NewPipe inte längre att fungera på certifierade Android-enheter efter den tiden.</string>
     <string name="kao_dialog_more_info">Detaljer</string>
     <string name="kao_solution">Lösning</string>
+    <plurals name="export_subscriptions">
+        <item quantity="one">Exporterar %d prenumeration…</item>
+        <item quantity="other">Exporterar %d prenumerationer…</item>
+    </plurals>
+    <plurals name="import_subscriptions">
+        <item quantity="one">Importerar %d prenumeration…</item>
+        <item quantity="other">Importerar %d prenumerationer…</item>
+    </plurals>
+    <string name="import_subscriptions_title">Importera prenumerationer</string>
+    <string name="export_subscriptions_title">Exportera prenumerationer</string>
+    <string name="import_subscriptions_summary">Importera prenumerationer från en tidigare .json-export</string>
+    <string name="export_subscriptions_summary">Exportera dina prenumerationer till en .json-fil</string>
+    <string name="import_from_previous_export">Importera från tidigare export</string>
 </resources>

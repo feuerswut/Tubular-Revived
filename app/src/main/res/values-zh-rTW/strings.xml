@@ -104,7 +104,7 @@
     <string name="subscribe_button_title">訂閱</string>
     <string name="subscribed_button_title">已訂閱</string>
     <string name="channel_unsubscribed">已取消訂閱頻道</string>
-    <string name="subscription_change_failed">無法更改訂閱</string>
+    <string name="subscription_change_failed">無法變更訂閱</string>
     <string name="subscription_update_failed">無法更新訂閱</string>
     <string name="tab_subscriptions">訂閱清單</string>
     <string name="fragment_feed_title">新鮮事</string>
@@ -226,7 +226,7 @@
     <string name="delete_playlist_prompt">刪除此播放清單？</string>
     <string name="playlist_creation_success">已建立播放清單</string>
     <string name="playlist_add_stream_success">已增至播放清單</string>
-    <string name="playlist_thumbnail_change_success">播放清單縮圖已更改。</string>
+    <string name="playlist_thumbnail_change_success">播放清單縮圖已變更。</string>
     <string name="caption_none">沒有字幕</string>
     <string name="resize_fit">合適的</string>
     <string name="resize_fill">填滿</string>
