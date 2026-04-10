@@ -1,5 +1,5 @@
 新增
-Keep Android Open 运动的重要信息及采取行动的请求：https://www.keepandroidopen.org/
+Keep Android Open 运动的重要信息及采取行动的呼吁：https://www.keepandroidopen.org/
 
 改进
 [Feed] 打乱过期订阅更新顺序
