@@ -189,9 +189,9 @@
     <string name="title_last_played">آخرین پخش‌شده</string>
     <string name="title_most_played">بیشترین پخش‌شده</string>
     <string name="main_page_content">محتوای صفحه اصلی</string>
-    <string name="blank_page_summary">صفحه خالی</string>
-    <string name="kiosk_page_summary">صفحه کیوسک</string>
-    <string name="channel_page_summary">صفحه کانال</string>
+    <string name="blank_page_summary">صفحهٔ خالی</string>
+    <string name="kiosk_page_summary">صفحهٔ کیوسک</string>
+    <string name="channel_page_summary">صفحهٔ کانال</string>
     <string name="select_a_channel">کانالی را انتخاب کنید</string>
     <string name="no_channel_subscribed_yet">هنز کانال مشترک‌شده‌ای وجود ندارد</string>
     <string name="select_a_kiosk">یک کیوسک را انتخاب کنید</string>
@@ -813,4 +813,11 @@
     <string name="open_play_queue">گشودن صف پخش</string>
     <string name="remove_duplicates_message">می‌خواهید همهٔ جریان‌های تکراری را در این سیاههٔ پخش بردارید؟</string>
     <string name="feed_fetch_channel_tabs_summary">زبانه‌هایی که هنگام به‌روز رسانی خوراک واکشی می‌شوند. این گزینه تأثیری روی کانال‌هایی که با ساتفاده از حالت سریع به‌روز می‌شوند ندارد.</string>
+    <string name="short_thousand">%sه</string>
+    <string name="short_million">%sم</string>
+    <string name="short_billion">%sمیلیارد</string>
+    <string name="channel_tab_likes">پسندها</string>
+    <string name="kao_dialog_more_info">جزییات</string>
+    <string name="kao_solution">راهکار</string>
+    <string name="search_with_service_name">جست‌وجوی %1$s</string>
 </resources>

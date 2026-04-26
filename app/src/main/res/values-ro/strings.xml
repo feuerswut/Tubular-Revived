@@ -163,7 +163,7 @@
     <string name="main_page_content">Conținutul pagini principale</string>
     <string name="blank_page_summary">Pagină goală</string>
     <string name="kiosk_page_summary">Pagina de chioșc</string>
-    <string name="channel_page_summary">Pagină canale</string>
+    <string name="channel_page_summary">Pagină canal</string>
     <string name="select_a_channel">Alegeți un canal</string>
     <string name="no_channel_subscribed_yet">Nu v-ați abonat la niciun canal deocamdată</string>
     <string name="select_a_kiosk">Alegeți un chioșc</string>
@@ -349,7 +349,7 @@
 \n
 \nActivați \"%1$s\" în setări dacă doriți să îl vedeți.</string>
     <string name="youtube_restricted_mode_enabled_summary">YouTube oferă un \"Mod restricționat\" care ascunde conținutul potențial matur</string>
-    <string name="youtube_restricted_mode_enabled_title">Activați \"Modul restricționat\" de pe YouTube</string>
+    <string name="youtube_restricted_mode_enabled_title">Activați „Modul restricționat” de pe YouTube</string>
     <string name="show_age_restricted_content_summary">Afișați conținut posibil nepotrivit pentru copii, deoarece are o limită de vârstă (cum ar fi 18+)</string>
     <string name="unsupported_url_dialog_message">Adresa URL nu a putut fi recunoscută. Deschideți cu o altă aplicație\?</string>
     <string name="show_meta_info_title">Afișează informațiile meta</string>
@@ -433,8 +433,8 @@
     </plurals>
     <string name="new_seek_duration_toast">Datorită constrângerilor ExoPlayer, durata de căutare a fost setată la %d secunde</string>
     <string name="remove_watched_popup_partially_watched_streams">Da, și videoclipuri vizionate parțial</string>
-    <string name="remove_watched_popup_warning">Videoclipurile care au fost vizionate înainte și după ce au fost adăugate la lista de redare vor fi eliminate. \nSunteți sigur? Acest lucru nu poate fi anulat!</string>
-    <string name="remove_watched_popup_title">Eliminați videoclipurile vizionate?</string>
+    <string name="remove_watched_popup_warning">Fluxurile care au fost vizionate înainte și după ce au fost adăugate la lista de redare vor fi eliminate. \nSunteți sigur?</string>
+    <string name="remove_watched_popup_title">Eliminați fluxurile vizionate?</string>
     <string name="remove_watched">Eliminare cele urmărite</string>
     <string name="systems_language">Prestabilită de sistem</string>
     <string name="app_language_title">Limba aplicației</string>
@@ -809,40 +809,76 @@
     <string name="channel_tab_livestreams">În direct</string>
     <string name="channel_tab_shorts">Shorturi</string>
     <string name="metadata_uploader_avatars">Avatarele autorului</string>
-    <string name="notification_actions_summary_android13">Editează fiecare acțiune de notificare de mai jos atingând-o. Primele trei acțiuni (redare/pauză, anterioară și următoare) sunt setate de sistem și nu pot fi personalizate.</string>
+    <string name="notification_actions_summary_android13">Editați fiecare acțiune de notificare de mai jos atingând-o. Primele trei acțiuni (redare/pauză, anterioară și următoare) sunt setate de sistem și nu pot fi personalizate.</string>
     <plurals name="replies">
         <item quantity="one">%s răspuns</item>
         <item quantity="few">%s răspunsuri</item>
-        <item quantity="other">%s răspunsuri</item>
+        <item quantity="other">%s de răspunsuri</item>
     </plurals>
     <string name="show_more">Arată mai multe</string>
     <string name="show_less">Arată mai puține</string>
     <string name="channel_tab_tracks">Piste</string>
     <string name="error_insufficient_storage">Nu este suficient spațiu liber pe dispozitiv</string>
     <string name="settings_category_backup_restore_title">Backup și restabilire</string>
-    <string name="auto_update_check_description">NewPipe poate verifica automat pentru versiuni noi din când în când și vă poate notifica când acestea sunt disponibile.
-\nDoriți să activați acest lucru?</string>
-    <string name="reset_settings_summary">Resetează toate setările la valorile inițiale</string>
+    <string name="auto_update_check_description">NewPipe poate verifica automat din când în când dacă există versiuni noi și vă poate anunța când acestea sunt disponibile.\nDoriți să activați această opțiune?</string>
+    <string name="reset_settings_summary">Resetați toate setările la valorile implicite</string>
     <string name="yes">Da</string>
     <string name="no">Nu</string>
-    <string name="reset_settings_title">Resetează setări</string>
-    <string name="reset_all_settings">Resetarea tuturor setărilor va elimina toate setările tale preferate și va reporni aplicația.
-\n
-\nSigur doriți să continuați?</string>
+    <string name="reset_settings_title">Resetați setările</string>
+    <string name="reset_all_settings">Resetarea tuturor setărilor va elimina toate setările preferate și va reporni aplicația. \n \nSigur doriți să continuați?</string>
     <string name="import_settings_vulnerable_format">Setările din exportul importat folosesc un format vulnerabil care a fost depreciat de la NewPipe 0.27.0. Asigurați-vă că exportul care este importat este dintr-o sursă de încredere și preferați să utilizați numai exporturi obținute din NewPipe 0.27.0 sau mai nou în viitor. Suportul pentru importul setărilor în acest format vulnerabil va fi în curând eliminat complet, iar versiunile vechi ale NewPipe nu vor mai putea importa setările exporturilor din versiunile noi.</string>
     <string name="audio_track_type_secondary">secundar</string>
-    <string name="share_playlist_as_youtube_temporary_playlist">Distribuie ca listă de redare temporară YouTube</string>
+    <string name="share_playlist_as_youtube_temporary_playlist">Distribuiți ca listă de redare temporară YouTube</string>
     <string name="tab_bookmarks_short">Liste de redare</string>
     <string name="feed_group_page_summary">Pagina grupului de canale</string>
-    <string name="search_with_service_name">Caută: %1$s</string>
-    <string name="search_with_service_name_and_filter">Caută %1$s (%2$s)</string>
-    <string name="select_a_feed_group">Selectează un grup de fluxuri</string>
+    <string name="search_with_service_name">Căutare: %1$s</string>
+    <string name="search_with_service_name_and_filter">Căutare %1$s (%2$s)</string>
+    <string name="select_a_feed_group">Selectați un grup de fluxuri</string>
     <string name="no_feed_group_created_yet">Încă nu a fost creat niciun grup de fluxuri</string>
     <string name="channel_tab_likes">Aprecieri</string>
     <string name="migration_info_6_7_title">Pagina SoundCloud Top 50 a fost eliminată</string>
     <string name="migration_info_6_7_message">SoundCloud a eliminat Top 50. Fila corespunzătoare a fost eliminată din pagina principală.</string>
     <string name="permission_display_over_apps_permission_name">„Permite afișarea deasupra altor aplicații”</string>
-    <string name="short_thousand">%s mii</string>
+    <string name="short_thousand">%sK</string>
     <string name="short_million">%s mil.</string>
     <string name="short_billion">%s mld.</string>
+    <string name="kao_dialog_warning">În august 2025, Google a anunțat că, începând din septembrie 2026, instalarea aplicațiilor va necesita verificarea dezvoltatorului pentru toate aplicațiile Android de pe dispozitivele certificate, inclusiv pentru cele instalate din afara Play Store. Deoarece dezvoltatorii NewPipe nu sunt de acord cu această cerință, NewPipe nu va mai funcționa pe dispozitivele Android certificate după acea dată.</string>
+    <string name="kao_solution">Soluție</string>
+    <string name="kao_dialog_more_info">Detalii</string>
+    <string name="unsupported_content_in_country">Acest conținut nu este disponibil pentru țara de conținut selectată în prezent.\n\nModificați selecția din „Setări &gt; Conținut &gt; Țara implicită pentru conținut”.</string>
+    <string name="sign_in_confirm_not_bot_error">%1$s a refuzat să furnizeze datele, solicitând autentificarea pentru a confirma că solicitantul nu este un bot.\n\nEste posibil ca adresa dvs. IP să fi fost blocată temporar de %1$s; puteți aștepta puțin sau puteți trece la o altă adresă IP (de exemplu, activând/dezactivând un VPN sau trecând de la Wi-Fi la date mobile).\n\nVă rugăm să consultați <a href="%2$s">această intrare din secțiunea de întrebări frecvente</a> pentru mai multe informații.</string>
+    <string name="youtube_player_http_403">S-a primit eroarea HTTP 403 de la server în timpul redării, probabil din cauza unei restricții de IP sau a unor probleme legate de dezobfuscarea adresei URL de flux</string>
+    <string name="player_http_invalid_status">S-a primit eroarea HTTP %1$s de la server în timpul redării</string>
+    <string name="player_http_403">S-a primit eroarea HTTP 403 de la server în timpul redării, probabil din cauza expirării adresei URL de flux sau a blocării adresei IP</string>
+    <string name="entry_deleted">Intrare ștearsă</string>
+    <string name="trending_music">Muzică în tendințe</string>
+    <string name="trending_movies">Filme și seriale în tendințe</string>
+    <string name="trending_podcasts">Podcast-uri în tendințe</string>
+    <string name="trending_gaming">Jocuri în tendințe</string>
+    <string name="migration_info_7_8_message">YouTube a desființat pagina combinată de tendințe începând cu 21 iulie 2025. NewPipe a înlocuit pagina implicită de tendințe cu secțiunea de transmisiuni live în tendințe.\n\nDe asemenea, puteți selecta diferite pagini de tendințe din „Setări &gt; Conținut &gt; Conținutul paginii principale”.</string>
+    <string name="migration_info_7_8_title">Youtube a desființat pagina combinată de tendințe</string>
+    <string name="permission_display_over_apps_message">Pentru a utiliza playerul pop-up, vă rugăm să selectați %1$s la următorul meniu de setări Android și să activați %2$s.</string>
+    <string name="delete_file">Ștergeți fișierul</string>
+    <string name="delete_entry">Ștergeți intrarea</string>
+    <plurals name="export_subscriptions">
+        <item quantity="one">Se exportă %d abonament…</item>
+        <item quantity="few">Se exportă %d abonamente…</item>
+        <item quantity="other">Se exportă %d de abonamente…</item>
+    </plurals>
+    <plurals name="load_subscriptions">
+        <item quantity="one">Se încarcă %d abonament…</item>
+        <item quantity="few">Se încarcă %d abonamente…</item>
+        <item quantity="other">Se încarcă %d de abonamente…</item>
+    </plurals>
+    <plurals name="import_subscriptions">
+        <item quantity="one">Se importă %d abonament…</item>
+        <item quantity="few">Se importă %d abonamente…</item>
+        <item quantity="other">Se importă %d de abonamente…</item>
+    </plurals>
+    <string name="import_subscriptions_title">Importați abonamente</string>
+    <string name="export_subscriptions_title">Exportați abonamente</string>
+    <string name="import_subscriptions_summary">Importați abonamente dintr-un export .json anterior</string>
+    <string name="export_subscriptions_summary">Exportați abonamentele într-un fișier .json</string>
+    <string name="import_from_previous_export">Importați dintr-un export anterior</string>
+    <string name="account_terminated_service_provides_reason">Cont închis.\n\n%1$s oferă acest motiv: %2$s</string>
 </resources>
