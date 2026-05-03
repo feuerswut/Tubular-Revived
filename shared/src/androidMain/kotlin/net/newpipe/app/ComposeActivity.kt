@@ -9,6 +9,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import kotlinx.serialization.json.Json
+import net.newpipe.Constants
+import net.newpipe.app.navigation.Screen
 
 /**
  * Entry point for compose-related UI components on Android
@@ -19,7 +22,12 @@ class ComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+            App(
+                // TODO: Change when everything is in compose and this is the primary activity
+                startDestination = Json.decodeFromString<Screen>(
+                    intent.getStringExtra(Constants.INTENT_SCREEN_KEY)!!
+                )
+            )
         }
     }
 }
