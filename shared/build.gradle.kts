@@ -33,7 +33,9 @@ kotlin {
                 minorApiLevel = 1
             }
         }
-        minSdk = 23
+        minSdk {
+            version = release(23)
+        }
         androidResources {
             enable = true
         }

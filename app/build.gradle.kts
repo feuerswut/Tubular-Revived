@@ -30,14 +30,22 @@ kotlin {
 }
 
 configure<ApplicationExtension> {
-    compileSdk = 36
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
     namespace = "org.schabi.newpipe"
 
     defaultConfig {
         applicationId = "org.schabi.newpipe"
         resValue("string", "app_name", "NewPipe")
-        minSdk = 23
-        targetSdk = 35
+        minSdk {
+            version = release(23)
+        }
+        targetSdk {
+            version = release(35)
+        }
 
         versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1011
 
