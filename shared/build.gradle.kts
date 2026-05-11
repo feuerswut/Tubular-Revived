@@ -12,6 +12,24 @@ plugins {
     alias(libs.plugins.jetbrains.kotlinx.serialization)
 }
 
+// Better than adding a third-party dependency for something as simple as this
+// https://stackoverflow.com/a/74771876/8446131
+val buildConfigGenerator by tasks.registering(Sync::class) {
+    val buildConfigPackage = NEWPIPE_APPLICATION_ID_NEW
+    val rawClass = """
+        package $buildConfigPackage
+
+        object BuildConfig {
+            const val VERSION_NAME = "$NEWPIPE_VERSION_NAME"
+        }
+    """.trimIndent()
+    from(resources.text.fromString(rawClass)) {
+        rename { "BuildConfig.kt" }
+        into(buildConfigPackage.replace(".", "/"))
+    }
+    into(layout.buildDirectory.dir("generated/kotlin/"))
+}
+
 kotlin {
     jvmToolchain(21)
 
@@ -27,14 +45,14 @@ kotlin {
     }
 
     android {
-        namespace = "net.newpipe.app"
+        namespace = NEWPIPE_APPLICATION_ID_NEW
         compileSdk {
-            version = release(36) {
-                minorApiLevel = 1
+            version = release(NEWPIPE_VERSION_SDK_COMPILE_MAJOR) {
+                minorApiLevel = NEWPIPE_VERSION_SDK_COMPILE_MINOR
             }
         }
         minSdk {
-            version = release(23)
+            version = release(NEWPIPE_VERSION_SDK_MIN)
         }
         androidResources {
             enable = true
@@ -71,6 +89,7 @@ kotlin {
 
     sourceSets {
         commonMain {
+            kotlin.srcDir(buildConfigGenerator.map { it.destinationDir })
             dependencies {
                 implementation(libs.jetbrains.compose.runtime)
                 implementation(libs.jetbrains.compose.foundation)
