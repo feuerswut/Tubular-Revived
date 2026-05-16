@@ -399,6 +399,10 @@ public abstract class VideoPlayerUi extends PlayerUi implements SeekBar.OnSeekBa
 
         // #6825 - Ensure that the shuffle-button is in the correct state on the UI
         setShuffleButton(player.getExoPlayer().getShuffleModeEnabled());
+
+        // Set repeat button to the correct UI state
+        setRepeatButton(player.getExoPlayer().getRepeatMode());
+
     }
 
     public abstract void removeViewFromParent();
@@ -982,6 +986,20 @@ public abstract class VideoPlayerUi extends PlayerUi implements SeekBar.OnSeekBa
     private void setShuffleButton(final boolean shuffled) {
         binding.shuffleButton.setImageAlpha(shuffled ? 255 : 77);
     }
+
+    private void setRepeatButton(final int repeatMode) {
+        if (repeatMode == REPEAT_MODE_ALL) {
+            binding.repeatButton.setImageResource(
+                    com.google.android.exoplayer2.ui.R.drawable.exo_controls_repeat_all);
+        } else if (repeatMode == REPEAT_MODE_ONE) {
+            binding.repeatButton.setImageResource(
+                    com.google.android.exoplayer2.ui.R.drawable.exo_controls_repeat_one);
+        } else /* repeatMode == REPEAT_MODE_OFF */ {
+            binding.repeatButton.setImageResource(
+                    com.google.android.exoplayer2.ui.R.drawable.exo_controls_repeat_off);
+        }
+    }
+
     //endregion
 
 
