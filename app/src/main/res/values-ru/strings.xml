@@ -892,4 +892,7 @@
     <string name="import_subscriptions_summary">Импорт подписок из предыдущего экспорта .json</string>
     <string name="export_subscriptions_summary">Экспорт ваших подписок в .json файл</string>
     <string name="import_from_previous_export">Импорт из предыдущего экспорта</string>
+    <string name="api23_requirement_dialog_title">NewPipe прекращает поддержку Android 5</string>
+    <string name="api23_requirement_dialog_message">К сожалению, NewPipe зависит от нескольких библиотек, которые прекратили поддерживать Android 5.0 и 5.1. Таким образом, к сожалению следующий выпуск NewPipe будет работать только на устройствах с Android 6 или выше. Подробности в посте в блоге.</string>
+    <string name="api23_requirement_dialog_blogpost">Пост в блоге</string>
 </resources>
