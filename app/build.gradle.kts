@@ -30,18 +30,26 @@ kotlin {
 }
 
 configure<ApplicationExtension> {
-    compileSdk = 36
-    namespace = "org.schabi.newpipe"
+    compileSdk {
+        version = release(NEWPIPE_VERSION_SDK_COMPILE_MAJOR) {
+            minorApiLevel = NEWPIPE_VERSION_SDK_COMPILE_MINOR
+        }
+    }
+    namespace = NEWPIPE_APPLICATION_ID_OLD
 
     defaultConfig {
-        applicationId = "org.schabi.newpipe"
+        applicationId = NEWPIPE_APPLICATION_ID_OLD
         resValue("string", "app_name", "NewPipe")
-        minSdk = 23
-        targetSdk = 35
+        minSdk {
+            version = release(NEWPIPE_VERSION_SDK_MIN)
+        }
+        targetSdk {
+            version = release(NEWPIPE_VERSION_SDK_TARGET)
+        }
 
-        versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1011
+        versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: NEWPIPE_VERSION_CODE
 
-        versionName = "0.28.6"
+        versionName = NEWPIPE_VERSION_NAME
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
