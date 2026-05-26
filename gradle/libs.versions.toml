@@ -4,6 +4,7 @@
 #
 
 [versions]
+about-libraries = "14.2.1"
 acra = "5.13.1"
 activity = "1.13.0"
 agp = "9.2.1"
@@ -166,6 +167,7 @@ squareup-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhtt
 zacsweers-autoservice-compiler = { module = "dev.zacsweers.autoservice:auto-service-ksp", version.ref = "autoservice-zacsweers" }
 
 [plugins]
+about-libraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "about-libraries" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-legacy-kapt = { id = "com.android.legacy-kapt", version.ref = "agp" } # Needed for statesaver
 android-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
