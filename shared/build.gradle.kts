@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose.multiplatform)
     alias(libs.plugins.koin)
     alias(libs.plugins.jetbrains.kotlinx.serialization)
+    alias(libs.plugins.about.libraries)
 }
 
 // Better than adding a third-party dependency for something as simple as this
@@ -144,4 +145,13 @@ dependencies {
 
 koinCompiler {
     userLogs = true // See what the compiler plugin detects
+}
+
+aboutLibraries {
+    export {
+        outputFile = file("src/iosMain/resources/aboutlibraries.json")
+        prettyPrint = true
+        variant = "metadataIosMain"
+        excludeFields.addAll("organization", "scm", "funding")
+    }
 }
