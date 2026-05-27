@@ -125,7 +125,10 @@ fun currentColorScheme(
 @Composable
 fun AppTheme(
     isPreview: Boolean = LocalInspectionMode.current,
-    colorScheme: ColorScheme = if (isPreview) lightScheme else currentColorScheme(),
+    colorScheme: ColorScheme = when {
+        isPreview -> if (isSystemInDarkTheme()) darkScheme else lightScheme
+        else -> currentColorScheme()
+    },
     content: @Composable () -> Unit
 ) {
     MaterialExpressiveTheme(

@@ -38,4 +38,9 @@ aboutLibraries {
         prettyPrint = true
         excludeFields.addAll("organization", "scm", "funding")
     }
+    license {
+        additionalLicenses.addAll(
+            "GPL-3.0-or-later"
+        )
+    }
 }

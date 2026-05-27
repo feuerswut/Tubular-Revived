@@ -151,6 +151,21 @@
             ]
         },
         {
+            "uniqueId": "androidx.browser:browser",
+            "artifactVersion": "1.10.0",
+            "name": "Browser",
+            "description": "Provides support for embedding Custom Tabs in an app.",
+            "website": "https://developer.android.com/jetpack/androidx/releases/browser#1.10.0",
+            "developers": [
+                {
+                    "name": "The Android Open Source Project"
+                }
+            ],
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
             "uniqueId": "androidx.cardview:cardview",
             "artifactVersion": "1.0.0",
             "name": "Support CardView v7",
@@ -1602,6 +1617,21 @@
                 },
                 {
                     "name": "Lukas Morawietz"
+                }
+            ],
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "co.touchlab:kermit-android-debug",
+            "artifactVersion": "2.1.0",
+            "name": "Kermit",
+            "description": "Kermit The Log",
+            "website": "https://github.com/touchlab/Kermit",
+            "developers": [
+                {
+                    "name": "Kevin Galligan"
                 }
             ],
             "licenses": [

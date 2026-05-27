@@ -16,7 +16,11 @@ import kotlinx.serialization.modules.polymorphic
  * Destinations for navigation in compose
  */
 @Serializable
-sealed interface Screen : NavKey
+sealed interface Screen : NavKey {
+
+    @Serializable
+    data object About : Screen
+}
 
 /**
  * Saved state configuration for screens
