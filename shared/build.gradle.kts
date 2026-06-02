@@ -101,7 +101,8 @@ kotlin {
 
                 implementation(libs.jetbrains.lifecycle.viewmodel)
 
-                implementation(libs.jetbrains.navigation3.ui)
+                // Use API as java compiler cannot see NavKey for some reason
+                api(libs.jetbrains.navigation3.ui)
                 implementation(libs.jetbrains.lifecycle.navigation3)
                 implementation(libs.kotlinx.serialization.json)
 
