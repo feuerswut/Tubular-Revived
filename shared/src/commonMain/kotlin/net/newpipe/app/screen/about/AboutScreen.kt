@@ -20,7 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.util.fastForEachIndexed
 import kotlinx.coroutines.launch
@@ -43,7 +43,13 @@ fun AboutScreen(onNavigateUp: () -> Unit) {
 fun AboutScreenContent(
     pages: List<Page> = listOf(Page.ABOUT, Page.LICENSE),
     onNavigateUp: () -> Unit = {},
-    serviceScheme: ColorScheme = currentServiceScheme()
+    serviceScheme: ColorScheme = currentServiceScheme(),
+    onPageContent: @Composable (page: Page) -> Unit = { page ->
+        when (page) {
+            Page.ABOUT -> AboutPage()
+            Page.LICENSE -> LicensePage()
+        }
+    }
 ) {
     Scaffold(
         topBar = {
@@ -94,18 +100,22 @@ fun AboutScreenContent(
             }
 
             HorizontalPager(modifier = Modifier.fillMaxSize(), state = pagerState) { page ->
-                when (pages[page]) {
-                    Page.ABOUT -> AboutPage()
-                    Page.LICENSE -> LicensePage()
-                }
+                onPageContent(pages[page])
             }
         }
     }
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)
-@Preview
+@PreviewLightDark
 @Composable
 private fun AboutScreenPreview() {
-    AboutScreenContent()
+    AboutScreenContent(
+        onPageContent = { page ->
+            when (page) {
+                Page.ABOUT -> AboutPageContent()
+                Page.LICENSE -> LicensePageContent()
+            }
+        }
+    )
 }
