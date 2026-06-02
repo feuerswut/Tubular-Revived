@@ -34,7 +34,6 @@ import kotlin.random.Random
 import net.newpipe.app.composable.about.LibraryListItem
 import net.newpipe.app.model.Library
 import net.newpipe.app.model.License
-import net.newpipe.app.model.LicenseInfo
 import net.newpipe.app.platform.ShareHandler
 import net.newpipe.app.preview.LibraryPreviewProvider
 import net.newpipe.app.preview.ThemePreviewProvider
@@ -57,11 +56,9 @@ fun LicensePage(
     shareHandler: ShareHandler = koinInject()
 ) {
     val libraries by viewModel.libraries.collectAsStateWithLifecycle()
-    val licenses by viewModel.licenses.collectAsStateWithLifecycle()
 
     LicensePageContent(
         libraries = libraries,
-        licenses = licenses,
         onOpenUrl = { url -> shareHandler.openUrlInBrowser(url) }
     )
 }
@@ -69,13 +66,12 @@ fun LicensePage(
 @Composable
 fun LicensePageContent(
     libraries: List<Library> = emptyList(),
-    licenses: List<License> = emptyList(),
     onOpenUrl: (url: String) -> Unit = {}
 ) {
-    var shouldShowLicenseDialog by rememberSaveable { mutableStateOf<LicenseInfo?>(null) }
+    var shouldShowLicenseDialog by rememberSaveable { mutableStateOf<License?>(null) }
     shouldShowLicenseDialog?.let { info ->
         LicenseDialog(
-            info = info,
+            license = info,
             onOpenWebsite = { website -> onOpenUrl(website) },
             onDismiss = { shouldShowLicenseDialog = null }
         )
@@ -107,10 +103,10 @@ fun LicensePageContent(
                         .fillMaxWidth()
                         .wrapContentWidth(Alignment.End),
                     onClick = {
-                        shouldShowLicenseDialog = LicenseInfo(
+                        shouldShowLicenseDialog = License(
                             name = "NewPipe",
                             website = "https://newpipe.net/",
-                            license = licenses.first { it.spdxId == "GPL-3.0-or-later" }.content
+                            spdxID = "GPL-3.0-or-later"
                         )
                     }
                 ) {
@@ -129,13 +125,10 @@ fun LicensePageContent(
             LibraryListItem(
                 library = library,
                 onClick = {
-                    val license = licenses.first { license ->
-                        license.spdxId == library.licenses.first()
-                    }
-                    shouldShowLicenseDialog = LicenseInfo(
+                    shouldShowLicenseDialog = License(
                         name = library.name,
-                        website = library.website ?: license.url,
-                        license = license.content
+                        website = library.website,
+                        spdxID = library.licenses.first()
                     )
                 }
             )
