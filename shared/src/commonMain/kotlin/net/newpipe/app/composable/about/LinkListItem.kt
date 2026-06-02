@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.PreviewWrapper
 import net.newpipe.app.model.Link
 import net.newpipe.app.preview.LinkPreviewProvider
 import net.newpipe.app.preview.ThemePreviewProvider
-import net.newpipe.app.theme.spaceXSmall
+import net.newpipe.app.theme.spaceMedium
 
 /**
  * Composable to display information about links
@@ -33,7 +33,7 @@ fun LinkListItem(modifier: Modifier = Modifier, link: Link, onAction: () -> Unit
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(spaceXSmall)
+            .padding(spaceMedium)
     ) {
         Text(
             text = link.title,
