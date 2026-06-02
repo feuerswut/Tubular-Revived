@@ -13,14 +13,12 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.v2.runComposeUiTest
-import net.newpipe.app.model.License
 import kotlin.test.Test
 import kotlin.test.assertTrue
-import net.newpipe.app.preview.LibraryPreviewProvider
+import net.newpipe.app.model.License
 import newpipe.shared.generated.resources.Res
 import newpipe.shared.generated.resources.website_title
 import org.jetbrains.compose.resources.getString
-import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalTestApi::class)
 class LicenseDialogTest {

@@ -10,9 +10,9 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.v2.runComposeUiTest
-import net.newpipe.app.model.Developer
 import kotlin.test.Test
 import kotlin.test.assertTrue
+import net.newpipe.app.model.Developer
 import net.newpipe.app.model.Library
 
 @OptIn(ExperimentalTestApi::class)
