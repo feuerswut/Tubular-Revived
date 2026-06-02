@@ -11,8 +11,8 @@ import kotlinx.serialization.Serializable
  * Class to hold information about a license shown to user
  */
 @Serializable
-data class LicenseInfo(
+data class License(
     val name: String,
-    val website: String,
-    val license: String
+    val spdxID: String,
+    val website: String? = null
 )

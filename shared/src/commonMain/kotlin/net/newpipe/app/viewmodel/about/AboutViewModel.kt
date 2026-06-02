@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import net.newpipe.app.model.AboutLibraries
 import net.newpipe.app.model.Library
-import net.newpipe.app.model.License
 import net.newpipe.app.platform.ResourceHandler
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.KoinViewModel
@@ -30,9 +29,6 @@ class AboutViewModel(
     private val _libraries = MutableStateFlow<List<Library>>(emptyList())
     val libraries = _libraries.asStateFlow()
 
-    private val _licenses = MutableStateFlow<List<License>>(emptyList())
-    val licenses = _licenses.asStateFlow()
-
     init {
         viewModelScope.launch(Dispatchers.IO) {
             parseLibraries()
@@ -44,7 +40,6 @@ class AboutViewModel(
             resourceHandler.readResourceToString(PATH_BOM)
         )
         _libraries.value = aboutLibraries.libraries
-        _licenses.value = aboutLibraries.licenses.values.toList()
     }
 
     companion object {

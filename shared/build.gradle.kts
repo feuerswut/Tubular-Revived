@@ -156,21 +156,4 @@ aboutLibraries {
         variant = "metadataIosMain"
         excludeFields.addAll("organization", "scm", "funding")
     }
-    license {
-        additionalLicenses.addAll(
-            "GPL-3.0-or-later"
-        )
-        // Ensure all licenses are known and have an SPDX ID (https://spdx.org/licenses/)
-        // When adding a new license here, also add it to net.newpipe.app.model.License for mapping
-        allowedLicenses.addAll(
-            "Apache-2.0",
-            "BSD-2-Clause",
-            "BSD-2-Clause",
-            "EPL-1.0",
-            "GPL-3.0-or-later",
-            "MIT",
-            "MIT-0",
-            "MPL-2.0"
-        )
-    }
 }

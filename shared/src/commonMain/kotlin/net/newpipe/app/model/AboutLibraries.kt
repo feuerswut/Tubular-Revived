@@ -13,8 +13,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class AboutLibraries(
-    val libraries: List<Library>,
-    val licenses: Map<String, License>
+    val libraries: List<Library>
 )
 
 @Serializable
@@ -31,12 +30,4 @@ data class Library(
 data class Developer(
     val name: String,
     val organisationUrl: String? = null
-)
-
-@Serializable
-data class License(
-    val content: String,
-    val name: String,
-    val spdxId: String,
-    val url: String
 )
