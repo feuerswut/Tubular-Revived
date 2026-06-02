@@ -15,20 +15,18 @@ import net.newpipe.app.model.Library
 class LibraryPreviewProvider : PreviewParameterProvider<Library> {
 
     override val values: Sequence<Library>
-        get() = sequenceOf(library)
-
-    companion object {
-        val library = Library(
-            id = "net.newpipe.extractor",
-            name = "NewPipe Extractor",
-            developers = listOf(
-                Developer(
-                    name = "Team NewPipe",
-                    organisationUrl = "https://newpipe.net/"
-                )
-            ),
-            licenses = listOf("GPL-3.0-or-later"),
-            website = "https://github.com/TeamNewPipe/NewPipeExtractor/"
+        get() = sequenceOf(
+            Library(
+                id = "net.newpipe.extractor",
+                name = "NewPipe Extractor",
+                developers = listOf(
+                    Developer(
+                        name = "Team NewPipe",
+                        organisationUrl = "https://newpipe.net/"
+                    )
+                ),
+                licenses = listOf("GPL-3.0-or-later"),
+                website = "https://github.com/TeamNewPipe/NewPipeExtractor/"
+            )
         )
-    }
 }

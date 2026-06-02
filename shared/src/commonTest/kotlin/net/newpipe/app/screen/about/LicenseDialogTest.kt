@@ -13,6 +13,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.v2.runComposeUiTest
+import net.newpipe.app.model.License
 import kotlin.test.Test
 import kotlin.test.assertTrue
 import net.newpipe.app.preview.LibraryPreviewProvider
@@ -26,16 +27,20 @@ class LicenseDialogTest {
 
     @Test
     fun testLicenseDialog() = runComposeUiTest {
-        val library = LibraryPreviewProvider.library
+        val license = License(
+            name = "NewPipe e.V.",
+            spdxID = "GPL-3.0-or-later",
+            website = "https://newpipe-ev.de/"
+        )
         var websiteActionClicked = false
         setContent {
             LicenseDialog(
-                library = library,
+                license = license,
                 onOpenWebsite = { websiteActionClicked = true }
             )
         }
 
-        onNodeWithText(library.name).assertIsDisplayed()
+        onNodeWithText(license.name).assertIsDisplayed()
         onNodeWithTag(TEST_TAG_LICENSE_TEXT)
             .performScrollToNode(hasText("https://www.gnu.org/philosophy/why-not-lgpl.html", substring = true))
             .assertIsDisplayed()

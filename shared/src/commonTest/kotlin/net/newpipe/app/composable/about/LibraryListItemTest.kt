@@ -10,10 +10,10 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.v2.runComposeUiTest
+import net.newpipe.app.model.Developer
 import kotlin.test.Test
 import kotlin.test.assertTrue
 import net.newpipe.app.model.Library
-import net.newpipe.app.model.License
 
 @OptIn(ExperimentalTestApi::class)
 class LibraryListItemTest {
@@ -23,13 +23,13 @@ class LibraryListItemTest {
         val library = Library(
             id = "Test id",
             name = "Test name",
-            developer = "Test developer",
-            license = License(
-                type = License.Companion.TYPE.APACHE_2_0,
-                text = ""
+            developers = listOf(
+                Developer(name = "Test developer")
             ),
+            licenses = listOf("Apache-2.0"),
             website = "https://www.example.com"
         )
+        val desc = "By ${library.developers.first().name} under ${library.licenses.first()}"
         var clicked = false
         setContent {
             LibraryListItem(
@@ -41,7 +41,7 @@ class LibraryListItemTest {
         }
 
         onNodeWithText(library.name).assertIsDisplayed()
-        onNodeWithText("By ${library.developer} under ${library.license.spdxId}").apply {
+        onNodeWithText(desc).apply {
             assertIsDisplayed()
             performClick()
             assertTrue(clicked)
