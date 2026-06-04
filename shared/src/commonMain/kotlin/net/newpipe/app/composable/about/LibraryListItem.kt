@@ -19,6 +19,7 @@ import net.newpipe.app.preview.LibraryPreviewProvider
 import net.newpipe.app.preview.ThemePreviewProvider
 import newpipe.shared.generated.resources.Res
 import newpipe.shared.generated.resources.license
+import newpipe.shared.generated.resources.not_available
 import org.jetbrains.compose.resources.stringResource
 
 /**
@@ -29,8 +30,23 @@ import org.jetbrains.compose.resources.stringResource
  */
 @Composable
 fun LibraryListItem(modifier: Modifier = Modifier, library: Library, onClick: () -> Unit = {}) {
+    val description = when {
+        library.developers.isNotEmpty() && library.licenses.isNotEmpty() -> {
+            stringResource(
+                Res.string.license,
+                library.developers.first().name,
+                library.licenses.first()
+            )
+        }
+
+        else -> {
+            stringResource(Res.string.not_available)
+        }
+    }
+
     ListItem(
         onClick = onClick,
+        enabled = library.licenses.isNotEmpty(),
         content = {
             Column {
                 Text(
@@ -38,11 +54,7 @@ fun LibraryListItem(modifier: Modifier = Modifier, library: Library, onClick: ()
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = stringResource(
-                        Res.string.license,
-                        library.developers.first().name,
-                        library.licenses.first()
-                    ),
+                    text = description,
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

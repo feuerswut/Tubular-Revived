@@ -35,4 +35,5 @@
     <string name="faq">View on website</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="done">Done</string>
+    <string name="not_available">Not available</string>
 </resources>
