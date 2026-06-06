@@ -45,6 +45,7 @@ fun LibraryListItem(modifier: Modifier = Modifier, library: Library, onClick: ()
     }
 
     ListItem(
+        modifier = modifier,
         onClick = onClick,
         enabled = library.licenses.isNotEmpty(),
         content = {

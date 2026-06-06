@@ -81,12 +81,12 @@ fun AboutScreenContent(
                 },
                 selectedTabIndex = pagerState.currentPage
             ) {
-                pages.fastForEachIndexed { index, _ ->
+                pages.fastForEachIndexed { index, page ->
                     Tab(
                         selected = pagerState.currentPage == index,
                         text = {
                             Text(
-                                text = stringResource(pages[index].localizedTitle),
+                                text = stringResource(page.localizedTitle),
                                 color = serviceScheme.onPrimaryContainer
                             )
                         },

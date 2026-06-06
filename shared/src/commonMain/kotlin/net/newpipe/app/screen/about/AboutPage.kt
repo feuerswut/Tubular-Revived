@@ -64,41 +64,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
-@get:Composable
-private val DEFAULT_LINKS: List<Link>
-    get() = listOf(
-        Link(
-            title = stringResource(Res.string.faq_title),
-            description = stringResource(Res.string.faq_description),
-            action = stringResource(Res.string.faq),
-            url = Constants.URL_FAQ
-        ),
-        Link(
-            title = stringResource(Res.string.contribution_title),
-            description = stringResource(Res.string.contribution_encouragement),
-            action = stringResource(Res.string.view_on_github),
-            url = Constants.URL_GITHUB
-        ),
-        Link(
-            title = stringResource(Res.string.donation_title),
-            description = stringResource(Res.string.donation_encouragement),
-            action = stringResource(Res.string.give_back),
-            url = Constants.URL_DONATION
-        ),
-        Link(
-            title = stringResource(Res.string.website_title),
-            description = stringResource(Res.string.website_encouragement),
-            action = stringResource(Res.string.open_in_browser),
-            url = Constants.URL_WEBSITE
-        ),
-        Link(
-            title = stringResource(Res.string.privacy_policy_title),
-            description = stringResource(Res.string.privacy_policy_encouragement),
-            action = stringResource(Res.string.read_privacy_policy),
-            url = Constants.URL_PRIVACY
-        )
-    )
-
 @Composable
 fun AboutPage(shareHandler: ShareHandler = koinInject()) {
     AboutPageContent(
@@ -108,7 +73,7 @@ fun AboutPage(shareHandler: ShareHandler = koinInject()) {
 
 @Composable
 fun AboutPageContent(
-    links: List<Link> = DEFAULT_LINKS,
+    links: List<Link> = defaultLinks(),
     onOpenUrl: (url: String) -> Unit = {}
 ) {
     LazyColumn(
@@ -160,6 +125,40 @@ fun AboutPageContent(
         }
     }
 }
+
+@Composable
+private fun defaultLinks() = listOf(
+    Link(
+        title = stringResource(Res.string.faq_title),
+        description = stringResource(Res.string.faq_description),
+        action = stringResource(Res.string.faq),
+        url = Constants.URL_FAQ
+    ),
+    Link(
+        title = stringResource(Res.string.contribution_title),
+        description = stringResource(Res.string.contribution_encouragement),
+        action = stringResource(Res.string.view_on_github),
+        url = Constants.URL_GITHUB
+    ),
+    Link(
+        title = stringResource(Res.string.donation_title),
+        description = stringResource(Res.string.donation_encouragement),
+        action = stringResource(Res.string.give_back),
+        url = Constants.URL_DONATION
+    ),
+    Link(
+        title = stringResource(Res.string.website_title),
+        description = stringResource(Res.string.website_encouragement),
+        action = stringResource(Res.string.open_in_browser),
+        url = Constants.URL_WEBSITE
+    ),
+    Link(
+        title = stringResource(Res.string.privacy_policy_title),
+        description = stringResource(Res.string.privacy_policy_encouragement),
+        action = stringResource(Res.string.read_privacy_policy),
+        url = Constants.URL_PRIVACY
+    )
+)
 
 @PreviewWrapper(ThemePreviewProvider::class)
 @PreviewLightDark

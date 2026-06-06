@@ -7,6 +7,7 @@ package net.newpipe.app.viewmodel.about
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,11 +17,9 @@ import kotlinx.serialization.json.Json
 import net.newpipe.app.model.AboutLibraries
 import net.newpipe.app.model.Library
 import net.newpipe.app.platform.ResourceHandler
-import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.KoinViewModel
 
 @KoinViewModel
-@ComponentScan
 class AboutViewModel(
     private val json: Json,
     private val resourceHandler: ResourceHandler
@@ -36,10 +35,14 @@ class AboutViewModel(
     }
 
     private fun parseLibraries() {
-        val aboutLibraries = json.decodeFromString<AboutLibraries>(
-            resourceHandler.readResourceToString(PATH_BOM)
-        )
-        _libraries.value = aboutLibraries.libraries
+        try {
+            val aboutLibraries = json.decodeFromString<AboutLibraries>(
+                resourceHandler.readResourceToString(PATH_BOM)
+            )
+            _libraries.value = aboutLibraries.libraries
+        } catch (exception: Exception) {
+            Logger.e(messageString = "Failed to parse BOM", throwable = exception)
+        }
     }
 
     companion object {
