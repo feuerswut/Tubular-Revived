@@ -43,7 +43,6 @@ import net.newpipe.app.theme.spaceXSmall
 import net.newpipe.app.theme.spaceXXSmall
 import newpipe.shared.generated.resources.Res
 import newpipe.shared.generated.resources.app_description
-import newpipe.shared.generated.resources.app_name
 import newpipe.shared.generated.resources.contribution_encouragement
 import newpipe.shared.generated.resources.contribution_title
 import newpipe.shared.generated.resources.donation_encouragement
@@ -95,11 +94,11 @@ fun AboutPageContent(
                         .clip(CircleShape)
                         .background(color = logoBackground),
                     painter = painterResource(Res.drawable.ic_foreground),
-                    contentDescription = stringResource(Res.string.app_name)
+                    contentDescription = BuildConfig.APP_NAME
                 )
                 Spacer(modifier = Modifier.height(spaceXSmall))
                 Text(
-                    text = stringResource(Res.string.app_name),
+                    text = BuildConfig.APP_NAME,
                     style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.Center
                 )

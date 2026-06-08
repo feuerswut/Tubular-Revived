@@ -4,8 +4,6 @@
   ~ SPDX-License-Identifier: GPL-3.0-or-later
   -->
 <resources>
-    <string name="app_name">NewPipe</string>
-
     <!-- TopAppBar -->
     <string name="navigate_back">Back</string>
 
