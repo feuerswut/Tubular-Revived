@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose.multiplatform)
     alias(libs.plugins.koin)
     alias(libs.plugins.jetbrains.kotlinx.serialization)
+    alias(libs.plugins.about.libraries)
 }
 
 // Better than adding a third-party dependency for something as simple as this
@@ -21,6 +22,7 @@ val buildConfigGenerator by tasks.registering(Sync::class) {
 
         object BuildConfig {
             const val VERSION_NAME = "$NEWPIPE_VERSION_NAME"
+            const val APP_NAME = "NewPipe"
         }
     """.trimIndent()
     from(resources.text.fromString(rawClass)) {
@@ -100,14 +102,17 @@ kotlin {
 
                 implementation(libs.jetbrains.lifecycle.viewmodel)
 
-                implementation(libs.jetbrains.navigation3.ui)
+                // Use API as java compiler cannot see NavKey for some reason
+                api(libs.jetbrains.navigation3.ui)
                 implementation(libs.jetbrains.lifecycle.navigation3)
                 implementation(libs.kotlinx.serialization.json)
 
+                implementation(libs.koin.compose.navigation3)
                 implementation(libs.koin.compose.viewmodel)
                 implementation(libs.koin.annotations)
 
                 implementation(libs.russhwolf.settings.core)
+                implementation(libs.touchlab.kermit)
             }
         }
         commonTest.dependencies {
@@ -119,6 +124,7 @@ kotlin {
             implementation(libs.jetbrains.compose.preview)
             implementation(libs.androidx.activity)
             implementation(libs.androidx.preference)
+            implementation(libs.androidx.browser)
         }
         val androidDeviceTest by getting {
             dependencies {
@@ -144,4 +150,13 @@ dependencies {
 
 koinCompiler {
     userLogs = true // See what the compiler plugin detects
+}
+
+aboutLibraries {
+    export {
+        outputFile = file("src/iosMain/resources/aboutlibraries.json")
+        prettyPrint = true
+        variant = "metadataIosMain"
+        excludeFields.addAll("organization", "scm", "funding")
+    }
 }

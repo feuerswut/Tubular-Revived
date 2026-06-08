@@ -16,10 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import net.newpipe.app.BuildConfig
 import net.newpipe.app.preview.ThemePreviewProvider
 import net.newpipe.app.theme.currentServiceTopAppBarColors
 import newpipe.shared.generated.resources.Res
-import newpipe.shared.generated.resources.app_name
 import newpipe.shared.generated.resources.ic_arrow_back
 import newpipe.shared.generated.resources.navigate_back
 import org.jetbrains.compose.resources.painterResource
@@ -65,7 +65,7 @@ fun TopAppBar(
 @Composable
 private fun TopAppBarPreview() {
     TopAppBar(
-        title = stringResource(Res.string.app_name),
+        title = BuildConfig.APP_NAME,
         onNavigateUp = {}
     )
 }
