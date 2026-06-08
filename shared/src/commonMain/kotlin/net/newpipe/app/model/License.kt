@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class License(
-    val name: String,
-    val spdxID: String,
+    val name: String = "",
+    val spdxID: String = "",
     val website: String? = null
 )

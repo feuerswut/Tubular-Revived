@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -68,12 +69,14 @@ fun LicensePageContent(
     libraries: List<Library> = emptyList(),
     onOpenUrl: (url: String) -> Unit = {}
 ) {
-    var shouldShowLicenseDialog by rememberSaveable { mutableStateOf<License?>(null) }
-    shouldShowLicenseDialog?.let { info ->
+    var shouldShowLicenseDialog by rememberSaveable { mutableStateOf(false) }
+    var licenseToShow by rememberSerializable { mutableStateOf(License()) }
+
+    if (shouldShowLicenseDialog && licenseToShow.spdxID.isNotBlank()) {
         LicenseDialog(
-            license = info,
+            license = licenseToShow,
             onOpenWebsite = { website -> onOpenUrl(website) },
-            onDismiss = { shouldShowLicenseDialog = null }
+            onDismiss = { shouldShowLicenseDialog = false }
         )
     }
 
@@ -103,11 +106,12 @@ fun LicensePageContent(
                         .fillMaxWidth()
                         .wrapContentWidth(Alignment.End),
                     onClick = {
-                        shouldShowLicenseDialog = License(
+                        licenseToShow = License(
                             name = "NewPipe",
                             website = "https://newpipe.net/",
                             spdxID = "GPL-3.0-or-later"
                         )
+                        shouldShowLicenseDialog = true
                     }
                 ) {
                     Text(text = stringResource(Res.string.read_full_license))
@@ -125,11 +129,12 @@ fun LicensePageContent(
             LibraryListItem(
                 library = library,
                 onClick = {
-                    shouldShowLicenseDialog = License(
+                    licenseToShow = License(
                         name = library.name,
                         website = library.website,
                         spdxID = library.licenses.first()
                     )
+                    shouldShowLicenseDialog = true
                 }
             )
         }
