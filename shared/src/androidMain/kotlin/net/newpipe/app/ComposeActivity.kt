@@ -14,7 +14,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import kotlinx.serialization.json.Json
 import net.newpipe.Constants
-import net.newpipe.app.navigation.Screen
+import net.newpipe.app.navigation.Destination
 import net.newpipe.app.theme.currentService
 
 /**
@@ -28,7 +28,7 @@ class ComposeActivity : ComponentActivity() {
         setContent {
             App(
                 // TODO: Change when everything is in compose and this is the primary activity
-                startDestination = Json.decodeFromString<Screen>(
+                startDestination = Json.decodeFromString<Destination>(
                     intent.getStringExtra(Constants.INTENT_SCREEN_KEY)!!
                 ),
                 onCloseRequest = ::finish

@@ -106,6 +106,7 @@ kotlin {
                 implementation(libs.jetbrains.lifecycle.navigation3)
                 implementation(libs.kotlinx.serialization.json)
 
+                implementation(libs.koin.compose.navigation3)
                 implementation(libs.koin.compose.viewmodel)
                 implementation(libs.koin.annotations)
 

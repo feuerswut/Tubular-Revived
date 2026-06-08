@@ -25,17 +25,19 @@ import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.util.fastForEachIndexed
 import kotlinx.coroutines.launch
 import net.newpipe.app.composable.TopAppBar
+import net.newpipe.app.navigation.Navigator
 import net.newpipe.app.preview.ThemePreviewProvider
 import net.newpipe.app.screen.about.navigation.Page
 import net.newpipe.app.theme.currentServiceScheme
 import newpipe.shared.generated.resources.Res
 import newpipe.shared.generated.resources.title_activity_about
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 
 @Composable
-fun AboutScreen(onNavigateUp: () -> Unit) {
+fun AboutScreen(navigator: Navigator = koinInject()) {
     AboutScreenContent(
-        onNavigateUp = onNavigateUp
+        onNavigateUp = { navigator.navigateUp() }
     )
 }
 
