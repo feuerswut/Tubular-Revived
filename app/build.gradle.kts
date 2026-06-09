@@ -96,6 +96,7 @@ configure<ApplicationExtension> {
             initWith(getByName("release"))
             applicationIdSuffix = ".continuous"
             signingConfig = signingConfigs.getByName("debug")
+            isDefault = true
         }
     }
 
