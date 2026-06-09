@@ -91,6 +91,12 @@ configure<ApplicationExtension> {
                 "proguard-rules.pro"
             )
         }
+
+        register("continuous") {
+            initWith(getByName("release"))
+            applicationIdSuffix = ".continuous"
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 
     lint {
