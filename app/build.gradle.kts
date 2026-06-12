@@ -21,6 +21,11 @@ plugins {
 val gitWorkingBranch = providers.exec {
     commandLine("git", "rev-parse", "--abbrev-ref", "HEAD")
 }.standardOutput.asText.map { it.trim() }
+val defaultBranches = listOf("master", "dev")
+val workingBranch = gitWorkingBranch.getOrElse("")
+val normalizedWorkingBranch = workingBranch
+    .replaceFirst("^[^A-Za-z]+".toRegex(), "")
+    .replace("[^0-9A-Za-z]+".toRegex(), "")
 
 kotlin {
     jvmToolchain(21)
@@ -63,14 +68,7 @@ configure<ApplicationExtension> {
             isDebuggable = true
 
             // suffix the app id and the app name with git branch name
-            val defaultBranches = listOf("master", "dev")
-            val workingBranch = gitWorkingBranch.getOrElse("")
-            val normalizedWorkingBranch = workingBranch
-                .replaceFirst("^[^A-Za-z]+".toRegex(), "")
-                .replace("[^0-9A-Za-z]+".toRegex(), "")
-
             if (normalizedWorkingBranch.isEmpty() || workingBranch in defaultBranches) {
-                // default values when branch name could not be determined or is master or dev
                 applicationIdSuffix = ".debug"
                 resValue("string", "app_name", "NewPipe Debug")
             } else {
@@ -90,6 +88,21 @@ configure<ApplicationExtension> {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        register("continuous") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            isDefault = true
+
+            // suffix the app id and the app name with git branch name
+            if (normalizedWorkingBranch.isEmpty() || workingBranch in defaultBranches) {
+                applicationIdSuffix = ".continuous"
+                resValue("string", "app_name", "NewPipe Continuous")
+            } else {
+                applicationIdSuffix = ".continuous.$normalizedWorkingBranch"
+                resValue("string", "app_name", "NewPipe $workingBranch")
+            }
         }
     }
 
