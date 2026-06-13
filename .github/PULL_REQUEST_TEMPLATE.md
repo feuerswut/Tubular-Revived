@@ -1,8 +1,10 @@
 <!-- Hey there. Thank you so much for improving NewPipe, and filling out the details. Having roughly the same layout helps everyone considerably :)-->
 
+_**Note**: All changes be it a bugfix, a feature or a codebase improvement should target the `dev` branch._
+
 #### What is it?
 - [ ] Bugfix (user facing)
-- [ ] Feature (user facing) ⚠️ **Your PR must target the [`refactor`](https://github.com/TeamNewPipe/NewPipe/tree/refactor) branch**
+- [ ] Feature (user facing)
 - [ ] Codebase improvement (dev facing)
 - [ ] Meta improvement to the project (dev facing)
 
