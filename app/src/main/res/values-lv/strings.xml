@@ -11,9 +11,9 @@
     <string name="create_playlist">Jauns atskaņošanas saraksts</string>
     <string name="preferred_player_fetcher_notification_message">Ielādē prasīto saturu</string>
     <string name="preferred_player_fetcher_notification_title">Vāc informāciju…</string>
-    <string name="always_ask_open_action">Vienmēr prasīt</string>
-    <string name="popup_player">Popup atskaņotājs</string>
-    <string name="background_player">Fona atskaņotājs</string>
+    <string name="always_ask_open_action">Jautāt</string>
+    <string name="popup_player">Atvērt uznirstošā loga atskaņotājā</string>
+    <string name="background_player">Atvērt fona atskaņotājā</string>
     <string name="start_here_on_popup">Sākt atskaņot ar popup</string>
     <string name="start_here_on_background">Klausīties fonā šo</string>
     <string name="enqueued">Ielikts rindā</string>
@@ -139,7 +139,7 @@
     <string name="video">Video</string>
     <string name="detail_drag_description">Velciet, lai mainītu secību</string>
     <string name="empty_list_subtitle">Šeit nekā nav, tikai sienāži</string>
-    <string name="search_no_results">Nav resultātu</string>
+    <string name="search_no_results">Nav rezultātu</string>
     <string name="description_tab_description">Apraksts</string>
     <string name="related_items_tab_description">Līdzīgi video</string>
     <string name="comments_tab_description">Komentāri</string>
@@ -181,7 +181,7 @@
     <string name="video_streams_empty">Netika atrasti video</string>
     <string name="external_player_unsupported_link_type">Ārējie atskaņotāji neatbalsta šāda tipa saites</string>
     <string name="player_recoverable_failure">Atgūstas no atskaņotāja kļūdas</string>
-    <string name="player_unrecoverable_failure">Notika kļūda atskaņotājā</string>
+    <string name="player_unrecoverable_failure">Notika neatgūstama atskaņotāja kļūda</string>
     <string name="player_stream_failure">Nevarēja atskaņot šo video</string>
     <string name="app_ui_crash">Nobruka lietotne/lietotāja saskarne</string>
     <string name="could_not_setup_download_menu">Nevarēja iestatīt lejupielādes izvēlni</string>
@@ -389,7 +389,7 @@
     <string name="import_soundcloud_instructions_hint">jūsuID , soundcloud.com/jūsuID</string>
     <string name="import_soundcloud_instructions">Lai ievietotu SoundCloud profilu, ievadiet tā URL vai ID:\n\n1. Pārlūkā iestatiet \"Darbvirsmas režīms\" (vietne nav pieejama mobilajām ierīcēm) \n2. Dodieties uz šo URL adresi: %1$s\n3. Ja nepieciešams, autorizējieties\n4. Nokopējiet profila URL adreses joslā.</string>
     <string name="import_youtube_instructions">Ievietot YouTube abonementus no Google Takeout:\n\n1. Dodieties uz šo vietni: %1$s\n2. Autorizējieties, ja nepieciešams\n3. Noklikšķiniet uz \"Visi dati iekļauti\", pēc tam uz \"Atcelt visu atlasi\", pēc tam atlasiet tikai \"Abonementi\" un noklikšķiniet uz \"Labi\"\n4. Noklikšķiniet uz \"Nākamais solis\" un pēc tam uz \"Izveidot eksportu\"\n5. Pēc tam, kad tā parādās, noklikšķiniet uz pogas \"Lejupielādēt\"\n6. Noklikšķiniet IEVIETOT DATNI zemāk un izvēlaties lejupielādēto .zip failu\n7. [Ja .zip failu neizdodas ievietot] Izvelciet .csv failu (parasti zem \"YouTube un YouTube Music/subscriptions/subscriptions.csv\") no arhīva, tad noklikšķiniet uz IEVIETOT DATNI zemāk un atlasiet tikko izvilkto csv failu</string>
-    <string name="preferred_open_action_settings_summary">Noklusējuma darbība, kad atver saturu — %s</string>
+    <string name="preferred_open_action_settings_summary">Noklusējuma darbība, kad atver kopīgoto saiti — %s</string>
     <string name="show_original_time_ago_summary">Pakalpojumu oriģinālteksti būs redzami video vienumos</string>
     <string name="enable_disposed_exceptions_summary">Pēc izdzēšanas, piespiedu kārtā ziņot par nepiegādātiem Rx izņēmumiem, ārpus fragmenta vai darbības dzīves cikla</string>
     <string name="enable_disposed_exceptions_title">Ziņot par ārpus-dzīves-cikla kļūdu</string>
@@ -401,8 +401,8 @@
     <string name="bookmark_playlist">Saglabāt atskaņošanas sarakstu</string>
     <string name="unmute">Izslēgt audio</string>
     <string name="mute">Ieslēgt audio</string>
-    <string name="video_player">Video atskaņotājs</string>
-    <string name="preferred_open_action_settings_title">Vēlamā \'atvēršanas\' darbība</string>
+    <string name="video_player">Atvērt video atskaņotājā</string>
+    <string name="preferred_open_action_settings_title">Vēlamā kopīgotās saites atvēršanas darbība</string>
     <string name="trending">Tendences</string>
     <string name="copyright">© %1$s no %2$s zem %3$s</string>
     <string name="download_failed">Lejupielāde neizdevās</string>
@@ -634,9 +634,9 @@
     <string name="streams_notification_channel_name">Jauni video</string>
     <string name="error_report_notification_toast">Radās kļūda, detalizētāku informāciju skatiet paziņojumā</string>
     <plurals name="new_streams">
-        <item quantity="zero">%s jaunas tiešraides</item>
-        <item quantity="one">%s jauna tiešraide</item>
-        <item quantity="other">%s jaunas tiešraides</item>
+        <item quantity="zero">%s jauni video/audio</item>
+        <item quantity="one">%s jauns video/audio</item>
+        <item quantity="other">%s jauni video/audio</item>
     </plurals>
     <string name="streams_notification_channel_description">\@string/enable_streams_notifications_summary</string>
     <string name="faq_title">Bieži uzdotie jautājumi</string>
@@ -647,7 +647,7 @@
     <string name="left_gesture_control_title">Kreisās puses žesta darbība</string>
     <string name="msg_failed_to_copy">Neizdevās kopēt starpliktuvē</string>
     <string name="unset_playlist_thumbnail">Noņemt pastāvīgo sīktēlu</string>
-    <string name="check_new_streams">Pārbaudīt, vai nav jaunas tiešraides</string>
+    <string name="check_new_streams">Pārbaudīt, vai nav jaunu video/audio</string>
     <string name="show_crash_the_player_summary">Rāda nobrukšanas izsaukšanas funkciju, kad izmantojiet atskaņotāju</string>
     <string name="remove_duplicates">Dzēst dublikātus</string>
     <string name="feed_hide_streams_title">Rādīt šādus video/audio</string>
@@ -664,8 +664,8 @@
     <string name="prefer_original_audio_title">Dot priekšroku oriģinālajai skaņai</string>
     <string name="prefer_original_audio_summary">Atskaņos oriģinālo skaņas celiņu neatkarīgi no iestatītās valodas</string>
     <string name="prefer_descriptive_audio_title">Dot priekšroku skaņu celiņam ar audio aprakstu</string>
-    <string name="left_gesture_control_summary">Atlasiet žestu atskaņotāja ekrāna kreisajai pusei</string>
-    <string name="right_gesture_control_summary">Atlasiet žestu atskaņotāja ekrāna labajai pusei</string>
+    <string name="left_gesture_control_summary">Iestata žesta darbību atskaņotāja ekrāna kreisajai pusei</string>
+    <string name="right_gesture_control_summary">Iestata žesta darbību atskaņotāja ekrāna labajai pusei</string>
     <string name="right_gesture_control_title">Labās puses žesta darbība</string>
     <string name="brightness">Regulēt spilgtumu</string>
     <string name="volume">Regulēt skaļumu</string>
@@ -699,7 +699,7 @@
     <string name="main_tabs_position_title">Galvenās cilnes pozīcija</string>
     <string name="unknown_format">Nepazīstams formāts</string>
     <string name="feed_show_partially_watched">Daļēji skatītos/klausītos</string>
-    <string name="no_streams">Nav tiešraides</string>
+    <string name="no_streams">Nav video/audio</string>
     <string name="error_insufficient_storage">Ierīcē nav pietiekami daudz brīvas vietas</string>
     <string name="channel_tab_about">Par</string>
     <string name="metadata_thumbnails">Sīkattēli</string>
@@ -715,7 +715,7 @@
     <string name="night_theme_available">Pieejams, kad motīvs iestatīts uz %s</string>
     <string name="detail_pinned_comment_view_description">Piespraustais komentārs</string>
     <string name="notifications_disabled">Paziņojumi ir atspējoti</string>
-    <string name="you_successfully_subscribed">Jūs abonējāt šim kanālam</string>
+    <string name="you_successfully_subscribed">Jūs tagad esiet šī kanāla abonents</string>
     <string name="metadata_banners">Banneri</string>
     <string name="metadata_subscribers">Abonenti</string>
     <string name="enumeration_comma">,</string>
@@ -743,7 +743,7 @@
     <string name="question_mark">\?</string>
     <string name="share_playlist_content_details">%1$s
 \n%2$s</string>
-    <string name="get_notified">Paziņot par jaunumiem</string>
+    <string name="get_notified">Paziņot kanāla jaunumus</string>
     <string name="metadata_subchannel_avatars">Apakškanālu avatāri</string>
     <string name="metadata_uploader_avatars">Augšuplādētāju avatāri</string>
     <string name="duration">Ilgums</string>
@@ -779,7 +779,7 @@
     <string name="no_video_streams_available_for_external_players">Ārējiem atskaņotājiem nav pieejama neviena video straume</string>
     <string name="use_exoplayer_decoder_fallback_title">Izmantot ExoPlayer dekodētāja atkāpšanās funkciju</string>
     <string name="settings_category_exoplayer_summary">Pārvalda dažus ExoPlayer iestatījumus. Lai izmaiņas stātos spēkā, ir jāaizver un jāatver pa jaunu atskaņotājs</string>
-    <string name="use_exoplayer_decoder_fallback_summary">Iespējojiet šo opciju, ja ir problēmas ar dekodētāja inicializāciju, kas atgriežas pie zemākas prioritātes dekodētājiem, ja primārajiem dekodētājiem neizdodas inicializēties. Tas var izraisīt pazeminātu atskaņošanas kvalitāti, nekā, kad izmanto primāros dekoderus</string>
+    <string name="use_exoplayer_decoder_fallback_summary">Iespējojiet, ja ir problēmas ar dekodētāja inicializāciju, kas pāriet uz zemākas prioritātes dekodētājiem, ja primārā dekodētāja inicializācija neizdodas. Tas var izraisīt sliktāku atskaņošanas veiktspēju nekā izmantojot primāros dekodētajus</string>
     <string name="no_audio_streams_available_for_external_players">Ārējiem atskaņotājiem nav pieejama neviena audio straume</string>
     <string name="unknown_audio_track">Nezināms</string>
     <string name="always_use_exoplayer_set_output_surface_workaround_title">Vienmēr izmantot ExoPlayer video izvades virsmas iestatījumu risinājumu</string>
