@@ -1,7 +1,5 @@
 <!-- Hey there. Thank you so much for improving NewPipe, and filling out the details. Having roughly the same layout helps everyone considerably :)-->
 
-_**Note**: All changes be it a bugfix, a feature or a codebase improvement should target the `dev` branch._
-
 #### What is it?
 - [ ] Bugfix (user facing)
 - [ ] Feature (user facing)
