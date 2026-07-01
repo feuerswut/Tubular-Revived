@@ -29,7 +29,7 @@ fun navModule() = module {
         AboutScreen()
     }
 
-    navigation<Destination.Settings.Home> {
+    navigation<Destination.Settings> {
         SettingsHomeScreen()
     }
 }
