@@ -7,16 +7,16 @@ package net.newpipe.app.viewmodel.settings
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import net.newpipe.app.platform.BuildInfo
-import net.newpipe.app.screen.settings.SettingsCategoryType
+import net.newpipe.app.screen.settings.model.SettingsCategoryType
 import org.koin.core.annotation.KoinViewModel
 
 @KoinViewModel
 class SettingsViewModel(buildInfo: BuildInfo) : ViewModel() {
 
-    private val _categories = MutableStateFlow(computeVisible(buildInfo))
-    val categories = _categories.asStateFlow()
+    val categories: StateFlow<List<SettingsCategoryType>>
+        field = MutableStateFlow(computeVisible(buildInfo))
 
     private fun computeVisible(buildInfo: BuildInfo): List<SettingsCategoryType> =
         SettingsCategoryType.entries.filter { type ->
