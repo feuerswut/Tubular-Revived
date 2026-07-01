@@ -22,15 +22,12 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * A row that mirrors the standard AndroidX preference item used in the legacy
- * settings screens: 24dp leading icon, title, optional summary, ripple on tap.
+ * A row that mirrors the standard AndroidX preference item
  *
  * @param title Title text of the preference
  * @param modifier Modifier applied to the row
- * @param icon Leading icon painter; null hides the leading slot (parity with
- * `app:iconSpaceReserved="false"`)
- * @param summary Optional secondary line under the title (used on sub-screens;
- * the settings home currently shows none)
+ * @param icon Leading icon painter; null hides the leading slot
+ * @param summary Optional secondary line under the title
  * @param onClick Action executed when the row is tapped
  */
 @Composable
