@@ -8,6 +8,7 @@ package net.newpipe.app.navigation
 import androidx.compose.runtime.mutableStateListOf
 import co.touchlab.kermit.Logger
 import net.newpipe.app.screen.about.AboutScreen
+import net.newpipe.app.screen.settings.SettingsHomeScreen
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.annotation.Provided
 import org.koin.core.annotation.Singleton
