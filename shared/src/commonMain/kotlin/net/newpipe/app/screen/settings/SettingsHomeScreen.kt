@@ -25,24 +25,17 @@ import net.newpipe.app.composable.PreferenceRow
 import net.newpipe.app.composable.TopAppBar
 import net.newpipe.app.navigation.Navigator
 import net.newpipe.app.preview.ThemePreviewProvider
+import net.newpipe.app.screen.settings.model.SettingsCategory
+import net.newpipe.app.screen.settings.model.SettingsCategoryType
 import net.newpipe.app.viewmodel.settings.SettingsViewModel
 import newpipe.shared.generated.resources.Res
 import newpipe.shared.generated.resources.ic_search
 import newpipe.shared.generated.resources.search
 import newpipe.shared.generated.resources.settings
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
-
-data class SettingsCategory(
-    val title: StringResource,
-    val icon: DrawableResource,
-    // TODO: Replace with a Destination once sub-screens are migrated
-    val onClick: () -> Unit = {}
-)
 
 @Composable
 fun SettingsHomeScreen(
