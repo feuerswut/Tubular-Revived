@@ -16,5 +16,12 @@ import net.newpipe.app.model.License
 sealed interface Destination : NavKey {
 
     @Serializable
+    sealed interface Settings: Destination {
+
+        @Serializable
+        data object Home : Settings
+    }
+
+    @Serializable
     data object About : Destination
 }
