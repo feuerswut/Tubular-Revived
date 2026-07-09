@@ -37,7 +37,8 @@ kotlin {
 
     compilerOptions {
         freeCompilerArgs.addAll(
-            "-Xexpect-actual-classes"
+            "-Xexpect-actual-classes",
+            "-Xexplicit-backing-fields"
         )
         optIn.addAll(
             "androidx.compose.material3.ExperimentalMaterial3Api",
