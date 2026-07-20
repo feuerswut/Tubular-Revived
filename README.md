@@ -1,25 +1,23 @@
-<h1 align="center"><b>Tubular</b></h2>
-<h4 align="center">A fork of <a href="https://newpipe.net/">NewPipe</a> (<a href="https://github.com/TeamNewPipe/NewPipe/">Github</a>) that implements <a href="https://sponsor.ajay.app/">SponsorBlock</a> (<a href="https://github.com/ajayyy/SponsorBlock/">Github</a>) and <a href="https://www.returnyoutubedislike.com/">ReturnYouTubeDislike</a> (<a href="https://github.com/Anarios/return-youtube-dislike/">Github</a>).</h4>
-<p align="center">Download the APK <a href="https://github.com/polymorphicshade/Tubular/releases/latest">here</a> or get it on F-Droid <a href="https://f-droid.org/packages/org.polymorphicshade.tubular/">here</a>.</p>
-<p align="center"><img src="doc/gif/preview_01.gif" width="400"></p>
+<h1 align="center"><b>Tubular Revived</b></h2>
+<h4 align="center">A hard fork of <a href="https://github.com/polymorphicshade/Tubular/releases/latest">Tubular</a>, which is a fork of <a href="https://newpipe.net/">NewPipe</a> (<a href="https://github.com/TeamNewPipe/NewPipe/">Github</a>) that implements <a href="https://sponsor.ajay.app/">SponsorBlock</a> (<a href="https://github.com/ajayyy/SponsorBlock/">Github</a>) and <a href="https://www.returnyoutubedislike.com/">ReturnYouTubeDislike</a> (<a href="https://github.com/Anarios/return-youtube-dislike/">Github</a>).</h4>
+<p align="center">Download the APK <a href="https://github.com/feuerswut/releases/latest">here</a>.
 
 ## APK Info
+This APK is distributed via GitHub and my App repository.
 
-This is the SHA fingerprint of Tubular's signing key to verify downloaded APKs which are signed by us
-```
-8A:D7:02:5A:8C:91:14:54:E2:A7:B4:51:5E:36:0C:52:CA:63:EC:04:10:A0:42:FF:46:E9:AD:05:B5:09:E1:87
-```
+Add my F-Droid repo in your app for automatic updates: 
 
-## To Do
-Things I'll be working on next (not in any particular order):
-- [ ] persist custom SponsorBlock segments in the database
-- [ ] add SponsorBlock's "Exclusive Access" / "Sponsored Video feature"
-- [ ] add SponsorBlock's chapters feature
-- [ ] add a clickbait-remover
-- [ ] add keyword/regex filtering
-- [ ] add subscription importing with a YouTube login cookie
-- [ ] add algorithmic results with a YouTube login cookie
-- [ ] add offline YouTube playback
+visit https://fdroid.feuerswut.de/ - hosted by myself :P
+
+(this way I see if people are actually interested in my updates)
+
+
+Please tell others of the existence of this Fork, I'd love to see contributions and PRs.
+
+## Info
+Recommend this repository over the old Tubular repository, since that one is dead if you want to see this App maintained.
+
+I will (personally) not implement new features, only maintain existing features. I will try to maintain this as long as enough people are interested in this fork. (leave me a star and emoji the releases from time to time, or simply have my F-Droid repo enabled.)
 
 ## License
 [![GNU GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)

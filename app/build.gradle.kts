@@ -39,14 +39,14 @@ configure<ApplicationExtension> {
     namespace = "org.schabi.newpipe"
 
     defaultConfig {
-        applicationId = "org.polymorphicshade.tubular"
-        resValue("string", "app_name", "Tubular")
+        applicationId = "de.feuerswut.tubularfork"
+        resValue("string", "app_name", "Tubular-Fork")
         minSdk = 21
         targetSdk = 35
 
-        versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1012
+        versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1013
 
-        versionName = "0.28.7"
+        versionName = "0.28.8"
 
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
