@@ -40,7 +40,7 @@ jobs:
       - name: Checkout Tubular-Extractor-Revived
         uses: actions/checkout@v6
         with:
-          repository: feuerswut/extractor
+          repository: feuerswut/Tubular-Extractor-Revived
           path: Tubular-Extractor-Revived
       - uses: gradle/actions/wrapper-validation@v6
 
