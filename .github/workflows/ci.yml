@@ -36,6 +36,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Checkout Tubular-Extractor-Revived
+        uses: actions/checkout@v6
+        with:
+          repository: feuerswut/extractor
+          path: ../Tubular-Extractor-Revived
       - uses: gradle/actions/wrapper-validation@v6
 
       - name: Set up JDK 21
