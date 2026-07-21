@@ -350,7 +350,7 @@
     <string name="privacy_policy_title">Politika privatnosti kompanije NewPipe</string>
     <string name="privacy_policy_encouragement">Projekat NewPipe veoma ozbiljno shvata vašu privatnost. Stoga aplikacija ne prikuplja nikakve podatke bez vašeg pristanka.\nPolitika privatnosti NewPipe-a detaljno objašnjava koji se podaci šalju i pohranjuju kada pošaljete izvještaj o padu sistema.</string>
     <string name="read_privacy_policy">Pročitajte politiku privatnosti</string>
-    <string name="app_license_title">NewPipe-ova licenca</string>
+    <string name="app_license_title">Tubular-Revived-ova licenca</string>
     <string name="app_license">NewPipe je copyleft libre softver: Možete ga koristiti, proučavati, dijeliti i poboljšavati po volji. Konkretno, možete ga redistribuirati i/ili mijenjati pod uvjetima GNU Opće javne licence koju je objavila Fondacija za slobodni softver, bilo verzije 3 Licence ili (po vašem izboru) bilo koje kasnije verzije.</string>
     <string name="read_full_license">Pročitaj licencu</string>
     <string name="faq_title">Često postavljana pitanja</string>

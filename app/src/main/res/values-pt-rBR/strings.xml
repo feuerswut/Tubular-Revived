@@ -76,7 +76,7 @@
     <string name="parsing_error">O site não pôde ser analisado</string>
     <string name="play_audio">Áudio</string>
     <string name="play_with_kodi_title">Reproduzir no Kodi</string>
-    <string name="search">Buscar</string>
+    <string name="search">Pesquisar</string>
     <string name="show_play_with_kodi_summary">Mostrar opção para reproduzir o vídeo no Kodi</string>
     <string name="use_external_audio_player_title">Usar player de áudio externo</string>
     <string name="use_external_video_player_title">Usar um player de vídeo alternativo</string>
@@ -101,10 +101,10 @@
     <string name="show_search_suggestions_title">Sugestões de busca</string>
     <string name="show_search_suggestions_summary">Escolha as sugestões a serem exibidas enquanto estiver buscando</string>
     <string name="best_resolution">Melhor resolução</string>
-    <string name="title_licenses">Licenças de Terceiros</string>
-    <string name="tab_about">Sobre &amp; FAQ</string>
+    <string name="title_licenses">Licenças de terceiros</string>
+    <string name="tab_about">Sobre &amp; Perguntas Frequentes</string>
     <string name="tab_licenses">Licenças</string>
-    <string name="app_description">Transmissão leve e livre no Android.</string>
+    <string name="app_description">Streaming leve e gratuito no Android.</string>
     <string name="view_on_github">Ver no GitHub</string>
     <string name="app_license_title">Licença do Tubular</string>
     <string name="contribution_encouragement">Se você tem ideias de: tradução, mudança no design, limpeza de código ou grandes mudanças de código — ajuda é sempre bem-vinda. Quanto mais se faz, melhor fica!</string>
@@ -186,7 +186,7 @@
     <string name="donation_title">Fazer doação</string>
     <string name="donation_encouragement">O NewPipe é desenvolvido por voluntários que usam seu tempo livre para trazer a você a melhor experiência de usuário. Retribua e ajude os desenvolvedores a tornarem o Tubular ainda melhor enquanto eles desfrutam de uma xícara de café.</string>
     <string name="give_back">Retribuir</string>
-    <string name="website_title">Site oficial</string>
+    <string name="website_title">Site</string>
     <string name="website_encouragement">Visite o site do NewPipe para mais informações e novidades.</string>
     <string name="no_player_found_toast">O player de vídeo não foi encontrado, mas você pode instalar o VLC para tentar reproduzi-lo.</string>
     <string name="default_content_country_title">País padrão do conteúdo</string>
@@ -306,7 +306,7 @@
     <string name="one_item_deleted">1 item excluído.</string>
     <string name="app_license">Tubular é um copyleft de software livre: Você pode usar, estudar, compartilhar e melhorar a seu gosto. Especificamente você pode redistribuir e/ou modificá-lo sob os termos da GNU General Public License como publicado pela Fundação de Software Livre, na versão 3 da Licença, ou (a seu critério) qualquer versão posterior.</string>
     <string name="import_settings">Você também quer importar as configurações?</string>
-    <string name="privacy_policy_title">Política de privacidade do NewPipe</string>
+    <string name="privacy_policy_title">Política de Privacidade do NewPipe</string>
     <string name="privacy_policy_encouragement">O projeto NewPipe leva sua privacidade muito a sério. Por isso, o aplicativo não coleta nenhum dado sem seu consentimento.
 \nA política de privacidade do NewPipe explica em detalhes quais dados são envidados e salvos quando você manda um relatório de erro.</string>
     <string name="read_privacy_policy">Ver política de privacidade</string>
@@ -447,7 +447,7 @@
     <string name="app_language_title">Idioma do aplicativo</string>
     <string name="systems_language">Padrão do sistema</string>
     <string name="subtitle_activity_recaptcha">Toque em \"Pronto\" ao resolver</string>
-    <string name="done">Pronto</string>
+    <string name="done">Concluído</string>
     <string name="videos_string">Vídeos</string>
     <plurals name="seconds">
         <item quantity="one">%d segundo</item>
@@ -710,7 +710,7 @@
     <string name="unknown_quality">Qualidade desconhecida</string>
     <string name="progressive_load_interval_title">Tamanho do intervalo de carregamento da reprodução</string>
     <string name="faq">Ver no site</string>
-    <string name="faq_description">Se você está com problemas ao usar o aplicativo, confira estas respostas para perguntas comuns!</string>
+    <string name="faq_description">Se você estiver tendo problemas para usar o aplicativo, verifique estas respostas para perguntas comuns!</string>
     <string name="faq_title">Perguntas frequentes</string>
     <string name="sort">Classificar</string>
     <string name="fast_mode">Modo rápido</string>
@@ -822,7 +822,7 @@
     <string name="error_insufficient_storage">Não há espaço livre suficiente no dispositivo</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
-    <string name="settings_category_backup_restore_title">Backup &amp; Restauração</string>
+    <string name="settings_category_backup_restore_title">Backup e restauração</string>
     <string name="auto_update_check_description">O NewPipe pode verificar automaticamente se há novas versões de tempos em tempos e notificá-lo quando elas estiverem disponíveis.
 \nDeseja ativar essa opção?</string>
     <string name="reset_settings_title">Restaurar configurações</string>
@@ -859,9 +859,32 @@
     <string name="player_http_403">Erro HTTP 403 recebido do servidor durante a reprodução, provavelmente causado por URL de streaming expirado ou IP banido</string>
     <string name="player_http_invalid_status">Erro HTTP %1$s recebido do servidor durante reprodução</string>
     <string name="youtube_player_http_403">Erro HTTP 403 recebido do servidor durante a reprodução, provavelmente causado por um banimento de IP ou problemas de desofuscação de URL de streaming</string>
-    <string name="sign_in_confirm_not_bot_error">%1$s se recusou a fornecer dados, solicitando um login para confirmar que o solicitante não é um bot.\n\nSeu IP pode ter sido temporariamente banido por %1$s. Você pode esperar um pouco ou mudar para um IP diferente (por exemplo, ativando/desativando uma VPN ou alternando de Wi-Fi para dados móveis).</string>
+    <string name="sign_in_confirm_not_bot_error">%1$s se recusou a fornecer dados, solicitando um login para confirmar que o solicitante não é um bot.\n\nSeu IP pode ter sido temporariamente banido por %1$s. Você pode esperar um pouco ou mudar para um IP diferente (por exemplo, ativando/desativando uma VPN ou alternando de Wi-Fi para dados móveis).\n\nConfira <a href="%2$s">este artigo do FAQ</a> para mais informações.</string>
     <string name="unsupported_content_in_country">Este conteúdo não está disponível para o país selecionado atualmente.\n\nAltere sua seleção acessando “Configurações &gt; Conteúdo &gt; País padrão do conteúdo”.</string>
-    <string name="kao_dialog_warning">Em agosto de 2025, o Google anunciou que, a partir de setembro de 2026, a instalação de aplicativos exigirá a verificação do desenvolvedor para todos os aplicativos Android em dispositivos certificados, incluindo aqueles instalados fora da Play Store. Como os desenvolvedores do NewPipe não concordam com esse requisito, o NewPipe não funcionará mais em dispositivos Android certificados após essa data.</string>
+    <string name="kao_dialog_warning">Em agosto de 2025, o Google anunciou que, a partir de setembro de 2026, a instalação de aplicativos exigirá a verificação do desenvolvedor para todos os aplicativos Android em dispositivos certificados, incluindo aqueles instalados fora da Play Store. Como os desenvolvedores do Tubular-Revived não concordam com esse requisito, o NewPipe não funcionará mais em dispositivos Android certificados após essa data.</string>
     <string name="kao_dialog_more_info">Detalhes</string>
     <string name="kao_solution">Solução</string>
+    <plurals name="export_subscriptions">
+        <item quantity="one">Exportando %d inscrição…</item>
+        <item quantity="many">Exportando %d inscrições…</item>
+        <item quantity="other">Exportando %d inscrições…</item>
+    </plurals>
+    <plurals name="load_subscriptions">
+        <item quantity="one">Carregando %d inscrição…</item>
+        <item quantity="many">Carregando %d inscrições…</item>
+        <item quantity="other">Carregando %d inscrições…</item>
+    </plurals>
+    <plurals name="import_subscriptions">
+        <item quantity="one">Importando %d inscrição…</item>
+        <item quantity="many">Importando %d inscrições…</item>
+        <item quantity="other">Importando %d inscrições…</item>
+    </plurals>
+    <string name="import_subscriptions_title">Importar inscrições</string>
+    <string name="export_subscriptions_title">Exportar inscrições</string>
+    <string name="import_subscriptions_summary">Importar inscrições do arquivo .json exportado anterior</string>
+    <string name="export_subscriptions_summary">Exportar inscrições para arquivo .json</string>
+    <string name="import_from_previous_export">Importar da exportação anterior</string>
+    <string name="api23_requirement_dialog_title">O Tubular-Revived deixará de oferecer suporte ao Android 5</string>
+    <string name="api23_requirement_dialog_message">Infelizmente, o Tubular-Revived depende de algumas bibliotecas que deixaram de oferecer suporte para o Android 5.0 e 5.1. Por isso, a próxima versão do Tubular-Revived só funcionará em dispositivos com Android 6 ou superior, infelizmente. Saiba mais na publicação do blog.</string>
+    <string name="api23_requirement_dialog_blogpost">Postagem no blog</string>
 </resources>

@@ -206,7 +206,7 @@
     <string name="audio_track_type_original">aneṣli</string>
     <string name="unbookmark_playlist">Kkes ticreḍt</string>
     <string name="import_from">Kter seg</string>
-    <string name="app_license_title">Turagt n NewPipe</string>
+    <string name="app_license_title">Turagt n Tubular-Revived</string>
     <string name="read_full_license">Ɣeṛ turagt</string>
     <string name="error_http_not_found">Ur yettwaf ara</string>
     <string name="more_options">Ugar n tnefrunin</string>
@@ -223,4 +223,12 @@
     <string name="metadata_tags">Tibzimin</string>
     <string name="blank_page_summary">Asebter d ilem</string>
     <string name="settings_category_exoplayer_title">Iɣewwaṛen n ExoPlayer</string>
+    <plurals name="days">
+        <item quantity="one">%d n wass</item>
+        <item quantity="other">%d n wussan</item>
+    </plurals>
+    <plurals name="videos">
+        <item quantity="one">%s n tvidyut</item>
+        <item quantity="other">%s n tvidyutin</item>
+    </plurals>
 </resources>
