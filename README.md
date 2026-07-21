@@ -1,6 +1,6 @@
 <h1 align="center"><b>Tubular Revived</b></h2>
 <h4 align="center">A hard fork of <a href="https://github.com/polymorphicshade/Tubular/releases/latest">Tubular</a>, which is a fork of <a href="https://newpipe.net/">NewPipe</a> (<a href="https://github.com/TeamNewPipe/NewPipe/">Github</a>) that implements <a href="https://sponsor.ajay.app/">SponsorBlock</a> (<a href="https://github.com/ajayyy/SponsorBlock/">Github</a>) and <a href="https://www.returnyoutubedislike.com/">ReturnYouTubeDislike</a> (<a href="https://github.com/Anarios/return-youtube-dislike/">Github</a>).</h4>
-<p align="center">Download the APK <a href="https://github.com/feuerswut/releases/latest">here</a>.
+<p align="center">Download the APK <a href="https://github.com/feuerswut/Tubular-Revived/releases">here</a>.
 
 ## APK Info
 This APK is distributed via GitHub and my App repository.
