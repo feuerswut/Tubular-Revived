@@ -28,9 +28,13 @@ include(":app") // androidApp
 include(":desktopApp")
 include("shared")
 
-includeBuild("../Tubular-Extractor-Revived") {
-    dependencySubstitution {
-        substitute(module("com.github.feuerswut:extractor"))
-            .using(project(":extractor"))
+val extractorPath = listOf("../Tubular-Extractor-Revived", "Tubular-Extractor-Revived")
+    .firstOrNull { File(rootDir, it).exists() }
+if (extractorPath != null) {
+    includeBuild(extractorPath) {
+        dependencySubstitution {
+            substitute(module("com.github.feuerswut:extractor"))
+                .using(project(":extractor"))
+        }
     }
 }
