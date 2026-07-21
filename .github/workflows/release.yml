@@ -17,24 +17,30 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-    
     permissions: write-all
-
     steps:
       - name: Checkout branch "${{ github.ref_name }}"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.ref_name }}
-        
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+
+      - name: Checkout Tubular-Extractor-Revived
+        uses: actions/checkout@v6
         with:
-          java-version: 17
+          repository: feuerswut/Tubular-Extractor-Revived
+          path: Tubular-Extractor-Revived
+
+      - uses: gradle/actions/wrapper-validation@v6
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: 21
           distribution: "temurin"
           cache: 'gradle'
 
       - name: Build release APK
-        run: ./gradlew assembleRelease
+        run: ./gradlew assembleRelease --stacktrace
 
       - name: Sign APK
         env:
@@ -54,7 +60,7 @@ jobs:
           gh release upload "v${version}" app/build/outputs/apk/release/*.apk --repo ${{ github.repository }}
 
       - name: Archive reports for job
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: reports
           path: '*/build/reports'
