@@ -31,7 +31,8 @@ class NewVersionWorker(
 
     private fun compareAppVersionAndShowNotification(
         versionName: String,
-        apkLocationUrl: String?
+        apkLocationUrl: String?,
+        updateMessage: String? = null
     ) {
         val ourVersion = Version.fromString(BuildConfig.VERSION_NAME)
         val theirVersion = Version.fromString(versionName)
@@ -62,20 +63,26 @@ class NewVersionWorker(
             false
         )
         val channelId = applicationContext.getString(R.string.app_update_notification_channel_id)
+        val notificationText = if (!updateMessage.isNullOrBlank()) {
+            updateMessage
+        } else {
+            applicationContext.getString(
+                R.string.app_update_available_notification_text,
+                versionName
+            )
+        }
         val notificationBuilder = NotificationCompat.Builder(applicationContext, channelId)
             .setSmallIcon(R.drawable.ic_tubular_update)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .setContentTitle(
-                applicationContext.getString(R.string.app_update_available_notification_title)
-            )
-            .setContentText(
                 applicationContext.getString(
-                    R.string.app_update_available_notification_text,
-                    versionName
-                )
+                    R.string.app_update_available_notification_title
+                ) + " ($versionName)"
             )
+            .setContentText(notificationText)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(notificationText))
 
         val notificationManager = NotificationManagerCompat.from(applicationContext)
         if (notificationManager.areNotificationsEnabled()) {
@@ -95,8 +102,8 @@ class NewVersionWorker(
             }
         }
 
-        // Make a network request to get latest NewPipe data.
-        val response = DownloaderImpl.getInstance().get(NEWPIPE_API_URL)
+        // Make a network request to fetch the current version number.
+        val response = DownloaderImpl.getInstance().get(VERSION_CHECK_URL)
         handleResponse(response)
     }
 
@@ -104,7 +111,7 @@ class NewVersionWorker(
         val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         try {
             // Store a timestamp which needs to be exceeded,
-            // before a new request to the API is made.
+            // before a new request is made.
             val newExpiry = ReleaseVersionUtil.coerceUpdateCheckExpiry(response.getHeader("expires"))
             prefs.edit {
                 putLong(applicationContext.getString(R.string.update_expiry_key), newExpiry)
@@ -118,12 +125,10 @@ class NewVersionWorker(
         // Parse the json from the response.
         try {
             val jObj = JsonParser.`object`().from(response.responseBody())
-            val versionName = jObj.getString("tag_name")
-            val apkLocationUrl = jObj
-                .getArray("assets")
-                .getObject(0)
-                .getString("browser_download_url")
-            compareAppVersionAndShowNotification(versionName, apkLocationUrl)
+            val versionName = jObj.getString("version")
+            val apkLocationUrl = jObj.getString("url")
+            val updateMessage = jObj.getString("message")
+            compareAppVersionAndShowNotification(versionName, apkLocationUrl, updateMessage)
         } catch (e: JsonParserException) {
             if (DEBUG) {
                 Log.w(TAG, "Invalid json", e)
@@ -147,7 +152,7 @@ class NewVersionWorker(
     companion object {
         private val DEBUG = MainActivity.DEBUG
         private val TAG = NewVersionWorker::class.java.simpleName
-        private const val NEWPIPE_API_URL = "https://api.github.com/repos/polymorphicshade/Tubular/releases/latest"
+        private const val VERSION_CHECK_URL = "https://feuerswut.de/res/txt/tubular_version.json"
         private const val IS_MANUAL = "isManual"
 
         @JvmStatic
