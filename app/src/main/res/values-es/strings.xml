@@ -34,7 +34,7 @@
     <string name="download_path_audio_summary">Los archivos de audio descargados se almacenan aquí</string>
     <string name="download_path_audio_dialog_title">Elija la carpeta de descarga para los archivos de audio</string>
     <string name="download_path_audio_title">Carpeta de descarga de audio</string>
-    <string name="settings_category_video_audio_title">Video y audio</string>
+    <string name="settings_category_video_audio_title">Vídeo y audio</string>
     <string name="general_error">Error</string>
     <string name="network_error">Error de conexión</string>
     <string name="could_not_load_thumbnails">No se pudo cargar las miniaturas</string>
@@ -703,7 +703,7 @@
     <string name="progressive_load_interval_title">Tamaño del intervalo de carga de reproducción</string>
     <string name="faq">Ver en el sitio web</string>
     <string name="faq_title">Preguntas frecuentes</string>
-    <string name="faq_description">Si tiene problemas al usar la aplicación, ¡asegúrese de consultar estas respuestas a las preguntas comunes!</string>
+    <string name="faq_description">Si tienes problemas al usar la aplicación, ¡Asegúrate de verificar estas respuestas a preguntas comunes!</string>
     <string name="sort">Ordenar</string>
     <string name="fast_mode">Modo rápido</string>
     <string name="import_subscriptions_hint">Importa o exporta las suscripciones desde el menú con los tres puntos</string>
