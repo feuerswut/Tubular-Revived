@@ -1,1 +1,1 @@
-- merged latest changes from NewPipe's dev branch
+- merged latest changes from Tubular's dev branch

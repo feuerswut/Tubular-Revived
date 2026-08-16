@@ -81,7 +81,6 @@ import org.schabi.newpipe.player.Player;
 import org.schabi.newpipe.player.event.OnKeyDownListener;
 import org.schabi.newpipe.player.helper.PlayerHolder;
 import org.schabi.newpipe.player.playqueue.PlayQueue;
-import org.schabi.newpipe.settings.UpdateSettingsFragment;
 import org.schabi.newpipe.settings.migration.MigrationManager;
 import org.schabi.newpipe.util.Constants;
 import org.schabi.newpipe.util.DeviceUtils;
@@ -90,7 +89,6 @@ import org.schabi.newpipe.util.Localization;
 import org.schabi.newpipe.util.NavigationHelper;
 import org.schabi.newpipe.util.PeertubeHelper;
 import org.schabi.newpipe.util.PermissionHelper;
-import org.schabi.newpipe.util.ReleaseVersionUtil;
 import org.schabi.newpipe.util.SerializedCache;
 import org.schabi.newpipe.util.ServiceHelper;
 import org.schabi.newpipe.util.StateSaver;
@@ -194,20 +192,32 @@ public class MainActivity extends AppCompatActivity {
             // if this is enabled by the user.
             NotificationWorker.initialize(this);
         }
-        if (!UpdateSettingsFragment.wasUserAskedForConsent(this)
-                && !App.getInstance().isFirstRun()
-                && ReleaseVersionUtil.INSTANCE.isReleaseApk()) {
-            UpdateSettingsFragment.askForConsentToUpdateChecks(this);
-        }
-
-        // ReleaseVersionUtil.INSTANCE.isReleaseApk() will be true only for main official build
-        // We want every release build (nightly, nightly-refactor) to show the popup
         if (!DEBUG) {
             showKeepAndroidDialog();
             showApi23RequirementDialog();
         }
 
         MigrationManager.showUserInfoIfPresent(this);
+
+        reEnableUpdateChecksIfAppWasUpdated();
+    }
+
+    /**
+     * Update checking for new app versions is opt-out: it's on by default, and if the app
+     * itself was updated to a new version since we last checked, the setting is reset to
+     * enabled (in case the user had previously turned it off).
+     */
+    private void reEnableUpdateChecksIfAppWasUpdated() {
+        final int currentVersionCode = BuildConfig.VERSION_CODE;
+        final String lastSeenKey = getString(R.string.last_seen_app_version_code_key);
+        final int lastSeenVersionCode = sharedPreferences.getInt(lastSeenKey, 0);
+
+        if (currentVersionCode != lastSeenVersionCode) {
+            sharedPreferences.edit()
+                    .putInt(lastSeenKey, currentVersionCode)
+                    .putBoolean(getString(R.string.update_app_key), true)
+                    .apply();
+        }
     }
 
     @Override
@@ -216,9 +226,7 @@ public class MainActivity extends AppCompatActivity {
 
         final App app = App.getInstance();
 
-        if (sharedPreferences.getBoolean(app.getString(R.string.update_app_key), false)
-                && sharedPreferences
-                .getBoolean(app.getString(R.string.update_check_consent_key), false)) {
+        if (sharedPreferences.getBoolean(app.getString(R.string.update_app_key), true)) {
             // Start the worker which is checking all conditions
             // and eventually searching for a new version.
             NewVersionWorker.enqueueNewVersionCheckingWork(app, false);
