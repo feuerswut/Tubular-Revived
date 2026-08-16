@@ -33,7 +33,7 @@ val extractorPath = listOf("../Tubular-Extractor-Revived", "Tubular-Extractor-Re
 if (extractorPath != null) {
     includeBuild(extractorPath) {
         dependencySubstitution {
-            substitute(module("com.github.feuerswut:extractor"))
+            substitute(module("com.github.feuerswut.Tubular-Extractor-Revived:extractor"))
                 .using(project(":extractor"))
         }
     }

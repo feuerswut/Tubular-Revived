@@ -7,7 +7,7 @@ on:
         type: string
         description: 'Title'
         required: true
-        default: 'v0.00.0 R0'
+        default: 'v0.00.0'
       is_pre_release:
         type: boolean
         description: 'Set as a pre-release'
@@ -25,7 +25,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
-        
+
+      - name: Checkout Tubular-Extractor-Revived
+        uses: actions/checkout@v4
+        with:
+          repository: feuerswut/Tubular-Extractor-Revived
+          path: Tubular-Extractor-Revived
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
