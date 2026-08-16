@@ -439,7 +439,7 @@
     <string name="peertube_instance_add_exists">Instanz existiert bereits</string>
     <string name="local">Lokal</string>
     <string name="recently_added">Kürzlich hinzugefügt</string>
-    <string name="playlist_no_uploader">Auto-generiert (kein Autor gefunden)</string>
+    <string name="playlist_no_uploader">Automatisch erzeugt (kein Autor gefunden)</string>
     <string name="choose_instance_prompt">Eine Instanz wählen</string>
     <string name="peertube_instance_url_summary">Bevorzugte Peertube-Instanzen auswählen</string>
     <string name="peertube_instance_add_https_only">Es werden nur HTTPS-Adressen unterstützt</string>
