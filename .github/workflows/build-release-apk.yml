@@ -11,6 +11,12 @@ jobs:
         with:
           ref: 'master'
 
+      - name: Checkout Tubular-Extractor-Revived
+        uses: actions/checkout@v6
+        with:
+          repository: feuerswut/Tubular-Extractor-Revived
+          path: Tubular-Extractor-Revived
+
       - uses: actions/setup-java@v4.1.0
         with:
           distribution: 'temurin'
