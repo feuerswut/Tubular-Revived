@@ -85,6 +85,15 @@ class ImportExportManager(private val fileLocator: BackupFileLocator) {
         return success
     }
 
+    /**
+     * Converts the just-extracted database if it was made by a supported NewPipe fork
+     * (e.g. PipePipe). Must be called after [extractDb].
+     * @return the name of the fork whose database was converted, or null if none
+     */
+    fun convertForeignDatabaseIfNeeded(): String? {
+        return ForeignBackupConverter.convertDatabaseIfForeign(fileLocator.db.toFile())
+    }
+
     @Deprecated(
         "Serializing preferences with Java's ObjectOutputStream is vulnerable to injections",
         replaceWith = ReplaceWith("exportHasJsonPrefs")

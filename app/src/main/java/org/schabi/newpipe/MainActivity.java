@@ -231,6 +231,11 @@ public class MainActivity extends AppCompatActivity {
             // and eventually searching for a new version.
             NewVersionWorker.enqueueNewVersionCheckingWork(app, false);
         }
+
+        // unofficial-build warning and donation reminder, once per cold start
+        if (savedInstanceState == null) {
+            AppAnnouncements.onAppStart(this);
+        }
     }
 
     @Override

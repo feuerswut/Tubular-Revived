@@ -28,6 +28,7 @@ import org.schabi.newpipe.error.ErrorUtil;
 import org.schabi.newpipe.error.UserAction;
 import org.schabi.newpipe.local.subscription.SubscriptionsImportExportHelper;
 import org.schabi.newpipe.settings.export.BackupFileLocator;
+import org.schabi.newpipe.settings.export.ForeignBackupConverter;
 import org.schabi.newpipe.settings.export.ImportExportManager;
 import org.schabi.newpipe.streams.io.NoFileManagerSafeGuard;
 import org.schabi.newpipe.streams.io.StoredFileHelper;
@@ -205,6 +206,15 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
                 Toast.makeText(requireContext(), R.string.could_not_import_all_files,
                                 Toast.LENGTH_LONG)
                         .show();
+            } else {
+                // backups of supported forks (e.g. PipePipe) need their database converted
+                final String convertedFrom = manager.convertForeignDatabaseIfNeeded();
+                if (convertedFrom != null) {
+                    Toast.makeText(requireContext(),
+                                    getString(R.string.import_converted_backup, convertedFrom),
+                                    Toast.LENGTH_LONG)
+                            .show();
+                }
             }
 
             // if settings file exist, ask if it should be imported.
@@ -254,6 +264,9 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
      */
     private void cleanImport(@NonNull final Context context,
                              @NonNull final SharedPreferences prefs) {
+        // map/clean settings coming from supported forks (e.g. PipePipe)
+        ForeignBackupConverter.mapForeignPreferences(prefs);
+
         // Check if media tunnelling needs to be disabled automatically,
         // if it was disabled automatically in the imported preferences.
         final String tunnelingKey = context.getString(R.string.disable_media_tunneling_key);
