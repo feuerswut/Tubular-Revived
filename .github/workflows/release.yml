@@ -67,8 +67,14 @@ jobs:
           version=$(grep 'NEWPIPE_VERSION_NAME[[:space:]]*=' buildSrc/src/main/kotlin/ProjectConfig.kt | grep -o '"[^"]*"' | head -n 1 | tr -d '"')
           [ -n "$version" ] || { echo "Could not read the version name"; exit 1; }
           gh auth login --with-token <<<"${{ secrets.GITHUB_TOKEN }}"
-          gh release create "v${version}" --title "${{ inputs.title }}" --notes-file ".github/changelog.md" --prerelease=${{ inputs.is_pre_release }} --target "${{ github.sha }}" --repo ${{ github.repository }}
-          gh release upload "v${version}" app/build/outputs/apk/release/*.apk --repo ${{ github.repository }}
+          if gh release view "v${version}" --repo ${{ github.repository }} >/dev/null 2>&1; then
+            # rebuild of an existing release: keep the release, replace notes and APK
+            gh release edit "v${version}" --title "${{ inputs.title }}" --notes-file ".github/changelog.md" --prerelease=${{ inputs.is_pre_release }} --repo ${{ github.repository }}
+            gh release upload "v${version}" app/build/outputs/apk/release/*.apk --clobber --repo ${{ github.repository }}
+          else
+            gh release create "v${version}" --title "${{ inputs.title }}" --notes-file ".github/changelog.md" --prerelease=${{ inputs.is_pre_release }} --target "${{ github.sha }}" --repo ${{ github.repository }}
+            gh release upload "v${version}" app/build/outputs/apk/release/*.apk --repo ${{ github.repository }}
+          fi
 
       - name: Archive reports for job
         uses: actions/upload-artifact@v7
