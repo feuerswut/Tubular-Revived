@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import java.security.MessageDigest
+import kotlin.random.Random
 import org.schabi.newpipe.util.external_communication.ShareUtils
 
 /**
@@ -20,8 +21,16 @@ object AppAnnouncements {
         "A78C8A685B02CD99BDBC5F18DD4B6AFA318C83036FB630CD6E7BE4DB801418FB"
 
     private const val PREF_DONATION_NEXT_AT = "donation_reminder_next_at"
-    private const val DONATION_INTERVAL_MS = 30L * 24 * 60 * 60 * 1000
+    private const val DAY_MS = 24L * 60 * 60 * 1000
+    private const val DONATION_MIN_INTERVAL_MS = 30 * DAY_MS
+    private const val DONATION_MAX_INTERVAL_MS = 90 * DAY_MS
     private const val NEVER = Long.MAX_VALUE
+
+    /** When to show the next reminder: a random 30 to 90 days from [now]. */
+    @JvmStatic
+    fun nextDonationReminderAt(now: Long): Long {
+        return now + Random.nextLong(DONATION_MIN_INTERVAL_MS, DONATION_MAX_INTERVAL_MS + 1)
+    }
 
     /** Called once per cold start of the main activity. */
     @JvmStatic
@@ -110,7 +119,7 @@ object AppAnnouncements {
 
         if (nextAt == 0L) {
             // first run: start the clock, don't greet new users with a donation request
-            prefs.edit { putLong(PREF_DONATION_NEXT_AT, now + DONATION_INTERVAL_MS) }
+            prefs.edit { putLong(PREF_DONATION_NEXT_AT, nextDonationReminderAt(now)) }
             return
         }
         if (now < nextAt) return
@@ -118,7 +127,7 @@ object AppAnnouncements {
         val links = donationLinks(activity)
         if (links.isEmpty()) return // nothing to point to; check again next start
 
-        fun snooze() = prefs.edit { putLong(PREF_DONATION_NEXT_AT, now + DONATION_INTERVAL_MS) }
+        fun snooze() = prefs.edit { putLong(PREF_DONATION_NEXT_AT, nextDonationReminderAt(now)) }
 
         val dialog = AlertDialog.Builder(activity)
             .setTitle(R.string.donation_reminder_title)

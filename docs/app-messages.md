@@ -41,12 +41,12 @@ period, or when the user checks manually). Everything below is optional except `
   (last 200).
 
 ## `donations`
-- Used by the 30-day donation reminder. Each entry needs a `label` and an https `url`.
+- Used by the donation reminder (random 30 to 90 days apart). Each entry needs a `label` and an https `url`.
 - One entry opens directly, several entries are shown as a list.
 - If the key is missing or empty, the app falls back to the built-in `tubular_donation_url`
   (`app/src/main/res/values/donottranslate.xml`). If that is empty too, no reminder is shown.
-- The first reminder comes 30 days after first launch, then every 30 days ("Later") or never
-  ("Don't ask again").
+- The first reminder comes a random 30 to 90 days after first launch. After it ("Later", or a
+  donate tap) the next one is again a random 30 to 90 days away; "Don't ask again" stops them.
 
 ## SponsorBlock proxy
 The app asks `https://feuerswut.de/~/plugins/sponsorblock/skipSegments/<hash prefix>?...` first (setting
