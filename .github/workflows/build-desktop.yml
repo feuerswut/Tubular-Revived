@@ -1,0 +1,51 @@
+name: Build desktop (unsigned)
+
+# Manual only. Builds the Compose Desktop shell (desktopApp/) with jpackage:
+#   Windows -> .msi and .exe, macOS -> .dmg, Linux -> .deb
+# The packages are unsigned (Windows SmartScreen / macOS Gatekeeper will warn).
+on:
+  workflow_dispatch:
+
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            task: ":desktopApp:packageMsi :desktopApp:packageExe"
+            artifact: desktop-windows
+          - os: macos-15
+            task: ":desktopApp:packageDmg"
+            artifact: desktop-macos
+          - os: ubuntu-latest
+            task: ":desktopApp:packageDeb"
+            artifact: desktop-linux
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Checkout Tubular-Extractor-Revived
+        uses: actions/checkout@v6
+        with:
+          repository: feuerswut/Tubular-Extractor-Revived
+          path: Tubular-Extractor-Revived
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: 21
+          distribution: "temurin"
+          cache: 'gradle'
+
+      - name: Package
+        shell: bash
+        run: ./gradlew ${{ matrix.task }} --stacktrace -DskipFormatKtlint
+
+      - name: Upload
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.artifact }}
+          path: desktopApp/build/compose/binaries/main/**/*

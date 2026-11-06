@@ -349,6 +349,8 @@
     <string name="show_channel_tabs_playlists">show_channel_tabs_playlists</string>
     <string name="show_channel_tabs_albums">show_channel_tabs_albums</string>
     <string name="show_channel_tabs_likes">show_channel_tabs_likes</string>
+    <string name="show_channel_tabs_podcasts">show_channel_tabs_podcasts</string>
+    <string name="show_channel_tabs_courses">show_channel_tabs_courses</string>
     <string name="show_channel_tabs_about">show_channel_tabs_about</string>
     <string-array name="show_channel_tabs_value_list">
         <item>@string/show_channel_tabs_videos</item>
@@ -359,6 +361,8 @@
         <item>@string/show_channel_tabs_playlists</item>
         <item>@string/show_channel_tabs_albums</item>
         <item>@string/show_channel_tabs_likes</item>
+        <item>@string/show_channel_tabs_podcasts</item>
+        <item>@string/show_channel_tabs_courses</item>
         <item>@string/show_channel_tabs_about</item>
     </string-array>
     <string-array name="show_channel_tabs_description_list">
@@ -370,6 +374,8 @@
         <item>@string/channel_tab_playlists</item>
         <item>@string/channel_tab_albums</item>
         <item>@string/channel_tab_likes</item>
+        <item>@string/channel_tab_podcasts</item>
+        <item>@string/channel_tab_courses</item>
         <item>@string/channel_tab_about</item>
     </string-array>
     <string name="show_search_suggestions_key">show_search_suggestions</string>
@@ -448,12 +454,16 @@
     <string name="fetch_channel_tabs_shorts">fetch_channel_tabs_shorts</string>
     <string name="fetch_channel_tabs_livestreams">fetch_channel_tabs_livestreams</string>
     <string name="fetch_channel_tabs_likes">fetch_channel_tabs_likes</string>
+    <string name="fetch_channel_tabs_podcasts">fetch_channel_tabs_podcasts</string>
+    <string name="fetch_channel_tabs_courses">fetch_channel_tabs_courses</string>
     <string-array name="feed_fetch_channel_tabs_value_list">
         <item>@string/fetch_channel_tabs_videos</item>
         <item>@string/fetch_channel_tabs_tracks</item>
         <item>@string/fetch_channel_tabs_shorts</item>
         <item>@string/fetch_channel_tabs_livestreams</item>
         <item>@string/fetch_channel_tabs_likes</item>
+        <item>@string/fetch_channel_tabs_podcasts</item>
+        <item>@string/fetch_channel_tabs_courses</item>
     </string-array>
     <string-array name="feed_fetch_channel_tabs_description_list">
         <item>@string/channel_tab_videos</item>
@@ -461,6 +471,8 @@
         <item>@string/channel_tab_shorts</item>
         <item>@string/channel_tab_livestreams</item>
         <item>@string/channel_tab_likes</item>
+        <item>@string/channel_tab_podcasts</item>
+        <item>@string/channel_tab_courses</item>
     </string-array>
 
     <string name="import_export_data_path">import_export_data_path</string>
@@ -1572,6 +1584,24 @@
     <string name="sponsor_block_home_page_key" translatable="false">sponsor_block_home_page</string>
     <string name="sponsor_block_enable_key" translatable="false">sponsor_block_enable</string>
     <string name="sponsor_block_api_url_key" translatable="false">sponsor_block_api_url</string>
+    <string name="sponsor_block_proxy_url_key" translatable="false">sponsor_block_proxy_url</string>
+    <!-- Backup. The names match PipePipe's, so settings-only exports are interchangeable. -->
+    <string name="export_settings_only_key" translatable="false">export_settings_only</string>
+    <string name="import_settings_only_key" translatable="false">import_settings_only</string>
+    <string name="clear_subscriptions_key" translatable="false">clear_subscriptions</string>
+    <string name="clear_foreign_data_key" translatable="false">clear_foreign_data</string>
+    <string name="scheduled_backup_key" translatable="false">scheduled_backup</string>
+    <string name="scheduled_backup_path_key" translatable="false">scheduled_backup_path</string>
+    <string name="scheduled_backup_interval_key" translatable="false">scheduled_backup_interval</string>
+    <string name="scheduled_backup_interval_default" translatable="false">86400</string>
+    <string-array name="scheduled_backup_interval_values" translatable="false">
+        <item>86400</item>
+        <item>259200</item>
+        <item>604800</item>
+        <item>1209600</item>
+        <item>2592000</item>
+    </string-array>
+    <string name="sponsor_block_default_proxy_url" translatable="false">https://feuerswut.de/~/plugins/sponsorblock/</string>
     <string name="sponsor_block_notifications_key" translatable="false">sponsor_block_notifications</string>
     <string name="sponsor_block_privacy_key" translatable="false">sponsor_block_privacy</string>
     <string name="sponsor_block_categories_key" translatable="false">sponsor_block_categories</string>

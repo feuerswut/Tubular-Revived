@@ -32,3 +32,6 @@ node_modules/
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+# regenerable local build output (see util/build-check.ps1)
+/out/

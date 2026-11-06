@@ -859,6 +859,8 @@
     <string name="channel_tab_playlists">Playlists</string>
     <string name="channel_tab_albums">Albums</string>
     <string name="channel_tab_likes">Likes</string>
+    <string name="channel_tab_podcasts">Podcasts</string>
+    <string name="channel_tab_courses">Courses</string>
     <string name="channel_tab_about">About</string>
     <string name="show_channel_tabs">Channel tabs</string>
     <string name="show_channel_tabs_summary">What tabs are shown on the channel pages</string>
@@ -909,7 +911,7 @@
     <string name="youtube_player_http_403">HTTP error 403 received from server while playing, likely caused by an IP ban or streaming URL deobfuscation issues</string>
     <string name="sign_in_confirm_not_bot_error">%1$s refused to provide data, asking for a login to confirm the requester is not a bot.\n\nYour IP might have been temporarily banned by %1$s, you can wait some time or switch to a different IP (for example by turning on/off a VPN, or by switching from WiFi to mobile data).\n\nPlease see <a href="%2$s">this FAQ entry</a> for more information.</string>
     <string name="unsupported_content_in_country">This content is not available for the currently selected content country.\n\nChange your selection from \"Settings > Content > Default content country\".</string>
-    <string name="kao_dialog_warning">In August 2025, Google announced that as of September 2026, installing apps will require developer verification for all Android apps on certified devices, including those installed outside of the Play Store. Since the developers of Tubular-Revived do not agree to this requirement, NewPipe will no longer work on certified Android devices after that time.</string>
+    <string name="kao_dialog_warning">Google has started enforcing a new Android developer verification requirement that makes it harder to install Tubular in Brazil, Indonesia, Singapore, and Thailand, with a global rollout planned for 2027.\n\nUnless the requirements are changed, Tubular may become harder or impossible to install on certified Android devices in near future.</string>
     <string name="kao_dialog_more_info">Details</string>
     <string name="kao_solution">Solution</string>
     <!-- SponsorBlock -->
@@ -930,6 +932,43 @@
     <string name="sponsor_block_enable_summary">Use the SponsorBlock API to automatically skip sponsors in videos. This currently only works for YouTube videos.</string>
     <string name="sponsor_block_api_url_title">API Url</string>
     <string name="sponsor_block_api_url_summary">The url to use when querying the SponsorBlock API. This must be set for SponsorBlock to work.</string>
+    <string name="sponsor_block_proxy_url_title">Caching proxy URL</string>
+    <string name="sponsor_block_proxy_url_summary">Queried first for segments to speed things up. If it is empty or fails, the API URL above is used instead. The proxy sees your IP address and the first 4 characters of the hashed video ID, the same as the SponsorBlock server does.</string>
+    <string name="import_converted_backup">Converted %1$s backup for use with Tubular</string>
+    <string name="import_foreign_settings_kept">Detected a %1$s backup. %2$d settings that Tubular does not use were kept so a later export still contains them.</string>
+    <string name="export_settings_only_title">Export settings only</string>
+    <string name="export_settings_only_summary">Save just the settings as a JSON file, without history, playlists or subscriptions</string>
+    <string name="import_settings_only_title">Import settings only</string>
+    <string name="import_settings_only_summary">Load settings from a JSON file made by Tubular, NewPipe or PipePipe. The app detects where it came from.</string>
+    <string name="invalid_settings_file">This is not a valid settings file</string>
+    <string name="scheduled_backup_title">Automatic backups</string>
+    <string name="scheduled_backup_summary">Regularly save the same ZIP as \"Export database\" to a folder. Old backups are not deleted.</string>
+    <string name="scheduled_backup_path_title">Backup folder</string>
+    <string name="scheduled_backup_interval_title">Backup interval</string>
+    <string name="scheduled_backup_failed">Automatic backup failed</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Daily</item>
+        <item>Every 3 days</item>
+        <item>Weekly</item>
+        <item>Every 2 weeks</item>
+        <item>Monthly</item>
+    </string-array>
+    <string name="clear_foreign_data_title">Clear data from other apps</string>
+    <string name="clear_foreign_data_summary">Remove settings and database values that were kept from NewPipe forks such as PipePipe</string>
+    <string name="clear_foreign_data_confirmation">This removes only data that was kept from other apps. Your Tubular data and settings stay.</string>
+    <string name="foreign_data_cleared">Removed %d items from other apps</string>
+    <string name="foreign_data_nothing_to_clear">Nothing from other apps to remove</string>
+    <string name="clear_subscriptions_title">Clear subscriptions</string>
+    <string name="clear_subscriptions_summary">Delete all subscriptions. Playlists and history are kept.</string>
+    <string name="clear_subscriptions_confirmation">Delete all subscriptions? This cannot be undone.</string>
+    <string name="subscriptions_cleared">Subscriptions cleared</string>
+    <string name="unofficial_build_title">Unofficial build</string>
+    <string name="unofficial_build_message">This copy of Tubular was not signed with the official release key, so it may have been modified by someone else. Only install Tubular from the official GitHub releases page.</string>
+    <string name="unofficial_build_open_releases">Official releases</string>
+    <string name="unofficial_build_continue">Continue anyway</string>
+    <string name="donation_reminder_title">Enjoying Tubular?</string>
+    <string name="donation_reminder_message">Tubular is free and developed in spare time. If it is useful to you, please consider supporting its development.</string>
+    <string name="donation_reminder_later">Later</string>
     <string name="sponsor_block_notifications_title">Notify when sponsors are skipped</string>
     <string name="sponsor_block_notifications_summary">Show a toast notification when a sponsor is automatically skipped.</string>
     <string name="sponsor_block_privacy_title">View Privacy Policy</string>

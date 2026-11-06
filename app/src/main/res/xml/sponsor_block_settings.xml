@@ -34,6 +34,15 @@
             android:summary="@string/sponsor_block_api_url_summary"
             android:title="@string/sponsor_block_api_url_title"/>
 
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            android:dependency="@string/sponsor_block_enable_key"
+            android:defaultValue="@string/sponsor_block_default_proxy_url"
+            android:key="@string/sponsor_block_proxy_url_key"
+            android:summary="@string/sponsor_block_proxy_url_summary"
+            android:title="@string/sponsor_block_proxy_url_title"
+            app:useSimpleSummaryProvider="false"/>
+
         <SwitchPreference
             app:iconSpaceReserved="false"
             android:dependency="@string/sponsor_block_enable_key"

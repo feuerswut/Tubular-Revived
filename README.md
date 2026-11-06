@@ -1,3 +1,4 @@
+<p align="center"><img src="assets/images/icon-round.png" width="128" alt="Tubular Revived icon"></p>
 <h1 align="center"><b>Tubular Revived</b></h2>
 <h4 align="center">A hard fork of <a href="https://github.com/polymorphicshade/Tubular/releases/latest">Tubular</a>, which is a fork of <a href="https://newpipe.net/">NewPipe</a> (<a href="https://github.com/TeamNewPipe/NewPipe/">Github</a>) that implements <a href="https://sponsor.ajay.app/">SponsorBlock</a> (<a href="https://github.com/ajayyy/SponsorBlock/">Github</a>) and <a href="https://www.returnyoutubedislike.com/">ReturnYouTubeDislike</a> (<a href="https://github.com/Anarios/return-youtube-dislike/">Github</a>).</h4>
 <p align="center">Download the APK <a href="https://github.com/feuerswut/Tubular-Revived/releases/latest">here</a>.
@@ -18,6 +19,9 @@ Please tell others of the existence of this Fork, I'd love to see contributions 
 Recommend this repository over the old Tubular repository, since that one is dead if you want to see this App maintained.
 
 I will (personally) not implement new features, only maintain existing features. I will try to maintain this as long as enough people are interested in this fork. (leave me a star and emoji the releases from time to time, or simply have my F-Droid repo enabled.)
+
+## What's next
+I am working on a new, as yet unnamed project with many new features. Tubular Revived stays in maintenance mode: it keeps following NewPipe and gets fixes, but new features will go into that project instead. More once there is something to show.
 
 ## License
 [![GNU GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)

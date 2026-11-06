@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -18,22 +21,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.grack.nanojson.JsonParserException;
+import com.nononsenseapps.filepicker.Utils;
 
 import org.schabi.newpipe.NewPipeDatabase;
 import org.schabi.newpipe.R;
 import org.schabi.newpipe.error.ErrorInfo;
 import org.schabi.newpipe.error.ErrorUtil;
 import org.schabi.newpipe.error.UserAction;
+import org.schabi.newpipe.local.subscription.SubscriptionManager;
 import org.schabi.newpipe.local.subscription.SubscriptionsImportExportHelper;
 import org.schabi.newpipe.settings.export.BackupFileLocator;
+import org.schabi.newpipe.settings.export.ForeignBackupConverter;
 import org.schabi.newpipe.settings.export.ImportExportManager;
 import org.schabi.newpipe.streams.io.NoFileManagerSafeGuard;
+import org.schabi.newpipe.streams.io.StoredDirectoryHelper;
 import org.schabi.newpipe.streams.io.StoredFileHelper;
+import org.schabi.newpipe.util.FilePickerActivityHelper;
 import org.schabi.newpipe.util.NavigationHelper;
 import org.schabi.newpipe.util.ZipHelper;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,6 +54,7 @@ import java.util.concurrent.Executors;
 public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
 
     private static final String ZIP_MIME_TYPE = "application/zip";
+    private static final String JSON_MIME_TYPE = "application/json";
 
     private final SimpleDateFormat exportDateFormat =
             new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);
@@ -55,7 +66,18 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
     private final ActivityResultLauncher<Intent> requestExportPathLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     this::requestExportPathResult);
+    private final ActivityResultLauncher<Intent> exportSettingsOnlyLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    this::exportSettingsOnlyResult);
+    private final ActivityResultLauncher<Intent> importSettingsOnlyLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    this::importSettingsOnlyResult);
+    private final ActivityResultLauncher<Intent> scheduledBackupPathLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    this::scheduledBackupPathResult);
     private SubscriptionsImportExportHelper importExportHelper;
+    private SwitchPreferenceCompat scheduledBackupSwitch;
+    private Preference scheduledBackupPath;
 
 
     @Override
@@ -140,6 +162,216 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
             return true;
         });
 
+        setupSettingsOnly();
+        setupScheduledBackup();
+        setupClearActions();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // the preferences are saved by now: (re)schedule or cancel the periodic backup
+        final Context context = getContext();
+        if (context != null) {
+            ScheduledBackupWorker.schedule(context);
+        }
+    }
+
+    // ------------------------------------------------------------------ settings only
+
+    private void setupSettingsOnly() {
+        requirePreference(R.string.import_settings_only_key)
+                .setOnPreferenceClickListener(preference -> {
+                    NoFileManagerSafeGuard.launchSafe(
+                            importSettingsOnlyLauncher,
+                            StoredFileHelper.getPicker(requireContext(), "*/*",
+                                    getImportExportDataUri()),
+                            TAG,
+                            getContext()
+                    );
+                    return true;
+                });
+        requirePreference(R.string.export_settings_only_key)
+                .setOnPreferenceClickListener(preference -> {
+                    NoFileManagerSafeGuard.launchSafe(
+                            exportSettingsOnlyLauncher,
+                            StoredFileHelper.getNewPicker(requireContext(),
+                                    "TubularSettings-" + exportDateFormat.format(new Date())
+                                            + ".json",
+                                    JSON_MIME_TYPE, getImportExportDataUri()),
+                            TAG,
+                            getContext()
+                    );
+                    return true;
+                });
+    }
+
+    private void exportSettingsOnlyResult(final ActivityResult result) {
+        if (result.getResultCode() != Activity.RESULT_OK || result.getData() == null
+                || result.getData().getData() == null) {
+            return;
+        }
+        final Uri uri = result.getData().getData();
+        final StoredFileHelper file =
+                new StoredFileHelper(requireContext(), uri, JSON_MIME_TYPE);
+        try {
+            manager.exportSettingsOnly(defaultPreferences, file);
+            saveLastImportExportDataUri(uri); // save export path only on success
+            Toast.makeText(requireContext(), R.string.export_complete_toast, Toast.LENGTH_SHORT)
+                    .show();
+        } catch (final Exception e) {
+            showErrorSnackbar(e, "Exporting settings");
+        }
+    }
+
+    private void importSettingsOnlyResult(final ActivityResult result) {
+        if (result.getResultCode() != Activity.RESULT_OK || result.getData() == null
+                || result.getData().getData() == null) {
+            return;
+        }
+        final Uri uri = result.getData().getData();
+        final StoredFileHelper file = new StoredFileHelper(requireContext(), uri, "*/*");
+
+        new androidx.appcompat.app.AlertDialog.Builder(requireActivity())
+                .setMessage(R.string.override_current_data)
+                .setPositiveButton(R.string.ok, (d, id) -> {
+                    try {
+                        manager.importSettingsOnly(file, defaultPreferences);
+                    } catch (final IOException | JsonParserException e) {
+                        Log.e(TAG, "Importing settings", e);
+                        Toast.makeText(requireContext(), R.string.invalid_settings_file,
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    cleanImport(requireContext(), defaultPreferences);
+                    finishImport(uri);
+                })
+                .setNegativeButton(R.string.cancel, (d, id) -> d.cancel())
+                .show();
+    }
+
+    // ------------------------------------------------------------------ scheduled backup
+
+    private void setupScheduledBackup() {
+        scheduledBackupSwitch = requirePreference(R.string.scheduled_backup_key);
+        scheduledBackupPath = requirePreference(R.string.scheduled_backup_path_key);
+        updateScheduledBackupPathSummary();
+
+        scheduledBackupPath.setOnPreferenceClickListener(preference -> {
+            launchScheduledBackupPathPicker();
+            return true;
+        });
+        // switching on without a folder first asks for the folder; the result switches it on
+        scheduledBackupSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+            if (Boolean.TRUE.equals(newValue) && isBlank(defaultPreferences.getString(
+                    getString(R.string.scheduled_backup_path_key), null))) {
+                launchScheduledBackupPathPicker();
+                return false;
+            }
+            return true;
+        });
+    }
+
+    private void launchScheduledBackupPathPicker() {
+        NoFileManagerSafeGuard.launchSafe(
+                scheduledBackupPathLauncher,
+                StoredDirectoryHelper.getPicker(requireContext()),
+                TAG,
+                getContext()
+        );
+    }
+
+    private void scheduledBackupPathResult(final ActivityResult result) {
+        if (result.getResultCode() != Activity.RESULT_OK || result.getData() == null
+                || result.getData().getData() == null) {
+            return;
+        }
+        final Context context = requireContext();
+        Uri uri = result.getData().getData();
+        try {
+            if (FilePickerActivityHelper.isOwnFileUri(context, uri)) {
+                final File target = Utils.getFileForUri(uri);
+                if (!target.canWrite()) {
+                    throw new IOException("No write permissions on " + target);
+                }
+                uri = Uri.fromFile(target);
+            } else {
+                context.grantUriPermission(context.getPackageName(), uri,
+                        StoredDirectoryHelper.PERMISSION_FLAGS);
+                if (!new StoredDirectoryHelper(context, uri, null).canWrite()) {
+                    throw new IOException("No write permissions on " + uri);
+                }
+            }
+        } catch (final IOException e) {
+            Log.e(TAG, "Cannot use scheduled backup folder " + uri, e);
+            Toast.makeText(context, R.string.no_available_dir, Toast.LENGTH_LONG).show();
+            return;
+        }
+        defaultPreferences.edit()
+                .putString(getString(R.string.scheduled_backup_path_key), uri.toString())
+                .apply();
+        scheduledBackupSwitch.setChecked(true);
+        updateScheduledBackupPathSummary();
+        ScheduledBackupWorker.schedule(context);
+    }
+
+    private void updateScheduledBackupPathSummary() {
+        final String path = defaultPreferences.getString(
+                getString(R.string.scheduled_backup_path_key), null);
+        scheduledBackupPath.setSummary(isBlank(path) ? null : Uri.decode(path));
+    }
+
+    // ------------------------------------------------------------------ clearing
+
+    private void setupClearActions() {
+        requirePreference(R.string.clear_foreign_data_key)
+                .setOnPreferenceClickListener(preference -> {
+                    new androidx.appcompat.app.AlertDialog.Builder(requireActivity())
+                            .setTitle(R.string.clear_foreign_data_title)
+                            .setMessage(R.string.clear_foreign_data_confirmation)
+                            .setNegativeButton(R.string.cancel, null)
+                            .setPositiveButton(R.string.clear, (d, id) -> clearForeignData())
+                            .show();
+                    return true;
+                });
+        requirePreference(R.string.clear_subscriptions_key)
+                .setOnPreferenceClickListener(preference -> {
+                    new androidx.appcompat.app.AlertDialog.Builder(requireActivity())
+                            .setTitle(R.string.clear_subscriptions_title)
+                            .setMessage(R.string.clear_subscriptions_confirmation)
+                            .setNegativeButton(R.string.cancel, null)
+                            .setPositiveButton(R.string.clear, (d, id) -> clearSubscriptions())
+                            .show();
+                    return true;
+                });
+    }
+
+    private void clearForeignData() {
+        final Context appContext = requireContext().getApplicationContext();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            final int removed = manager.clearForeignData(defaultPreferences);
+            showToastLater(appContext, removed > 0
+                    ? appContext.getString(R.string.foreign_data_cleared, removed)
+                    : appContext.getString(R.string.foreign_data_nothing_to_clear));
+        });
+    }
+
+    private void clearSubscriptions() {
+        final Context appContext = requireContext().getApplicationContext();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            try {
+                new SubscriptionManager(appContext).subscriptionTable().deleteAll();
+                showToastLater(appContext, appContext.getString(R.string.subscriptions_cleared));
+            } catch (final Exception e) {
+                Log.e(TAG, "Clearing subscriptions", e);
+                showToastLater(appContext, appContext.getString(R.string.general_error));
+            }
+        });
+    }
+
+    private void showToastLater(final Context context, final String message) {
+        new Handler(Looper.getMainLooper()).post(() ->
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show());
     }
 
     private void requestExportPathResult(final ActivityResult result) {
@@ -205,6 +437,13 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
                 Toast.makeText(requireContext(), R.string.could_not_import_all_files,
                                 Toast.LENGTH_LONG)
                         .show();
+            } else if (manager.getLastConvertedFrom() != null) {
+                // the backup came from another app (e.g. PipePipe) and was converted
+                Toast.makeText(requireContext(),
+                                getString(R.string.import_converted_backup,
+                                        manager.getLastConvertedFrom().getDisplayName()),
+                                Toast.LENGTH_LONG)
+                        .show();
             }
 
             // if settings file exist, ask if it should be imported.
@@ -254,6 +493,24 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
      */
     private void cleanImport(@NonNull final Context context,
                              @NonNull final SharedPreferences prefs) {
+        // detect which app the settings came from, map them, and remember (and keep) the
+        // settings that only exist in that app
+        final ForeignBackupConverter.PrefsReport report =
+                ForeignBackupConverter.mapForeignPreferences(prefs);
+        if (report.getForeignKeys() > 0) {
+            Toast.makeText(context,
+                            context.getString(R.string.import_foreign_settings_kept,
+                                    report.getSource().getDisplayName(),
+                                    report.getForeignKeys()),
+                            Toast.LENGTH_LONG)
+                    .show();
+        }
+        // the backup folder of another device means nothing here (and has no granted access)
+        prefs.edit()
+                .remove(context.getString(R.string.scheduled_backup_path_key))
+                .putBoolean(context.getString(R.string.scheduled_backup_key), false)
+                .apply();
+
         // Check if media tunnelling needs to be disabled automatically,
         // if it was disabled automatically in the imported preferences.
         final String tunnelingKey = context.getString(R.string.disable_media_tunneling_key);

@@ -399,6 +399,12 @@ public final class ExtractorHelper {
         final SponsorBlockApiSettings result = new SponsorBlockApiSettings();
         result.apiUrl =
                 prefs.getString(context.getString(R.string.sponsor_block_api_url_key), null);
+        final String proxyUrl = prefs.getString(
+                context.getString(R.string.sponsor_block_proxy_url_key),
+                context.getString(R.string.sponsor_block_default_proxy_url));
+        result.proxyApiUrl = proxyUrl == null || proxyUrl.trim().isEmpty()
+                ? null
+                : (proxyUrl.trim().endsWith("/") ? proxyUrl.trim() : proxyUrl.trim() + "/");
         result.includeSponsorCategory =
                 prefs.getBoolean(context
                         .getString(R.string.sponsor_block_category_sponsor_key), false);
