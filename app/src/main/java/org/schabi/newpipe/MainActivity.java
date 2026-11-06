@@ -233,12 +233,17 @@ public class MainActivity extends AppCompatActivity {
             NewVersionWorker.enqueueNewVersionCheckingWork(app, false);
         }
 
-        // keep the periodic automatic backup in line with its settings (cheap if unchanged)
-        ScheduledBackupWorker.schedule(app);
+        // Nice-to-have startup work: a failure here must never keep the app from starting.
+        try {
+            // keep the periodic automatic backup in line with its settings (cheap if unchanged)
+            ScheduledBackupWorker.schedule(app);
 
-        // unofficial-build warning and donation reminder, once per cold start
-        if (savedInstanceState == null) {
-            AppAnnouncements.onAppStart(this);
+            // unofficial-build warning and donation reminder, once per cold start
+            if (savedInstanceState == null) {
+                AppAnnouncements.onAppStart(this);
+            }
+        } catch (final Exception e) {
+            Log.e(TAG, "Startup announcements failed", e);
         }
     }
 

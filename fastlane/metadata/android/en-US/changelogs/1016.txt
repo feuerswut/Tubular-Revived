@@ -1,9 +1,8 @@
-Display chapters on the video player's seek bar
-[YouTube] Add support for the "Podcasts" and "Courses" tabs
-Improve the appearance of search menu titles
-Show full subtitle names when provided by the service
-Various player fixes, including audio ducking, black screens, and opening links with timestamps
-[YouTube] Minor fixes and housekeeping
-Many internal improvements and bug fixes
-
-Thanks to this year's ANU software engineering students who contributed to NewPipe as part of their OSS assignment!
+Import backups from PipePipe, NewPipe and Tubular (detected automatically)
+Settings-only export and import
+Automatic backups to a folder
+Clear all subscriptions
+SponsorBlock caching proxy with fallback
+New app icon
+Chapters on the seek bar and YouTube "Podcasts" and "Courses" tabs
+Full subtitle names, player fixes and many internal improvements (NewPipe 0.29.2)
