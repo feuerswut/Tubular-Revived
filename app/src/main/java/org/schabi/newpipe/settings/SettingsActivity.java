@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.SoftwareKeyboardControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -296,9 +297,13 @@ public class SettingsActivity extends AppCompatActivity implements
 
         final var keyboardController = new SoftwareKeyboardControllerCompat(searchEditText);
         if (active) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(FRAGMENT_HOLDER_ID, searchFragment, PreferenceSearchFragment.NAME)
+            final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            final Fragment current = getSupportFragmentManager()
+                    .findFragmentById(FRAGMENT_HOLDER_ID);
+            if (current != null) {
+                ft.remove(current);
+            }
+            ft.add(FRAGMENT_HOLDER_ID, searchFragment, PreferenceSearchFragment.NAME)
                     .addToBackStack(PreferenceSearchFragment.NAME)
                     .commit();
 
