@@ -935,6 +935,33 @@
     <string name="sponsor_block_proxy_url_title">Caching proxy URL</string>
     <string name="sponsor_block_proxy_url_summary">Queried first for segments to speed things up. If it is empty or fails, the API URL above is used instead. The proxy sees your IP address and the first 4 characters of the hashed video ID, the same as the SponsorBlock server does.</string>
     <string name="import_converted_backup">Converted %1$s backup for use with Tubular</string>
+    <string name="import_foreign_settings_kept">Detected a %1$s backup. %2$d settings that Tubular does not use were kept so a later export still contains them.</string>
+    <string name="export_settings_only_title">Export settings only</string>
+    <string name="export_settings_only_summary">Save just the settings as a JSON file, without history, playlists or subscriptions</string>
+    <string name="import_settings_only_title">Import settings only</string>
+    <string name="import_settings_only_summary">Load settings from a JSON file made by Tubular, NewPipe or PipePipe. The app detects where it came from.</string>
+    <string name="invalid_settings_file">This is not a valid settings file</string>
+    <string name="scheduled_backup_title">Automatic backups</string>
+    <string name="scheduled_backup_summary">Regularly save the same ZIP as \"Export database\" to a folder. Old backups are not deleted.</string>
+    <string name="scheduled_backup_path_title">Backup folder</string>
+    <string name="scheduled_backup_interval_title">Backup interval</string>
+    <string name="scheduled_backup_failed">Automatic backup failed</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Daily</item>
+        <item>Every 3 days</item>
+        <item>Weekly</item>
+        <item>Every 2 weeks</item>
+        <item>Monthly</item>
+    </string-array>
+    <string name="clear_foreign_data_title">Clear data from other apps</string>
+    <string name="clear_foreign_data_summary">Remove settings and database values that were kept from NewPipe forks such as PipePipe</string>
+    <string name="clear_foreign_data_confirmation">This removes only data that was kept from other apps. Your Tubular data and settings stay.</string>
+    <string name="foreign_data_cleared">Removed %d items from other apps</string>
+    <string name="foreign_data_nothing_to_clear">Nothing from other apps to remove</string>
+    <string name="clear_subscriptions_title">Clear subscriptions</string>
+    <string name="clear_subscriptions_summary">Delete all subscriptions. Playlists and history are kept.</string>
+    <string name="clear_subscriptions_confirmation">Delete all subscriptions? This cannot be undone.</string>
+    <string name="subscriptions_cleared">Subscriptions cleared</string>
     <string name="unofficial_build_title">Unofficial build</string>
     <string name="unofficial_build_message">This copy of Tubular was not signed with the official release key, so it may have been modified by someone else. Only install Tubular from the official GitHub releases page.</string>
     <string name="unofficial_build_open_releases">Official releases</string>

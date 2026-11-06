@@ -81,6 +81,7 @@ import org.schabi.newpipe.player.Player;
 import org.schabi.newpipe.player.event.OnKeyDownListener;
 import org.schabi.newpipe.player.helper.PlayerHolder;
 import org.schabi.newpipe.player.playqueue.PlayQueue;
+import org.schabi.newpipe.settings.ScheduledBackupWorker;
 import org.schabi.newpipe.settings.migration.MigrationManager;
 import org.schabi.newpipe.util.Constants;
 import org.schabi.newpipe.util.DeviceUtils;
@@ -231,6 +232,9 @@ public class MainActivity extends AppCompatActivity {
             // and eventually searching for a new version.
             NewVersionWorker.enqueueNewVersionCheckingWork(app, false);
         }
+
+        // keep the periodic automatic backup in line with its settings (cheap if unchanged)
+        ScheduledBackupWorker.schedule(app);
 
         // unofficial-build warning and donation reminder, once per cold start
         if (savedInstanceState == null) {
