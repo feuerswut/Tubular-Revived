@@ -812,4 +812,43 @@
     <string name="api23_requirement_dialog_blogpost">ブログ記事</string>
     <string name="channel_tab_podcasts">ポッドキャスト</string>
     <string name="channel_tab_courses">コース</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">キャッシュプロキシのURL</string>
+    <string name="sponsor_block_proxy_url_summary">高速化のため、セグメントはまずここに問い合わせます。空の場合や失敗した場合は、上のAPI URLを使用します。プロキシには、SponsorBlockサーバーと同様に、IPアドレスとハッシュ化した動画IDの先頭4文字が見えます。</string>
+    <string name="import_converted_backup">%1$sのバックアップをTubular用に変換しました</string>
+    <string name="import_foreign_settings_kept">%1$sのバックアップを検出しました。Tubularが使用しない設定%2$d件は、後のエクスポートにも含まれるよう保持しました。</string>
+    <string name="import_settings_vulnerable_format_pipepipe">これらの設定は、以前のバージョンのPipePipeが使っていた古い形式で保存されています。自分で作成したバックアップか、信頼できる提供元のものだけをインポートしてください。</string>
+    <string name="export_settings_only_title">設定のみをエクスポート</string>
+    <string name="export_settings_only_summary">履歴、プレイリスト、登録チャンネルを含めず、設定だけをJSONファイルに保存します</string>
+    <string name="import_settings_only_title">設定のみをインポート</string>
+    <string name="import_settings_only_summary">Tubular、NewPipe、PipePipeで作成したJSONファイルから設定を読み込みます。アプリが取得元を判別します。</string>
+    <string name="invalid_settings_file">有効な設定ファイルではありません</string>
+    <string name="scheduled_backup_title">自動バックアップ</string>
+    <string name="scheduled_backup_summary">「データベースをエクスポート」と同じZIPを定期的にフォルダーへ保存します。古いバックアップは削除されません。</string>
+    <string name="scheduled_backup_path_title">バックアップフォルダー</string>
+    <string name="scheduled_backup_interval_title">バックアップの間隔</string>
+    <string name="scheduled_backup_failed">自動バックアップに失敗しました</string>
+    <string name="clear_foreign_data_title">他のアプリのデータを消去</string>
+    <string name="clear_foreign_data_summary">PipePipeなどNewPipeの派生アプリから保持した設定とデータベースの値を削除します</string>
+    <string name="clear_foreign_data_confirmation">他のアプリから保持したデータのみが削除されます。Tubularのデータと設定は残ります。</string>
+    <string name="foreign_data_cleared">他のアプリの項目を%d件削除しました</string>
+    <string name="foreign_data_nothing_to_clear">削除する他のアプリのデータはありません</string>
+    <string name="clear_subscriptions_title">登録チャンネルを消去</string>
+    <string name="clear_subscriptions_summary">すべての登録チャンネルを削除します。プレイリストと履歴は残ります。</string>
+    <string name="clear_subscriptions_confirmation">すべての登録チャンネルを削除しますか？この操作は元に戻せません。</string>
+    <string name="subscriptions_cleared">登録チャンネルを消去しました</string>
+    <string name="unofficial_build_title">非公式ビルド</string>
+    <string name="unofficial_build_message">このTubularは公式のリリース鍵で署名されていないため、第三者によって改変されている可能性があります。Tubularは公式のGitHubリリースページからのみインストールしてください。</string>
+    <string name="unofficial_build_open_releases">公式リリース</string>
+    <string name="unofficial_build_continue">このまま続行</string>
+    <string name="donation_reminder_title">Tubularを気に入っていただけましたか？</string>
+    <string name="donation_reminder_message">Tubularは無料で、空き時間に開発されています。お役に立てていましたら、開発のご支援をご検討ください。</string>
+    <string name="donation_reminder_later">あとで</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>毎日</item>
+        <item>3日ごと</item>
+        <item>毎週</item>
+        <item>2週間ごと</item>
+        <item>毎月</item>
+    </string-array>
 </resources>

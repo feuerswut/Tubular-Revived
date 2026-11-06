@@ -928,4 +928,43 @@
     <string name="api23_requirement_dialog_message">不幸的是，Tubular 依賴的一些函式庫已停止支援 Android 5.0 和 5.1。因此，下一個版本的 Tubular 將只能在 Android 6 或更高版本的裝置上運作，非常遺憾。更多資訊請參閱部落格文章。</string>
     <string name="channel_tab_podcasts">Podcast</string>
     <string name="channel_tab_courses">課程</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">快取代理 URL</string>
+    <string name="sponsor_block_proxy_url_summary">為加快速度，會優先向它查詢片段。如果為空或失敗，則改用上方的 API URL。與 SponsorBlock 伺服器一樣，代理能看到你的 IP 位址和經過雜湊的影片 ID 的前 4 個字元。</string>
+    <string name="import_converted_backup">已轉換 %1$s 備份以供 Tubular 使用</string>
+    <string name="import_foreign_settings_kept">偵測到 %1$s 備份。Tubular 不使用的 %2$d 項設定已保留，以便之後匯出時仍包含它們。</string>
+    <string name="import_settings_vulnerable_format_pipepipe">這些設定以早期 PipePipe 版本使用的舊格式儲存。請只匯入你自己建立的、或來自可信來源的備份。</string>
+    <string name="export_settings_only_title">僅匯出設定</string>
+    <string name="export_settings_only_summary">僅將設定儲存為 JSON 檔案，不含歷史記錄、播放清單或訂閱</string>
+    <string name="import_settings_only_title">僅匯入設定</string>
+    <string name="import_settings_only_summary">從 Tubular、NewPipe 或 PipePipe 產生的 JSON 檔案載入設定。應用程式會辨識其來源。</string>
+    <string name="invalid_settings_file">這不是有效的設定檔</string>
+    <string name="scheduled_backup_title">自動備份</string>
+    <string name="scheduled_backup_summary">定期將與「匯出資料庫」相同的 ZIP 儲存到資料夾。舊備份不會被刪除。</string>
+    <string name="scheduled_backup_path_title">備份資料夾</string>
+    <string name="scheduled_backup_interval_title">備份間隔</string>
+    <string name="scheduled_backup_failed">自動備份失敗</string>
+    <string name="clear_foreign_data_title">清除其他應用程式的資料</string>
+    <string name="clear_foreign_data_summary">刪除從 PipePipe 等 NewPipe 分支保留下來的設定和資料庫值</string>
+    <string name="clear_foreign_data_confirmation">只會刪除從其他應用程式保留的資料。你的 Tubular 資料和設定不受影響。</string>
+    <string name="foreign_data_cleared">已移除 %d 項來自其他應用程式的內容</string>
+    <string name="foreign_data_nothing_to_clear">沒有可移除的其他應用程式資料</string>
+    <string name="clear_subscriptions_title">清除訂閱</string>
+    <string name="clear_subscriptions_summary">刪除所有訂閱。播放清單和歷史記錄會保留。</string>
+    <string name="clear_subscriptions_confirmation">要刪除所有訂閱嗎？此操作無法復原。</string>
+    <string name="subscriptions_cleared">訂閱已清除</string>
+    <string name="unofficial_build_title">非官方版本</string>
+    <string name="unofficial_build_message">此 Tubular 副本未使用官方發布金鑰簽署，因此可能已被他人修改。請僅從官方 GitHub 發布頁面安裝 Tubular。</string>
+    <string name="unofficial_build_open_releases">官方發布版</string>
+    <string name="unofficial_build_continue">仍然繼續</string>
+    <string name="donation_reminder_title">喜歡 Tubular 嗎？</string>
+    <string name="donation_reminder_message">Tubular 免費，由業餘時間開發。如果它對你有用，歡迎支持它的開發。</string>
+    <string name="donation_reminder_later">稍後</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>每天</item>
+        <item>每 3 天</item>
+        <item>每週</item>
+        <item>每 2 週</item>
+        <item>每月</item>
+    </string-array>
 </resources>

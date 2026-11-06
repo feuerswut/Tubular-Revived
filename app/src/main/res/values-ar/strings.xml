@@ -896,4 +896,43 @@
     </plurals>
     <string name="channel_tab_courses">الدورات</string>
     <string name="channel_tab_podcasts">البودكاست</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">عنوان وكيل التخزين المؤقت</string>
+    <string name="sponsor_block_proxy_url_summary">يُستعلم عنه أولًا لجلب المقاطع بهدف التسريع. إذا كان فارغًا أو فشل، يُستخدم عنوان واجهة API أعلاه بدلًا منه. يرى الوكيل عنوان IP الخاص بك وأول 4 أحرف من معرّف الفيديو المُشفَّر، تمامًا مثل خادم SponsorBlock.</string>
+    <string name="import_converted_backup">تم تحويل نسخة %1$s الاحتياطية لاستخدامها مع Tubular</string>
+    <string name="import_foreign_settings_kept">تم اكتشاف نسخة احتياطية من %1$s. تم الاحتفاظ بـ %2$d من الإعدادات التي لا يستخدمها Tubular حتى يظل أي تصدير لاحق يتضمنها.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">هذه الإعدادات محفوظة بتنسيق قديم كانت تستخدمه إصدارات PipePipe السابقة. استورد فقط النسخ الاحتياطية التي أنشأتها بنفسك أو التي تأتي من مصدر موثوق.</string>
+    <string name="export_settings_only_title">تصدير الإعدادات فقط</string>
+    <string name="export_settings_only_summary">احفظ الإعدادات فقط في ملف JSON، دون السجل أو قوائم التشغيل أو الاشتراكات</string>
+    <string name="import_settings_only_title">استيراد الإعدادات فقط</string>
+    <string name="import_settings_only_summary">حمّل الإعدادات من ملف JSON أنشأه Tubular أو NewPipe أو PipePipe. يكتشف التطبيق مصدره.</string>
+    <string name="invalid_settings_file">هذا ليس ملف إعدادات صالحًا</string>
+    <string name="scheduled_backup_title">النسخ الاحتياطي التلقائي</string>
+    <string name="scheduled_backup_summary">احفظ بانتظام نفس ملف ZIP الخاص بـ «تصدير قاعدة البيانات» في مجلد. لا تُحذف النسخ القديمة.</string>
+    <string name="scheduled_backup_path_title">مجلد النسخ الاحتياطي</string>
+    <string name="scheduled_backup_interval_title">الفاصل بين النسخ الاحتياطية</string>
+    <string name="scheduled_backup_failed">فشل النسخ الاحتياطي التلقائي</string>
+    <string name="clear_foreign_data_title">مسح بيانات التطبيقات الأخرى</string>
+    <string name="clear_foreign_data_summary">إزالة الإعدادات وقيم قاعدة البيانات المحفوظة من تفرعات NewPipe مثل PipePipe</string>
+    <string name="clear_foreign_data_confirmation">تُزال فقط البيانات المحفوظة من تطبيقات أخرى. تبقى بيانات Tubular وإعداداته.</string>
+    <string name="foreign_data_cleared">تمت إزالة %d عنصرًا من تطبيقات أخرى</string>
+    <string name="foreign_data_nothing_to_clear">لا توجد بيانات من تطبيقات أخرى لإزالتها</string>
+    <string name="clear_subscriptions_title">مسح الاشتراكات</string>
+    <string name="clear_subscriptions_summary">حذف جميع الاشتراكات. تبقى قوائم التشغيل والسجل.</string>
+    <string name="clear_subscriptions_confirmation">هل تريد حذف جميع الاشتراكات؟ لا يمكن التراجع عن ذلك.</string>
+    <string name="subscriptions_cleared">تم مسح الاشتراكات</string>
+    <string name="unofficial_build_title">إصدار غير رسمي</string>
+    <string name="unofficial_build_message">لم يتم توقيع هذه النسخة من Tubular بمفتاح الإصدار الرسمي، لذا ربما عدّلها شخص آخر. ثبّت Tubular فقط من صفحة الإصدارات الرسمية على GitHub.</string>
+    <string name="unofficial_build_open_releases">الإصدارات الرسمية</string>
+    <string name="unofficial_build_continue">المتابعة على أي حال</string>
+    <string name="donation_reminder_title">هل يعجبك Tubular؟</string>
+    <string name="donation_reminder_message">Tubular مجاني ويُطوَّر في أوقات الفراغ. إذا كان مفيدًا لك، ففكّر في دعم تطويره.</string>
+    <string name="donation_reminder_later">لاحقًا</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>يوميًا</item>
+        <item>كل 3 أيام</item>
+        <item>أسبوعيًا</item>
+        <item>كل أسبوعين</item>
+        <item>شهريًا</item>
+    </string-array>
 </resources>

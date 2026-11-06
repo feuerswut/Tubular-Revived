@@ -812,4 +812,43 @@
     <string name="api23_requirement_dialog_blogpost">블로그 게시글</string>
     <string name="channel_tab_podcasts">팟캐스트</string>
     <string name="channel_tab_courses">강의</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">캐시 프록시 URL</string>
+    <string name="sponsor_block_proxy_url_summary">속도를 높이기 위해 구간 정보를 먼저 이곳에 요청합니다. 비어 있거나 실패하면 위의 API URL을 대신 사용합니다. 프록시는 SponsorBlock 서버와 마찬가지로 IP 주소와 해시된 동영상 ID의 처음 4자를 볼 수 있습니다.</string>
+    <string name="import_converted_backup">%1$s 백업을 Tubular용으로 변환했습니다</string>
+    <string name="import_foreign_settings_kept">%1$s 백업을 감지했습니다. Tubular가 사용하지 않는 설정 %2$d개는 이후 내보내기에도 포함되도록 보관했습니다.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">이 설정은 이전 PipePipe 버전이 사용하던 오래된 형식으로 저장되어 있습니다. 직접 만들었거나 신뢰할 수 있는 출처의 백업만 가져오세요.</string>
+    <string name="export_settings_only_title">설정만 내보내기</string>
+    <string name="export_settings_only_summary">기록, 재생목록, 구독 없이 설정만 JSON 파일로 저장합니다</string>
+    <string name="import_settings_only_title">설정만 가져오기</string>
+    <string name="import_settings_only_summary">Tubular, NewPipe 또는 PipePipe에서 만든 JSON 파일에서 설정을 불러옵니다. 앱이 출처를 자동으로 감지합니다.</string>
+    <string name="invalid_settings_file">올바른 설정 파일이 아닙니다</string>
+    <string name="scheduled_backup_title">자동 백업</string>
+    <string name="scheduled_backup_summary">\'데이터베이스 내보내기\'와 같은 ZIP을 폴더에 주기적으로 저장합니다. 오래된 백업은 삭제되지 않습니다.</string>
+    <string name="scheduled_backup_path_title">백업 폴더</string>
+    <string name="scheduled_backup_interval_title">백업 간격</string>
+    <string name="scheduled_backup_failed">자동 백업에 실패했습니다</string>
+    <string name="clear_foreign_data_title">다른 앱의 데이터 지우기</string>
+    <string name="clear_foreign_data_summary">PipePipe 같은 NewPipe 포크에서 보관한 설정과 데이터베이스 값을 삭제합니다</string>
+    <string name="clear_foreign_data_confirmation">다른 앱에서 보관한 데이터만 삭제됩니다. Tubular의 데이터와 설정은 그대로 유지됩니다.</string>
+    <string name="foreign_data_cleared">다른 앱의 항목 %d개를 삭제했습니다</string>
+    <string name="foreign_data_nothing_to_clear">삭제할 다른 앱의 데이터가 없습니다</string>
+    <string name="clear_subscriptions_title">구독 지우기</string>
+    <string name="clear_subscriptions_summary">모든 구독을 삭제합니다. 재생목록과 기록은 유지됩니다.</string>
+    <string name="clear_subscriptions_confirmation">모든 구독을 삭제할까요? 되돌릴 수 없습니다.</string>
+    <string name="subscriptions_cleared">구독을 지웠습니다</string>
+    <string name="unofficial_build_title">비공식 빌드</string>
+    <string name="unofficial_build_message">이 Tubular는 공식 릴리스 키로 서명되지 않았으므로 다른 사람이 수정했을 수 있습니다. Tubular는 공식 GitHub 릴리스 페이지에서만 설치하세요.</string>
+    <string name="unofficial_build_open_releases">공식 릴리스</string>
+    <string name="unofficial_build_continue">그래도 계속</string>
+    <string name="donation_reminder_title">Tubular가 마음에 드시나요?</string>
+    <string name="donation_reminder_message">Tubular는 무료이며 여가 시간에 개발됩니다. 도움이 되셨다면 개발을 후원해 주세요.</string>
+    <string name="donation_reminder_later">나중에</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>매일</item>
+        <item>3일마다</item>
+        <item>매주</item>
+        <item>2주마다</item>
+        <item>매월</item>
+    </string-array>
 </resources>

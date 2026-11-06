@@ -849,4 +849,43 @@
     <string name="api23_requirement_dialog_blogpost">Artículo</string>
     <string name="channel_tab_podcasts">Podcasts</string>
     <string name="channel_tab_courses">Cursos</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL del proxy de caché</string>
+    <string name="sponsor_block_proxy_url_summary">Se consulta primero para obtener los segmentos y acelerar el proceso. Si está vacía o falla, se usa la URL de la API de arriba. El proxy ve tu dirección IP y los 4 primeros caracteres del ID de vídeo con hash, igual que el servidor de SponsorBlock.</string>
+    <string name="import_converted_backup">Copia de seguridad de %1$s convertida para usarla con Tubular</string>
+    <string name="import_foreign_settings_kept">Se detectó una copia de seguridad de %1$s. Se conservaron %2$d ajustes que Tubular no usa, para que una exportación posterior los siga incluyendo.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Estos ajustes están guardados en un formato antiguo que usaban versiones anteriores de PipePipe. Importa solo copias de seguridad que hayas hecho tú o que procedan de una fuente de confianza.</string>
+    <string name="export_settings_only_title">Exportar solo los ajustes</string>
+    <string name="export_settings_only_summary">Guarda solo los ajustes en un archivo JSON, sin historial, listas ni suscripciones</string>
+    <string name="import_settings_only_title">Importar solo los ajustes</string>
+    <string name="import_settings_only_summary">Carga los ajustes de un archivo JSON creado por Tubular, NewPipe o PipePipe. La aplicación detecta su origen.</string>
+    <string name="invalid_settings_file">No es un archivo de ajustes válido</string>
+    <string name="scheduled_backup_title">Copias de seguridad automáticas</string>
+    <string name="scheduled_backup_summary">Guarda periódicamente en una carpeta el mismo ZIP que «Exportar base de datos». Las copias antiguas no se borran.</string>
+    <string name="scheduled_backup_path_title">Carpeta de copias de seguridad</string>
+    <string name="scheduled_backup_interval_title">Intervalo de copias de seguridad</string>
+    <string name="scheduled_backup_failed">Error en la copia de seguridad automática</string>
+    <string name="clear_foreign_data_title">Borrar datos de otras aplicaciones</string>
+    <string name="clear_foreign_data_summary">Elimina los ajustes y valores de la base de datos conservados de bifurcaciones de NewPipe como PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Solo se eliminan los datos conservados de otras aplicaciones. Tus datos y ajustes de Tubular se mantienen.</string>
+    <string name="foreign_data_cleared">Se eliminaron %d elementos de otras aplicaciones</string>
+    <string name="foreign_data_nothing_to_clear">No hay datos de otras aplicaciones que eliminar</string>
+    <string name="clear_subscriptions_title">Borrar suscripciones</string>
+    <string name="clear_subscriptions_summary">Elimina todas las suscripciones. Las listas de reproducción y el historial se conservan.</string>
+    <string name="clear_subscriptions_confirmation">¿Eliminar todas las suscripciones? Esta acción no se puede deshacer.</string>
+    <string name="subscriptions_cleared">Suscripciones eliminadas</string>
+    <string name="unofficial_build_title">Versión no oficial</string>
+    <string name="unofficial_build_message">Esta copia de Tubular no está firmada con la clave oficial de publicación, por lo que otra persona pudo haberla modificado. Instala Tubular solo desde la página oficial de versiones de GitHub.</string>
+    <string name="unofficial_build_open_releases">Versiones oficiales</string>
+    <string name="unofficial_build_continue">Continuar de todos modos</string>
+    <string name="donation_reminder_title">¿Te gusta Tubular?</string>
+    <string name="donation_reminder_message">Tubular es gratuita y se desarrolla en el tiempo libre. Si te resulta útil, considera apoyar su desarrollo.</string>
+    <string name="donation_reminder_later">Más tarde</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Diaria</item>
+        <item>Cada 3 días</item>
+        <item>Semanal</item>
+        <item>Cada 2 semanas</item>
+        <item>Mensual</item>
+    </string-array>
 </resources>

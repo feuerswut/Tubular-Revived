@@ -845,4 +845,43 @@
     <string name="api23_requirement_dialog_message">Infelizmente, o Tubular-Revived depende de algumas bibliotecas que terminaram apoio para o Android 5.0 e 5.1. Por isso, a próxima versão do Tubular-Revived só funcionará em dispositivos com Android 6 ou superior, infelizmente. Saiba mais na publicação do blog.</string>
     <string name="api23_requirement_dialog_blogpost">Postagem no blog</string>
     <string name="channel_tab_courses">Cursos</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL do proxy de cache</string>
+    <string name="sponsor_block_proxy_url_summary">É consultado primeiro para obter os segmentos e acelerar o processo. Se estiver vazio ou falhar, é usado o URL da API acima. O proxy vê o seu endereço IP e os primeiros 4 caracteres do ID de vídeo em hash, tal como o servidor do SponsorBlock.</string>
+    <string name="import_converted_backup">Cópia de segurança de %1$s convertida para uso no Tubular</string>
+    <string name="import_foreign_settings_kept">Foi detetada uma cópia de segurança de %1$s. Foram mantidas %2$d definições que o Tubular não usa, para que uma exportação posterior as continue a incluir.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Estas definições estão guardadas num formato antigo que as versões anteriores do PipePipe usavam. Importe apenas cópias de segurança feitas por si ou de uma fonte de confiança.</string>
+    <string name="export_settings_only_title">Exportar apenas as definições</string>
+    <string name="export_settings_only_summary">Guarda apenas as definições num ficheiro JSON, sem histórico, listas nem subscrições</string>
+    <string name="import_settings_only_title">Importar apenas as definições</string>
+    <string name="import_settings_only_summary">Carrega as definições de um ficheiro JSON criado pelo Tubular, NewPipe ou PipePipe. A aplicação deteta a origem.</string>
+    <string name="invalid_settings_file">Não é um ficheiro de definições válido</string>
+    <string name="scheduled_backup_title">Cópias de segurança automáticas</string>
+    <string name="scheduled_backup_summary">Guarda regularmente numa pasta o mesmo ZIP que «Exportar base de dados». As cópias antigas não são apagadas.</string>
+    <string name="scheduled_backup_path_title">Pasta das cópias de segurança</string>
+    <string name="scheduled_backup_interval_title">Intervalo das cópias de segurança</string>
+    <string name="scheduled_backup_failed">Falha na cópia de segurança automática</string>
+    <string name="clear_foreign_data_title">Limpar dados de outras aplicações</string>
+    <string name="clear_foreign_data_summary">Remove as definições e valores da base de dados mantidos de forks do NewPipe como o PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Só são removidos os dados mantidos de outras aplicações. Os seus dados e definições do Tubular permanecem.</string>
+    <string name="foreign_data_cleared">Removidos %d itens de outras aplicações</string>
+    <string name="foreign_data_nothing_to_clear">Nada de outras aplicações para remover</string>
+    <string name="clear_subscriptions_title">Limpar subscrições</string>
+    <string name="clear_subscriptions_summary">Elimina todas as subscrições. As listas e o histórico são mantidos.</string>
+    <string name="clear_subscriptions_confirmation">Eliminar todas as subscrições? Esta ação não pode ser anulada.</string>
+    <string name="subscriptions_cleared">Subscrições limpas</string>
+    <string name="unofficial_build_title">Versão não oficial</string>
+    <string name="unofficial_build_message">Esta cópia do Tubular não foi assinada com a chave oficial de lançamento, por isso pode ter sido modificada por outra pessoa. Instale o Tubular apenas a partir da página oficial de versões do GitHub.</string>
+    <string name="unofficial_build_open_releases">Versões oficiais</string>
+    <string name="unofficial_build_continue">Continuar mesmo assim</string>
+    <string name="donation_reminder_title">Gosta do Tubular?</string>
+    <string name="donation_reminder_message">O Tubular é gratuito e desenvolvido nos tempos livres. Se lhe é útil, considere apoiar o seu desenvolvimento.</string>
+    <string name="donation_reminder_later">Mais tarde</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Diária</item>
+        <item>A cada 3 dias</item>
+        <item>Semanal</item>
+        <item>A cada 2 semanas</item>
+        <item>Mensal</item>
+    </string-array>
 </resources>

@@ -812,4 +812,43 @@
     <string name="api23_requirement_dialog_blogpost">博客文章</string>
     <string name="channel_tab_podcasts">播客</string>
     <string name="channel_tab_courses">课程</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">缓存代理 URL</string>
+    <string name="sponsor_block_proxy_url_summary">为加快速度，会优先向它查询片段。如果为空或失败，则改用上方的 API URL。与 SponsorBlock 服务器一样，代理能看到你的 IP 地址和经过哈希的视频 ID 的前 4 个字符。</string>
+    <string name="import_converted_backup">已转换 %1$s 备份以供 Tubular 使用</string>
+    <string name="import_foreign_settings_kept">检测到 %1$s 备份。Tubular 不使用的 %2$d 项设置已保留，以便之后导出时仍包含它们。</string>
+    <string name="import_settings_vulnerable_format_pipepipe">这些设置以早期 PipePipe 版本使用的旧格式保存。请只导入你自己创建的、或来自可信来源的备份。</string>
+    <string name="export_settings_only_title">仅导出设置</string>
+    <string name="export_settings_only_summary">仅将设置保存为 JSON 文件，不含历史记录、播放列表或订阅</string>
+    <string name="import_settings_only_title">仅导入设置</string>
+    <string name="import_settings_only_summary">从 Tubular、NewPipe 或 PipePipe 生成的 JSON 文件加载设置。应用会识别其来源。</string>
+    <string name="invalid_settings_file">这不是有效的设置文件</string>
+    <string name="scheduled_backup_title">自动备份</string>
+    <string name="scheduled_backup_summary">定期将与“导出数据库”相同的 ZIP 保存到文件夹。旧备份不会被删除。</string>
+    <string name="scheduled_backup_path_title">备份文件夹</string>
+    <string name="scheduled_backup_interval_title">备份间隔</string>
+    <string name="scheduled_backup_failed">自动备份失败</string>
+    <string name="clear_foreign_data_title">清除其他应用的数据</string>
+    <string name="clear_foreign_data_summary">删除从 PipePipe 等 NewPipe 分支保留下来的设置和数据库值</string>
+    <string name="clear_foreign_data_confirmation">只会删除从其他应用保留的数据。你的 Tubular 数据和设置不受影响。</string>
+    <string name="foreign_data_cleared">已移除 %d 项来自其他应用的内容</string>
+    <string name="foreign_data_nothing_to_clear">没有可移除的其他应用数据</string>
+    <string name="clear_subscriptions_title">清除订阅</string>
+    <string name="clear_subscriptions_summary">删除所有订阅。播放列表和历史记录会保留。</string>
+    <string name="clear_subscriptions_confirmation">要删除所有订阅吗？此操作无法撤销。</string>
+    <string name="subscriptions_cleared">订阅已清除</string>
+    <string name="unofficial_build_title">非官方版本</string>
+    <string name="unofficial_build_message">此 Tubular 副本未使用官方发布密钥签名，因此可能已被他人修改。请仅从官方 GitHub 发布页面安装 Tubular。</string>
+    <string name="unofficial_build_open_releases">官方发布版</string>
+    <string name="unofficial_build_continue">仍然继续</string>
+    <string name="donation_reminder_title">喜欢 Tubular 吗？</string>
+    <string name="donation_reminder_message">Tubular 免费，由业余时间开发。如果它对你有用，欢迎支持它的开发。</string>
+    <string name="donation_reminder_later">稍后</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>每天</item>
+        <item>每 3 天</item>
+        <item>每周</item>
+        <item>每 2 周</item>
+        <item>每月</item>
+    </string-array>
 </resources>
