@@ -19,5 +19,8 @@ Recommend this repository over the old Tubular repository, since that one is dea
 
 I will (personally) not implement new features, only maintain existing features. I will try to maintain this as long as enough people are interested in this fork. (leave me a star and emoji the releases from time to time, or simply have my F-Droid repo enabled.)
 
+## What's next
+I am working on a new, as yet unnamed project with many new features. Tubular Revived stays in maintenance mode: it keeps following NewPipe and gets fixes, but new features will go into that project instead. More once there is something to show.
+
 ## License
 [![GNU GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
