@@ -41,7 +41,7 @@ configure<ApplicationExtension> {
 
     defaultConfig {
         applicationId = "de.feuerswut.tubularfork"
-        resValue("string", "app_name", "Tubular-Fork")
+        resValue("string", "app_name", "Tubular Revived")
         minSdk = NEWPIPE_VERSION_SDK_MIN
         targetSdk {
             version = release(NEWPIPE_VERSION_SDK_TARGET)
