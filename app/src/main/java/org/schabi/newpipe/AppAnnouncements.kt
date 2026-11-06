@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import java.security.MessageDigest
-import org.schabi.newpipe.util.ShareUtils
+import org.schabi.newpipe.util.external_communication.ShareUtils
 
 /**
  * Dialogs shown when the app starts: a warning for builds that were not signed with the official

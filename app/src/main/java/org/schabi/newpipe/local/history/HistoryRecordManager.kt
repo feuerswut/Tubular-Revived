@@ -221,7 +221,7 @@ class HistoryRecordManager(private val context: Context) {
     // ///////////////////////////////////////////////////////
 
     fun loadStreamState(queueItem: PlayQueueItem): Maybe<StreamStateEntity> {
-        return queueItem.stream
+        return queueItem.getStream(context)
             .map { info -> streamTable.upsert(StreamEntity(info)) }
             .flatMapPublisher { streamId -> streamStateTable.getState(streamId) }
             .firstElement()
