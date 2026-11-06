@@ -50,8 +50,9 @@ object AppMessages {
     data class DonationLink(val label: String, val url: String)
 
     @JvmStatic
-    fun isSafeUrl(url: String?): Boolean =
-        url != null && url.startsWith("https://") && url.length <= 2048
+    fun isSafeUrl(url: String?): Boolean {
+        return url != null && url.startsWith("https://") && url.length <= 2048
+    }
 
     fun parseMessages(array: JsonArray?): List<Message> {
         if (array == null) return emptyList()

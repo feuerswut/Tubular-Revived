@@ -25,7 +25,7 @@ compose.desktop {
         mainClass = "net.newpipe.app.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Exe, TargetFormat.Deb)
             packageName = NEWPIPE_APPLICATION_ID_NEW
             packageVersion = NEWPIPE_VERSION_NAME
         }
