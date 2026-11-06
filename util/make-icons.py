@@ -89,6 +89,16 @@ glyph_crop = glyph.crop(bbox)
 white_crop = white_tri.crop(white_tri.getchannel('A').point(lambda v: 255 if v > 10 else 0).getbbox())
 
 
+def circle_crop(img, size):
+    """The full icon cut to a circle (anti-aliased through 4x supersampling)."""
+    ss = 4
+    mask = Image.new('L', (size * ss, size * ss), 0)
+    ImageDraw.Draw(mask).ellipse((0, 0, size * ss - 1, size * ss - 1), fill=255)
+    out_img = scaled(img, size).convert('RGBA')
+    out_img.putalpha(mask.resize((size, size), Image.LANCZOS))
+    return out_img
+
+
 def centered(layer, canvas, fraction):
     """Layer (1024 master geometry) scaled by `fraction` and centred on a square canvas."""
     size = round(canvas * fraction)
@@ -99,14 +109,11 @@ def centered(layer, canvas, fraction):
 
 # ---------------------------------------------------------------- launcher icons
 for name, scale in DENSITIES.items():
-    # legacy: rounded square (pre-Android 8 does not mask icons)
+    # legacy (pre-Android 8 does not mask icons): a circle, for the normal and the round icon
     size = round(48 * scale)
-    ss = 4
-    mask = Image.new('L', (size * ss, size * ss), 0)
-    ImageDraw.Draw(mask).rounded_rectangle((0, 0, size * ss - 1, size * ss - 1), radius=round(size * ss * 0.22), fill=255)
-    legacy = scaled(icon, size)
-    legacy.putalpha(mask.resize((size, size), Image.LANCZOS))
+    legacy = circle_crop(icon, size)
     out(os.path.join(RES, f'mipmap-{name}', 'ic_launcher.png'), legacy)
+    out(os.path.join(RES, f'mipmap-{name}', 'ic_launcher_round.png'), legacy)
 
     # adaptive: 108dp canvas, only the centre 66dp are always visible. The glyph's far corners
     # are ~34dp from the centre in the master, so scale to 92% to stay inside the safe circle.
@@ -123,11 +130,22 @@ for name, scale in DENSITIES.items():
     note.alpha_composite(scaled(white_crop, (w, h)), ((n - w) // 2, (n - h) // 2))
     out(os.path.join(RES, f'drawable-{name}', 'ic_tubular_white.png'), note)
 
-# adaptive icon definition: dedicated monochrome layer, background colour from the icon
-xml = os.path.join(RES, 'mipmap-anydpi-v26', 'ic_launcher.xml')
-text = open(xml, encoding='utf-8').read()
-text = re.sub(r'(<monochrome android:drawable=")[^"]+(")', r'\1@mipmap/ic_launcher_monochrome\2', text)
-open(xml, 'w', encoding='utf-8', newline='\n').write(text)
+# adaptive icon definition: dedicated monochrome layer, background colour from the icon.
+# The round icon uses the same adaptive layers; the launcher applies its own mask shape.
+adaptive_xml = '''<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/ic_launcher_background" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+    <monochrome android:drawable="@mipmap/ic_launcher_monochrome" />
+</adaptive-icon>
+'''
+for xml_name in ('ic_launcher.xml', 'ic_launcher_round.xml'):
+    path = os.path.join(RES, 'mipmap-anydpi-v26', xml_name)
+    open(path, 'w', encoding='utf-8', newline='\n').write(adaptive_xml)
+    written.append(os.path.relpath(path, ROOT))
+
+# round version for the README (transparent corners)
+out(os.path.join(ROOT, 'assets', 'images', 'icon-round.png'), circle_crop(icon, 512))
 colors = os.path.join(RES, 'values', 'colors.xml')
 text = open(colors, encoding='utf-8').read()
 text = re.sub(r'(<color name="ic_launcher_background">)[^<]+(</color>)', r'\g<1>' + bg_hex + r'\g<2>', text)
