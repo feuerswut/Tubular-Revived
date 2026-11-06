@@ -942,7 +942,6 @@
     <string name="donation_reminder_title">Enjoying Tubular?</string>
     <string name="donation_reminder_message">Tubular is free and developed in spare time. If it is useful to you, please consider supporting its development.</string>
     <string name="donation_reminder_later">Later</string>
-    <string name="donation_reminder_never">Don\'t ask again</string>
     <string name="sponsor_block_notifications_title">Notify when sponsors are skipped</string>
     <string name="sponsor_block_notifications_summary">Show a toast notification when a sponsor is automatically skipped.</string>
     <string name="sponsor_block_privacy_title">View Privacy Policy</string>

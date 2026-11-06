@@ -24,7 +24,6 @@ object AppAnnouncements {
     private const val DAY_MS = 24L * 60 * 60 * 1000
     private const val DONATION_MIN_INTERVAL_MS = 30 * DAY_MS
     private const val DONATION_MAX_INTERVAL_MS = 90 * DAY_MS
-    private const val NEVER = Long.MAX_VALUE
 
     /** When to show the next reminder: a random 30 to 90 days from [now]. */
     @JvmStatic
@@ -132,9 +131,6 @@ object AppAnnouncements {
         val dialog = AlertDialog.Builder(activity)
             .setTitle(R.string.donation_reminder_title)
             .setNegativeButton(R.string.donation_reminder_later) { _, _ -> snooze() }
-            .setNeutralButton(R.string.donation_reminder_never) { _, _ ->
-                prefs.edit { putLong(PREF_DONATION_NEXT_AT, NEVER) }
-            }
             .setOnCancelListener { snooze() }
 
         if (links.size == 1) {

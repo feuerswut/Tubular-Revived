@@ -46,7 +46,8 @@ period, or when the user checks manually). Everything below is optional except `
 - If the key is missing or empty, the app falls back to the built-in `tubular_donation_url`
   (`app/src/main/res/values/donottranslate.xml`). If that is empty too, no reminder is shown.
 - The first reminder comes a random 30 to 90 days after first launch. After it ("Later", or a
-  donate tap) the next one is again a random 30 to 90 days away; "Don't ask again" stops them.
+  donate tap, or dismissing the dialog) the next one is again a random 30 to 90 days away.
+  There is deliberately no "don't ask again" option.
 
 ## SponsorBlock proxy
 The app asks `https://feuerswut.de/~/plugins/sponsorblock/skipSegments/<hash prefix>?...` first (setting
