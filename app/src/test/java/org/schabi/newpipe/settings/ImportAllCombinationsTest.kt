@@ -60,7 +60,7 @@ class ImportAllCombinationsTest {
 
         if (containsDb) {
             runTest {
-                Assert.assertTrue(ImportExportManager(fileLocator).extractDb(zip))
+                Assert.assertTrue(ImportExportManager(fileLocator) { null }.extractDb(zip))
                 Assert.assertFalse(dbJournal.exists())
                 Assert.assertFalse(dbWal.exists())
                 Assert.assertFalse(dbShm.exists())
@@ -68,7 +68,7 @@ class ImportAllCombinationsTest {
             }
         } else {
             runTest {
-                Assert.assertFalse(ImportExportManager(fileLocator).extractDb(zip))
+                Assert.assertFalse(ImportExportManager(fileLocator) { null }.extractDb(zip))
                 Assert.assertTrue(dbJournal.exists())
                 Assert.assertTrue(dbWal.exists())
                 Assert.assertTrue(dbShm.exists())
