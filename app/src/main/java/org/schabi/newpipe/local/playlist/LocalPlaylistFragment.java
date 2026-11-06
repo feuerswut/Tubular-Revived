@@ -379,9 +379,7 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
         } else if (item.getItemId() == R.id.menu_item_remove_watched) {
             openRemoveWatchedConfirmationDialog();
         } else if (item.getItemId() == R.id.menu_item_remove_duplicates) {
-            if (!isRewritingPlaylist) {
-                openRemoveDuplicatesDialog();
-            }
+            openRemoveDuplicatesDialog();
         } else if (item.getItemId() == R.id.menu_item_playlist_shuffle_all) {
             NavigationHelper.playOnMainPlayer(activity, getShuffledQueue());
         } else {
