@@ -6,6 +6,7 @@ import com.grack.nanojson.JsonObject
 import com.grack.nanojson.JsonParser
 import com.grack.nanojson.JsonParserException
 import com.grack.nanojson.JsonWriter
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.ObjectOutputStream
@@ -19,7 +20,15 @@ import org.schabi.newpipe.streams.io.SharpOutputStream
 import org.schabi.newpipe.streams.io.StoredFileHelper
 import org.schabi.newpipe.util.ZipHelper
 
-class ImportExportManager(private val fileLocator: BackupFileLocator) {
+class ImportExportManager @JvmOverloads constructor(
+    private val fileLocator: BackupFileLocator,
+    /**
+     * Checks (and, for backups of other apps, converts) an extracted backup database before it
+     * replaces the real one. Replaceable so unit tests can run without Android's SQLite.
+     */
+    private val prepareDatabase: (File) -> ForeignBackupConverter.BackupSource? =
+        ForeignBackupConverter::prepareDatabase
+) {
     companion object {
         const val TAG = "ImportExportManager"
     }
@@ -91,7 +100,7 @@ class ImportExportManager(private val fileLocator: BackupFileLocator) {
             return false
         }
         try {
-            lastConvertedFrom = ForeignBackupConverter.prepareDatabase(temp.toFile())
+            lastConvertedFrom = prepareDatabase(temp.toFile())
             Files.move(temp, fileLocator.db, StandardCopyOption.REPLACE_EXISTING)
         } finally {
             temp.deleteIfExists()

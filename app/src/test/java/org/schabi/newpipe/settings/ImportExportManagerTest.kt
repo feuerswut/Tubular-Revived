@@ -118,7 +118,8 @@ class ImportExportManagerTest {
 
         val zip = File(classloader.getResource("settings/db_ser_json.zip")?.file!!)
         `when`(storedFileHelper.stream).thenReturn(FileStream(zip))
-        val success = ImportExportManager(fileLocator).extractDb(storedFileHelper)
+        // the fake database in the test zip is not a real SQLite file: skip the check
+        val success = ImportExportManager(fileLocator) { null }.extractDb(storedFileHelper)
 
         assertTrue(success)
         assertFalse(dbJournal.exists())
@@ -137,7 +138,8 @@ class ImportExportManagerTest {
 
         val emptyZip = File(classloader.getResource("settings/nodb_noser_nojson.zip")?.file!!)
         `when`(storedFileHelper.stream).thenReturn(FileStream(emptyZip))
-        val success = ImportExportManager(fileLocator).extractDb(storedFileHelper)
+        // the fake database in the test zip is not a real SQLite file: skip the check
+        val success = ImportExportManager(fileLocator) { null }.extractDb(storedFileHelper)
 
         assertFalse(success)
         assertTrue(dbJournal.exists())
