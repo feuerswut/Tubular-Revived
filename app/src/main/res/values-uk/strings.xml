@@ -863,4 +863,43 @@
     <string name="api23_requirement_dialog_blogpost">Допис у блозі</string>
     <string name="channel_tab_podcasts">Подкасти</string>
     <string name="channel_tab_courses">Курси</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL кешувального проксі</string>
+    <string name="sponsor_block_proxy_url_summary">Запитується першим для отримання сегментів, щоб пришвидшити роботу. Якщо він порожній або не відповідає, використовується URL API вище. Проксі бачить вашу IP-адресу та перші 4 символи хешованого ID відео — так само, як і сервер SponsorBlock.</string>
+    <string name="import_converted_backup">Резервну копію %1$s перетворено для Tubular</string>
+    <string name="import_foreign_settings_kept">Виявлено резервну копію %1$s. %2$d налаштувань, які Tubular не використовує, збережено, щоб подальший експорт їх і надалі містив.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Ці налаштування зберігаються в старому форматі, який використовували попередні версії PipePipe. Імпортуйте лише ті резервні копії, які ви створили самі або яким довіряєте.</string>
+    <string name="export_settings_only_title">Експорт лише налаштувань</string>
+    <string name="export_settings_only_summary">Зберегти лише налаштування у файл JSON — без історії, плейлистів і підписок</string>
+    <string name="import_settings_only_title">Імпорт лише налаштувань</string>
+    <string name="import_settings_only_summary">Завантажити налаштування з файлу JSON, створеного Tubular, NewPipe або PipePipe. Застосунок визначить, звідки він.</string>
+    <string name="invalid_settings_file">Це недійсний файл налаштувань</string>
+    <string name="scheduled_backup_title">Автоматичні резервні копії</string>
+    <string name="scheduled_backup_summary">Регулярно зберігати в теку той самий ZIP, що й під час «Експорту бази даних». Старі копії не видаляються.</string>
+    <string name="scheduled_backup_path_title">Тека резервних копій</string>
+    <string name="scheduled_backup_interval_title">Інтервал резервного копіювання</string>
+    <string name="scheduled_backup_failed">Не вдалося створити автоматичну резервну копію</string>
+    <string name="clear_foreign_data_title">Видалити дані інших застосунків</string>
+    <string name="clear_foreign_data_summary">Видалити налаштування та значення бази даних, збережені з форків NewPipe, як-от PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Видаляються лише дані, збережені з інших застосунків. Ваші дані та налаштування Tubular залишаться.</string>
+    <string name="foreign_data_cleared">Видалено елементів з інших застосунків: %d</string>
+    <string name="foreign_data_nothing_to_clear">Немає даних інших застосунків для видалення</string>
+    <string name="clear_subscriptions_title">Видалити підписки</string>
+    <string name="clear_subscriptions_summary">Видалити всі підписки. Плейлисти та історія збережуться.</string>
+    <string name="clear_subscriptions_confirmation">Видалити всі підписки? Цю дію не можна скасувати.</string>
+    <string name="subscriptions_cleared">Підписки видалено</string>
+    <string name="unofficial_build_title">Неофіційна збірка</string>
+    <string name="unofficial_build_message">Цю копію Tubular не підписано офіційним ключем випуску, тож її міг змінити хтось інший. Встановлюйте Tubular лише зі сторінки офіційних релізів на GitHub.</string>
+    <string name="unofficial_build_open_releases">Офіційні релізи</string>
+    <string name="unofficial_build_continue">Усе одно продовжити</string>
+    <string name="donation_reminder_title">Подобається Tubular?</string>
+    <string name="donation_reminder_message">Tubular безкоштовний і розробляється у вільний час. Якщо він вам корисний, подумайте про підтримку його розробки.</string>
+    <string name="donation_reminder_later">Пізніше</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Щодня</item>
+        <item>Кожні 3 дні</item>
+        <item>Щотижня</item>
+        <item>Кожні 2 тижні</item>
+        <item>Щомісяця</item>
+    </string-array>
 </resources>

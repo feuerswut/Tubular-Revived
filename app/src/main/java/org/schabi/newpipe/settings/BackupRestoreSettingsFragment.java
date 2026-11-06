@@ -449,10 +449,16 @@ public class BackupRestoreSettingsFragment extends BasePreferenceFragment {
             // if settings file exist, ask if it should be imported.
             final boolean hasJsonPrefs = manager.exportHasJsonPrefs(file);
             if (hasJsonPrefs || manager.exportHasSerializedPrefs(file)) {
+                // Current PipePipe backups also contain JSON settings, so this warning only
+                // appears for old legacy-format ones; its NewPipe 0.27 wording does not fit them.
+                final boolean fromPipePipe = manager.getLastConvertedFrom()
+                        == ForeignBackupConverter.BackupSource.PIPEPIPE;
+                final String legacyWarning = requireContext().getString(fromPipePipe
+                        ? R.string.import_settings_vulnerable_format_pipepipe
+                        : R.string.import_settings_vulnerable_format);
                 new androidx.appcompat.app.AlertDialog.Builder(requireContext())
                         .setTitle(R.string.import_settings)
-                        .setMessage(hasJsonPrefs ? null : requireContext()
-                                .getString(R.string.import_settings_vulnerable_format))
+                        .setMessage(hasJsonPrefs ? null : legacyWarning)
                         .setOnDismissListener(dialog -> finishImport(importDataUri))
                         .setNegativeButton(R.string.cancel, (dialog, which) -> {
                             dialog.dismiss();

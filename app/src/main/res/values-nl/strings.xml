@@ -829,4 +829,43 @@
     <string name="api23_requirement_dialog_blogpost">Blogbericht</string>
     <string name="channel_tab_podcasts">Podcasts</string>
     <string name="channel_tab_courses">Cursussen</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL van de cacheproxy</string>
+    <string name="sponsor_block_proxy_url_summary">Wordt als eerste bevraagd voor segmenten om het te versnellen. Is deze leeg of mislukt het, dan wordt de API-URL hierboven gebruikt. De proxy ziet je IP-adres en de eerste 4 tekens van de gehashte video-ID, net als de SponsorBlock-server.</string>
+    <string name="import_converted_backup">%1$s-back-up omgezet voor gebruik met Tubular</string>
+    <string name="import_foreign_settings_kept">%1$s-back-up herkend. %2$d instellingen die Tubular niet gebruikt, zijn bewaard zodat een latere export ze nog bevat.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Deze instellingen staan in een oud formaat dat eerdere PipePipe-versies gebruikten. Importeer alleen back-ups die je zelf hebt gemaakt of die van een vertrouwde bron komen.</string>
+    <string name="export_settings_only_title">Alleen instellingen exporteren</string>
+    <string name="export_settings_only_summary">Sla alleen de instellingen op als JSON-bestand, zonder geschiedenis, afspeellijsten of abonnementen</string>
+    <string name="import_settings_only_title">Alleen instellingen importeren</string>
+    <string name="import_settings_only_summary">Laad instellingen uit een JSON-bestand van Tubular, NewPipe of PipePipe. De app herkent waar het vandaan komt.</string>
+    <string name="invalid_settings_file">Dit is geen geldig instellingenbestand</string>
+    <string name="scheduled_backup_title">Automatische back-ups</string>
+    <string name="scheduled_backup_summary">Slaat regelmatig hetzelfde ZIP-bestand als „Database exporteren” op in een map. Oude back-ups worden niet verwijderd.</string>
+    <string name="scheduled_backup_path_title">Back-upmap</string>
+    <string name="scheduled_backup_interval_title">Back-upinterval</string>
+    <string name="scheduled_backup_failed">Automatische back-up mislukt</string>
+    <string name="clear_foreign_data_title">Gegevens van andere apps wissen</string>
+    <string name="clear_foreign_data_summary">Verwijdert instellingen en databasewaarden die zijn bewaard van NewPipe-forks zoals PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Alleen gegevens die van andere apps zijn bewaard worden verwijderd. Je Tubular-gegevens en -instellingen blijven.</string>
+    <string name="foreign_data_cleared">%d items van andere apps verwijderd</string>
+    <string name="foreign_data_nothing_to_clear">Geen gegevens van andere apps om te verwijderen</string>
+    <string name="clear_subscriptions_title">Abonnementen wissen</string>
+    <string name="clear_subscriptions_summary">Verwijdert alle abonnementen. Afspeellijsten en geschiedenis blijven behouden.</string>
+    <string name="clear_subscriptions_confirmation">Alle abonnementen verwijderen? Dit kan niet ongedaan worden gemaakt.</string>
+    <string name="subscriptions_cleared">Abonnementen gewist</string>
+    <string name="unofficial_build_title">Onofficiële build</string>
+    <string name="unofficial_build_message">Deze kopie van Tubular is niet ondertekend met de officiële releasesleutel en kan dus door iemand anders zijn aangepast. Installeer Tubular alleen vanaf de officiële GitHub-releasespagina.</string>
+    <string name="unofficial_build_open_releases">Officiële releases</string>
+    <string name="unofficial_build_continue">Toch doorgaan</string>
+    <string name="donation_reminder_title">Bevalt Tubular?</string>
+    <string name="donation_reminder_message">Tubular is gratis en wordt in de vrije tijd ontwikkeld. Als het nuttig voor je is, overweeg dan de ontwikkeling te steunen.</string>
+    <string name="donation_reminder_later">Later</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Dagelijks</item>
+        <item>Elke 3 dagen</item>
+        <item>Wekelijks</item>
+        <item>Elke 2 weken</item>
+        <item>Maandelijks</item>
+    </string-array>
 </resources>

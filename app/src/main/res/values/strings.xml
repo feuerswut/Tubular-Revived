@@ -936,6 +936,7 @@
     <string name="sponsor_block_proxy_url_summary">Queried first for segments to speed things up. If it is empty or fails, the API URL above is used instead. The proxy sees your IP address and the first 4 characters of the hashed video ID, the same as the SponsorBlock server does.</string>
     <string name="import_converted_backup">Converted %1$s backup for use with Tubular</string>
     <string name="import_foreign_settings_kept">Detected a %1$s backup. %2$d settings that Tubular does not use were kept so a later export still contains them.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">These settings are stored in an old format that earlier PipePipe versions used. Only import backups that you made yourself or that come from a source you trust.</string>
     <string name="export_settings_only_title">Export settings only</string>
     <string name="export_settings_only_summary">Save just the settings as a JSON file, without history, playlists or subscriptions</string>
     <string name="import_settings_only_title">Import settings only</string>

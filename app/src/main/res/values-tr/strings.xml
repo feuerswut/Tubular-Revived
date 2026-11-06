@@ -829,4 +829,43 @@
     <string name="api23_requirement_dialog_blogpost">Blog gönderisi</string>
     <string name="channel_tab_podcasts">Podcastler</string>
     <string name="channel_tab_courses">Dersler</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">Önbellek proxy URL\'si</string>
+    <string name="sponsor_block_proxy_url_summary">İşleri hızlandırmak için segmentler ilk olarak buradan sorgulanır. Boşsa veya başarısız olursa yukarıdaki API URL\'si kullanılır. Proxy, SponsorBlock sunucusu gibi IP adresinizi ve karma videonun kimliğinin ilk 4 karakterini görür.</string>
+    <string name="import_converted_backup">%1$s yedeği Tubular için dönüştürüldü</string>
+    <string name="import_foreign_settings_kept">%1$s yedeği algılandı. Tubular\'ın kullanmadığı %2$d ayar, sonraki bir dışa aktarmada yine yer alması için saklandı.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Bu ayarlar, PipePipe\'in önceki sürümlerinin kullandığı eski bir biçimde saklanıyor. Yalnızca kendi aldığınız veya güvendiğiniz bir kaynaktan gelen yedekleri içe aktarın.</string>
+    <string name="export_settings_only_title">Yalnızca ayarları dışa aktar</string>
+    <string name="export_settings_only_summary">Yalnızca ayarları, geçmiş, oynatma listesi veya abonelik olmadan JSON dosyası olarak kaydeder</string>
+    <string name="import_settings_only_title">Yalnızca ayarları içe aktar</string>
+    <string name="import_settings_only_summary">Ayarları Tubular, NewPipe veya PipePipe tarafından oluşturulmuş bir JSON dosyasından yükler. Uygulama nereden geldiğini algılar.</string>
+    <string name="invalid_settings_file">Bu geçerli bir ayar dosyası değil</string>
+    <string name="scheduled_backup_title">Otomatik yedekler</string>
+    <string name="scheduled_backup_summary">“Veritabanını dışa aktar” ile aynı ZIP dosyasını düzenli olarak bir klasöre kaydeder. Eski yedekler silinmez.</string>
+    <string name="scheduled_backup_path_title">Yedek klasörü</string>
+    <string name="scheduled_backup_interval_title">Yedekleme aralığı</string>
+    <string name="scheduled_backup_failed">Otomatik yedekleme başarısız oldu</string>
+    <string name="clear_foreign_data_title">Diğer uygulamaların verilerini temizle</string>
+    <string name="clear_foreign_data_summary">PipePipe gibi NewPipe çatallarından saklanan ayarları ve veritabanı değerlerini kaldırır</string>
+    <string name="clear_foreign_data_confirmation">Yalnızca diğer uygulamalardan saklanan veriler kaldırılır. Tubular verileriniz ve ayarlarınız kalır.</string>
+    <string name="foreign_data_cleared">Diğer uygulamalardan %d öğe kaldırıldı</string>
+    <string name="foreign_data_nothing_to_clear">Kaldırılacak başka uygulama verisi yok</string>
+    <string name="clear_subscriptions_title">Abonelikleri temizle</string>
+    <string name="clear_subscriptions_summary">Tüm abonelikleri siler. Oynatma listeleri ve geçmiş korunur.</string>
+    <string name="clear_subscriptions_confirmation">Tüm abonelikler silinsin mi? Bu geri alınamaz.</string>
+    <string name="subscriptions_cleared">Abonelikler temizlendi</string>
+    <string name="unofficial_build_title">Resmî olmayan sürüm</string>
+    <string name="unofficial_build_message">Tubular\'ın bu kopyası resmî yayın anahtarıyla imzalanmamış, bu yüzden başkası tarafından değiştirilmiş olabilir. Tubular\'ı yalnızca resmî GitHub sürümler sayfasından yükleyin.</string>
+    <string name="unofficial_build_open_releases">Resmî sürümler</string>
+    <string name="unofficial_build_continue">Yine de devam et</string>
+    <string name="donation_reminder_title">Tubular\'ı beğendiniz mi?</string>
+    <string name="donation_reminder_message">Tubular ücretsizdir ve boş zamanlarda geliştirilir. Size yararlıysa, geliştirilmesine destek olmayı düşünün.</string>
+    <string name="donation_reminder_later">Daha sonra</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Günlük</item>
+        <item>3 günde bir</item>
+        <item>Haftalık</item>
+        <item>2 haftada bir</item>
+        <item>Aylık</item>
+    </string-array>
 </resources>

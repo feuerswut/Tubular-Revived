@@ -861,4 +861,43 @@
     <string name="api23_requirement_dialog_title">Tubular-Revived прекращает поддержку Android 5</string>
     <string name="api23_requirement_dialog_message">К сожалению, Tubular-Revived зависит от нескольких библиотек, которые прекратили поддерживать Android 5.0 и 5.1. Таким образом, к сожалению следующий выпуск Tubular-Revived будет работать только на устройствах с Android 6 или выше. Подробности в посте в блоге.</string>
     <string name="api23_requirement_dialog_blogpost">Пост в блоге</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL кеширующего прокси</string>
+    <string name="sponsor_block_proxy_url_summary">Запрашивается первым для получения сегментов, чтобы ускорить работу. Если он пуст или недоступен, используется URL API выше. Прокси видит ваш IP-адрес и первые 4 символа хешированного ID видео — так же, как и сервер SponsorBlock.</string>
+    <string name="import_converted_backup">Резервная копия %1$s преобразована для Tubular</string>
+    <string name="import_foreign_settings_kept">Обнаружена резервная копия %1$s. %2$d настроек, которые Tubular не использует, сохранены, чтобы последующий экспорт их по-прежнему содержал.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Эти настройки хранятся в старом формате, который использовали прежние версии PipePipe. Импортируйте только те резервные копии, которые вы создали сами или которым доверяете.</string>
+    <string name="export_settings_only_title">Экспорт только настроек</string>
+    <string name="export_settings_only_summary">Сохранить только настройки в файл JSON — без истории, плейлистов и подписок</string>
+    <string name="import_settings_only_title">Импорт только настроек</string>
+    <string name="import_settings_only_summary">Загрузить настройки из файла JSON, созданного Tubular, NewPipe или PipePipe. Приложение определит, откуда он.</string>
+    <string name="invalid_settings_file">Это недопустимый файл настроек</string>
+    <string name="scheduled_backup_title">Автоматические резервные копии</string>
+    <string name="scheduled_backup_summary">Регулярно сохранять в папку тот же ZIP, что и при «Экспорте базы данных». Старые копии не удаляются.</string>
+    <string name="scheduled_backup_path_title">Папка резервных копий</string>
+    <string name="scheduled_backup_interval_title">Интервал резервного копирования</string>
+    <string name="scheduled_backup_failed">Не удалось создать автоматическую резервную копию</string>
+    <string name="clear_foreign_data_title">Удалить данные других приложений</string>
+    <string name="clear_foreign_data_summary">Удалить настройки и значения базы данных, сохранённые из форков NewPipe, например PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Удаляются только данные, сохранённые из других приложений. Ваши данные и настройки Tubular останутся.</string>
+    <string name="foreign_data_cleared">Удалено элементов из других приложений: %d</string>
+    <string name="foreign_data_nothing_to_clear">Нет данных других приложений для удаления</string>
+    <string name="clear_subscriptions_title">Удалить подписки</string>
+    <string name="clear_subscriptions_summary">Удалить все подписки. Плейлисты и история сохранятся.</string>
+    <string name="clear_subscriptions_confirmation">Удалить все подписки? Это действие нельзя отменить.</string>
+    <string name="subscriptions_cleared">Подписки удалены</string>
+    <string name="unofficial_build_title">Неофициальная сборка</string>
+    <string name="unofficial_build_message">Эта копия Tubular не подписана официальным ключом выпуска, поэтому её мог изменить кто-то другой. Устанавливайте Tubular только со страницы официальных релизов на GitHub.</string>
+    <string name="unofficial_build_open_releases">Официальные релизы</string>
+    <string name="unofficial_build_continue">Всё равно продолжить</string>
+    <string name="donation_reminder_title">Нравится Tubular?</string>
+    <string name="donation_reminder_message">Tubular бесплатен и разрабатывается в свободное время. Если он вам полезен, подумайте о поддержке его разработки.</string>
+    <string name="donation_reminder_later">Позже</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Ежедневно</item>
+        <item>Каждые 3 дня</item>
+        <item>Еженедельно</item>
+        <item>Каждые 2 недели</item>
+        <item>Ежемесячно</item>
+    </string-array>
 </resources>

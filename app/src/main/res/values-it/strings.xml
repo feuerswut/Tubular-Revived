@@ -846,4 +846,43 @@
     <string name="api23_requirement_dialog_blogpost">Post del blog</string>
     <string name="channel_tab_podcasts">Podcast</string>
     <string name="channel_tab_courses">Corsi</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL del proxy di cache</string>
+    <string name="sponsor_block_proxy_url_summary">Viene interrogato per primo per i segmenti, per velocizzare. Se è vuoto o non risponde, si usa l\'URL dell\'API qui sopra. Il proxy vede il tuo indirizzo IP e i primi 4 caratteri dell\'ID video in hash, come il server di SponsorBlock.</string>
+    <string name="import_converted_backup">Backup di %1$s convertito per l\'uso con Tubular</string>
+    <string name="import_foreign_settings_kept">Rilevato un backup di %1$s. %2$d impostazioni che Tubular non usa sono state conservate, così un\'esportazione successiva le contiene ancora.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Queste impostazioni sono salvate in un vecchio formato usato dalle prime versioni di PipePipe. Importa solo backup creati da te o provenienti da una fonte attendibile.</string>
+    <string name="export_settings_only_title">Esporta solo le impostazioni</string>
+    <string name="export_settings_only_summary">Salva solo le impostazioni in un file JSON, senza cronologia, playlist o iscrizioni</string>
+    <string name="import_settings_only_title">Importa solo le impostazioni</string>
+    <string name="import_settings_only_summary">Carica le impostazioni da un file JSON creato da Tubular, NewPipe o PipePipe. L\'app rileva da dove proviene.</string>
+    <string name="invalid_settings_file">Non è un file di impostazioni valido</string>
+    <string name="scheduled_backup_title">Backup automatici</string>
+    <string name="scheduled_backup_summary">Salva regolarmente in una cartella lo stesso ZIP di «Esporta database». I vecchi backup non vengono eliminati.</string>
+    <string name="scheduled_backup_path_title">Cartella dei backup</string>
+    <string name="scheduled_backup_interval_title">Intervallo dei backup</string>
+    <string name="scheduled_backup_failed">Backup automatico non riuscito</string>
+    <string name="clear_foreign_data_title">Cancella i dati di altre app</string>
+    <string name="clear_foreign_data_summary">Rimuove le impostazioni e i valori del database conservati da fork di NewPipe come PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Vengono rimossi solo i dati conservati da altre app. I tuoi dati e le tue impostazioni di Tubular restano.</string>
+    <string name="foreign_data_cleared">Rimossi %d elementi di altre app</string>
+    <string name="foreign_data_nothing_to_clear">Nessun dato di altre app da rimuovere</string>
+    <string name="clear_subscriptions_title">Cancella iscrizioni</string>
+    <string name="clear_subscriptions_summary">Elimina tutte le iscrizioni. Playlist e cronologia vengono conservate.</string>
+    <string name="clear_subscriptions_confirmation">Eliminare tutte le iscrizioni? L\'operazione non può essere annullata.</string>
+    <string name="subscriptions_cleared">Iscrizioni cancellate</string>
+    <string name="unofficial_build_title">Build non ufficiale</string>
+    <string name="unofficial_build_message">Questa copia di Tubular non è firmata con la chiave di rilascio ufficiale, quindi potrebbe essere stata modificata da qualcun altro. Installa Tubular solo dalla pagina ufficiale delle release su GitHub.</string>
+    <string name="unofficial_build_open_releases">Release ufficiali</string>
+    <string name="unofficial_build_continue">Continua comunque</string>
+    <string name="donation_reminder_title">Ti piace Tubular?</string>
+    <string name="donation_reminder_message">Tubular è gratuita e sviluppata nel tempo libero. Se ti è utile, valuta di sostenerne lo sviluppo.</string>
+    <string name="donation_reminder_later">Più tardi</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Ogni giorno</item>
+        <item>Ogni 3 giorni</item>
+        <item>Ogni settimana</item>
+        <item>Ogni 2 settimane</item>
+        <item>Ogni mese</item>
+    </string-array>
 </resources>

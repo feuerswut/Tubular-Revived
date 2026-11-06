@@ -848,4 +848,43 @@
     <string name="api23_requirement_dialog_blogpost">Article de blog</string>
     <string name="channel_tab_podcasts">Podcasts</string>
     <string name="channel_tab_courses">Cours</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">URL du proxy de cache</string>
+    <string name="sponsor_block_proxy_url_summary">Interrogé en premier pour les segments afin d\'accélérer les choses. S\'il est vide ou en échec, l\'URL de l\'API ci-dessus est utilisée. Le proxy voit votre adresse IP et les 4 premiers caractères de l\'ID de vidéo haché, comme le serveur SponsorBlock.</string>
+    <string name="import_converted_backup">Sauvegarde %1$s convertie pour Tubular</string>
+    <string name="import_foreign_settings_kept">Sauvegarde %1$s détectée. %2$d paramètres que Tubular n\'utilise pas ont été conservés afin qu\'un export ultérieur les contienne encore.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Ces paramètres sont stockés dans un ancien format utilisé par les premières versions de PipePipe. N\'importez que des sauvegardes que vous avez faites vous-même ou provenant d\'une source de confiance.</string>
+    <string name="export_settings_only_title">Exporter uniquement les paramètres</string>
+    <string name="export_settings_only_summary">Enregistre uniquement les paramètres dans un fichier JSON, sans historique, playlists ni abonnements</string>
+    <string name="import_settings_only_title">Importer uniquement les paramètres</string>
+    <string name="import_settings_only_summary">Charge les paramètres depuis un fichier JSON créé par Tubular, NewPipe ou PipePipe. L\'application détecte son origine.</string>
+    <string name="invalid_settings_file">Ce n\'est pas un fichier de paramètres valide</string>
+    <string name="scheduled_backup_title">Sauvegardes automatiques</string>
+    <string name="scheduled_backup_summary">Enregistre régulièrement dans un dossier le même ZIP que « Exporter la base de données ». Les anciennes sauvegardes ne sont pas supprimées.</string>
+    <string name="scheduled_backup_path_title">Dossier de sauvegarde</string>
+    <string name="scheduled_backup_interval_title">Intervalle de sauvegarde</string>
+    <string name="scheduled_backup_failed">Échec de la sauvegarde automatique</string>
+    <string name="clear_foreign_data_title">Effacer les données d\'autres applications</string>
+    <string name="clear_foreign_data_summary">Supprime les paramètres et valeurs de base de données conservés depuis des forks de NewPipe comme PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Seules les données conservées d\'autres applications sont supprimées. Vos données et paramètres Tubular restent.</string>
+    <string name="foreign_data_cleared">%d éléments d\'autres applications supprimés</string>
+    <string name="foreign_data_nothing_to_clear">Aucune donnée d\'autres applications à supprimer</string>
+    <string name="clear_subscriptions_title">Effacer les abonnements</string>
+    <string name="clear_subscriptions_summary">Supprime tous les abonnements. Les playlists et l\'historique sont conservés.</string>
+    <string name="clear_subscriptions_confirmation">Supprimer tous les abonnements ? Cette action est irréversible.</string>
+    <string name="subscriptions_cleared">Abonnements effacés</string>
+    <string name="unofficial_build_title">Version non officielle</string>
+    <string name="unofficial_build_message">Cette copie de Tubular n\'est pas signée avec la clé de publication officielle ; elle a donc pu être modifiée par quelqu\'un d\'autre. N\'installez Tubular que depuis la page officielle des versions GitHub.</string>
+    <string name="unofficial_build_open_releases">Versions officielles</string>
+    <string name="unofficial_build_continue">Continuer quand même</string>
+    <string name="donation_reminder_title">Tubular vous plaît ?</string>
+    <string name="donation_reminder_message">Tubular est gratuit et développé sur le temps libre. S\'il vous est utile, pensez à soutenir son développement.</string>
+    <string name="donation_reminder_later">Plus tard</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Quotidienne</item>
+        <item>Tous les 3 jours</item>
+        <item>Hebdomadaire</item>
+        <item>Toutes les 2 semaines</item>
+        <item>Mensuelle</item>
+    </string-array>
 </resources>

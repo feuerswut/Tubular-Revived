@@ -863,4 +863,43 @@
     <string name="api23_requirement_dialog_blogpost">Wpis na blogu</string>
     <string name="channel_tab_podcasts">Podcasty</string>
     <string name="channel_tab_courses">Kursy</string>
+    <!-- Tubular Revived 0.29.2 -->
+    <string name="sponsor_block_proxy_url_title">Adres URL serwera proxy z pamięcią podręczną</string>
+    <string name="sponsor_block_proxy_url_summary">Odpytywany jako pierwszy o segmenty, aby przyspieszyć działanie. Jeśli jest pusty lub zawiedzie, używany jest adres URL API powyżej. Serwer proxy widzi Twój adres IP i pierwsze 4 znaki zahaszowanego identyfikatora filmu, tak samo jak serwer SponsorBlock.</string>
+    <string name="import_converted_backup">Przekonwertowano kopię zapasową %1$s do użycia w Tubular</string>
+    <string name="import_foreign_settings_kept">Wykryto kopię zapasową %1$s. Zachowano %2$d ustawień, których Tubular nie używa, aby późniejszy eksport nadal je zawierał.</string>
+    <string name="import_settings_vulnerable_format_pipepipe">Te ustawienia są zapisane w starym formacie używanym przez wcześniejsze wersje PipePipe. Importuj tylko kopie zapasowe, które sam wykonałeś lub które pochodzą z zaufanego źródła.</string>
+    <string name="export_settings_only_title">Eksportuj tylko ustawienia</string>
+    <string name="export_settings_only_summary">Zapisuje tylko ustawienia w pliku JSON, bez historii, playlist i subskrypcji</string>
+    <string name="import_settings_only_title">Importuj tylko ustawienia</string>
+    <string name="import_settings_only_summary">Wczytuje ustawienia z pliku JSON utworzonego przez Tubular, NewPipe lub PipePipe. Aplikacja wykryje, skąd pochodzi.</string>
+    <string name="invalid_settings_file">To nie jest prawidłowy plik ustawień</string>
+    <string name="scheduled_backup_title">Automatyczne kopie zapasowe</string>
+    <string name="scheduled_backup_summary">Regularnie zapisuje w folderze ten sam plik ZIP, co „Eksportuj bazę danych”. Stare kopie nie są usuwane.</string>
+    <string name="scheduled_backup_path_title">Folder kopii zapasowych</string>
+    <string name="scheduled_backup_interval_title">Odstęp między kopiami zapasowymi</string>
+    <string name="scheduled_backup_failed">Automatyczna kopia zapasowa nie powiodła się</string>
+    <string name="clear_foreign_data_title">Wyczyść dane z innych aplikacji</string>
+    <string name="clear_foreign_data_summary">Usuwa ustawienia i wartości bazy danych zachowane z forków NewPipe, takich jak PipePipe</string>
+    <string name="clear_foreign_data_confirmation">Usuwane są tylko dane zachowane z innych aplikacji. Twoje dane i ustawienia Tubular pozostają.</string>
+    <string name="foreign_data_cleared">Usunięto %d elementów z innych aplikacji</string>
+    <string name="foreign_data_nothing_to_clear">Brak danych z innych aplikacji do usunięcia</string>
+    <string name="clear_subscriptions_title">Wyczyść subskrypcje</string>
+    <string name="clear_subscriptions_summary">Usuwa wszystkie subskrypcje. Playlisty i historia zostają.</string>
+    <string name="clear_subscriptions_confirmation">Usunąć wszystkie subskrypcje? Tej operacji nie można cofnąć.</string>
+    <string name="subscriptions_cleared">Subskrypcje wyczyszczone</string>
+    <string name="unofficial_build_title">Wersja nieoficjalna</string>
+    <string name="unofficial_build_message">Ta kopia Tubular nie została podpisana oficjalnym kluczem wydania, więc mogła zostać zmieniona przez kogoś innego. Instaluj Tubular wyłącznie z oficjalnej strony wydań na GitHubie.</string>
+    <string name="unofficial_build_open_releases">Oficjalne wydania</string>
+    <string name="unofficial_build_continue">Kontynuuj mimo to</string>
+    <string name="donation_reminder_title">Podoba Ci się Tubular?</string>
+    <string name="donation_reminder_message">Tubular jest darmowy i rozwijany w wolnym czasie. Jeśli Ci się przydaje, rozważ wsparcie jego rozwoju.</string>
+    <string name="donation_reminder_later">Później</string>
+    <string-array name="scheduled_backup_interval_description">
+        <item>Codziennie</item>
+        <item>Co 3 dni</item>
+        <item>Co tydzień</item>
+        <item>Co 2 tygodnie</item>
+        <item>Co miesiąc</item>
+    </string-array>
 </resources>
