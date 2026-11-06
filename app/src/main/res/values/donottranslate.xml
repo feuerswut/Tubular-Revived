@@ -18,7 +18,9 @@
     <string name="sha1">SHA-1</string>
     <string name="recaptcha">reCAPTCHA</string>
     <string name="github_url">https://github.com/feuerswut/Tubular-Revived</string>
-    <string name="donation_url">https://newpipe.net/donate/</string>
+    <string name="donation_url">https://feuerswut.de/s/donate/</string>
+    <!-- Tubular's own donation page, used by the 30-day reminder unless the server provides "donations". -->
+    <string name="tubular_donation_url">https://feuerswut.de/s/donate/</string>
     <string name="website_url">https://newpipe.net/</string>
     <string name="privacy_policy_url">https://newpipe.net/legal/privacy/</string>
     <string name="faq_url">https://newpipe.net/FAQ/</string>

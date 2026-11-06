@@ -27,6 +27,11 @@ on:
       - '.github/FUNDING.yml'
       - '.github/ISSUE_TEMPLATE/**'
 
+# a newer push to the same branch/PR cancels the older run (CI minutes cost usage)
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -41,6 +46,8 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: feuerswut/Tubular-Extractor-Revived
+          # app dev builds against extractor dev, everything else against extractor main
+          ref: ${{ (github.ref_name == 'dev' || github.base_ref == 'dev') && 'dev' || 'main' }}
           path: Tubular-Extractor-Revived
       - uses: gradle/actions/wrapper-validation@v6
 

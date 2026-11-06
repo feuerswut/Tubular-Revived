@@ -1,0 +1,8 @@
+Import backups from PipePipe, NewPipe and Tubular (detected automatically)
+Settings-only export and import
+Automatic backups to a folder
+Clear all subscriptions
+SponsorBlock caching proxy with fallback
+New app icon
+Chapters on the seek bar and YouTube "Podcasts" and "Courses" tabs
+Full subtitle names, player fixes and many internal improvements (NewPipe 0.29.2)

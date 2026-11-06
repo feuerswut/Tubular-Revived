@@ -22,7 +22,7 @@ val buildConfigGenerator by tasks.registering(Sync::class) {
 
         object BuildConfig {
             const val VERSION_NAME = "$NEWPIPE_VERSION_NAME"
-            const val APP_NAME = "NewPipe"
+            const val APP_NAME = "Tubular Revived"
         }
     """.trimIndent()
     from(resources.text.fromString(rawClass)) {
@@ -37,8 +37,7 @@ kotlin {
 
     compilerOptions {
         freeCompilerArgs.addAll(
-            "-Xexpect-actual-classes",
-            "-Xexplicit-backing-fields"
+            "-Xexpect-actual-classes"
         )
         optIn.addAll(
             "androidx.compose.material3.ExperimentalMaterial3Api",
@@ -124,6 +123,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.jetbrains.compose.preview)
             implementation(libs.androidx.activity)
+            implementation(libs.androidx.appcompat)
             implementation(libs.androidx.preference)
             implementation(libs.androidx.browser)
         }

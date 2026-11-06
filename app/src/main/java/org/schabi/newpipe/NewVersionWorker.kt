@@ -128,6 +128,12 @@ class NewVersionWorker(
             val versionName = jObj.getString("version")
             val apkLocationUrl = jObj.getString("url")
             val updateMessage = jObj.getString("message")
+            // Messages and donation links are independent of whether an update exists.
+            try {
+                AppMessages.process(applicationContext, jObj)
+            } catch (e: Exception) {
+                Log.w(TAG, "Could not process app messages", e)
+            }
             compareAppVersionAndShowNotification(versionName, apkLocationUrl, updateMessage)
         } catch (e: JsonParserException) {
             if (DEBUG) {
