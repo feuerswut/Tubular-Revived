@@ -13,12 +13,17 @@ on:
         description: 'Set as a pre-release'
         required: true
         default: true
+      extractor_ref:
+        type: string
+        description: 'Branch or tag of Tubular-Extractor-Revived to build against'
+        required: true
+        default: 'main'
 
 jobs:
   build-and-release:
-    # Pinned so the runner image does not change under us when ubuntu-latest moves to Ubuntu 26.
+    # pinned: "ubuntu-latest" moves to a newer image, whose Android SDK layout is not verified
     runs-on: ubuntu-24.04
-
+    
     permissions: write-all
 
     steps:
@@ -31,6 +36,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: feuerswut/Tubular-Extractor-Revived
+          ref: ${{ inputs.extractor_ref }}
           path: Tubular-Extractor-Revived
 
       - name: Set up JDK 21
@@ -48,22 +54,31 @@ jobs:
           KEYSTORE: ${{ secrets.KEYSTORE }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
         run: |
-          version=$(grep 'versionName[[:space:]]*=' app/build.gradle.kts | grep -o '"[^"]*"' | head -n 1 | tr -d '"')
+          version=$(grep 'NEWPIPE_VERSION_NAME[[:space:]]*=' buildSrc/src/main/kotlin/ProjectConfig.kt | grep -o '"[^"]*"' | head -n 1 | tr -d '"')
+          [ -n "$version" ] || { echo "Could not read the version name"; exit 1; }
           echo "${KEYSTORE}" | base64 -d > apksign.keystore
-          ${ANDROID_HOME}/build-tools/34.0.0/apksigner sign --ks apksign.keystore --ks-pass env:SIGNING_STORE_PASSWORD "app/build/outputs/apk/release/app-release-unsigned.apk"
+          # newest installed build-tools, instead of a hard-coded version that may be removed
+          BUILD_TOOLS=$(ls "${ANDROID_HOME}/build-tools" | sort -V | tail -n 1)
+          "${ANDROID_HOME}/build-tools/${BUILD_TOOLS}/apksigner" sign --ks apksign.keystore --ks-pass env:SIGNING_STORE_PASSWORD "app/build/outputs/apk/release/app-release-unsigned.apk"
           mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/"tubular_v${version}.apk"
 
       - name: Create release and upload
         run: |
-          version=$(grep 'versionName[[:space:]]*=' app/build.gradle.kts | grep -o '"[^"]*"' | head -n 1 | tr -d '"')
+          version=$(grep 'NEWPIPE_VERSION_NAME[[:space:]]*=' buildSrc/src/main/kotlin/ProjectConfig.kt | grep -o '"[^"]*"' | head -n 1 | tr -d '"')
+          [ -n "$version" ] || { echo "Could not read the version name"; exit 1; }
           gh auth login --with-token <<<"${{ secrets.GITHUB_TOKEN }}"
-          gh release create "v${version}" --title "${{ inputs.title }}" --notes-file ".github/changelog.md" --prerelease=${{ inputs.is_pre_release }} --repo ${{ github.repository }}
-          gh release upload "v${version}" app/build/outputs/apk/release/*.apk --repo ${{ github.repository }}
+          if gh release view "v${version}" --repo ${{ github.repository }} >/dev/null 2>&1; then
+            # rebuild of an existing release: keep the release, replace notes and APK
+            gh release edit "v${version}" --title "${{ inputs.title }}" --notes-file ".github/changelog.md" --prerelease=${{ inputs.is_pre_release }} --repo ${{ github.repository }}
+            gh release upload "v${version}" app/build/outputs/apk/release/*.apk --clobber --repo ${{ github.repository }}
+          else
+            gh release create "v${version}" --title "${{ inputs.title }}" --notes-file ".github/changelog.md" --prerelease=${{ inputs.is_pre_release }} --target "${{ github.sha }}" --repo ${{ github.repository }}
+            gh release upload "v${version}" app/build/outputs/apk/release/*.apk --repo ${{ github.repository }}
+          fi
 
       - name: Archive reports for job
         uses: actions/upload-artifact@v7
         with:
           name: reports
           path: '*/build/reports'
-          if-no-files-found: ignore
         if: ${{ always() }}
