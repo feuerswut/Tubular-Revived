@@ -117,6 +117,23 @@ public final class Localization {
         return getLocaleFromPrefs(context, R.string.content_language_key);
     }
 
+    /**
+     * The language to prefer for audio tracks. Follows the content language unless a separate
+     * audio language was chosen in the settings.
+     *
+     * @param context the Android context
+     * @return the locale audio tracks should prefer
+     */
+    public static Locale getPreferredAudioLocale(@NonNull final Context context) {
+        final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        final String code = sp.getString(context.getString(R.string.preferred_audio_language_key),
+                context.getString(R.string.default_localization_key));
+        if (code.equals(context.getString(R.string.default_localization_key))) {
+            return getPreferredLocale(context);
+        }
+        return Locale.forLanguageTag(code);
+    }
+
     public static Locale getAppLocale() {
         final Locale customLocale = AppCompatDelegate.getApplicationLocales().get(0);
         return customLocale != null ? customLocale : Locale.getDefault();

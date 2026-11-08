@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 
 import com.evernote.android.state.State;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -57,6 +59,9 @@ public class StatisticsPlaylistFragment
     @State
     Parcelable itemsListState;
     private StatisticSortMode sortMode = StatisticSortMode.LAST_PLAYED;
+    private String searchQuery = "";
+    @Nullable
+    private List<StreamStatisticsEntry> lastResult;
 
     private StatisticPlaylistControlBinding headerBinding;
     private PlaylistControlBinding playlistControlBinding;
@@ -111,6 +116,48 @@ public class StatisticsPlaylistFragment
                                     @NonNull final MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_history, menu);
+
+        final MenuItem searchItem = menu.findItem(R.id.action_history_search);
+        final SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint(getString(R.string.search_history_hint));
+        if (!searchQuery.isEmpty()) {
+            searchItem.expandActionView();
+            searchView.setQuery(searchQuery, false);
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(final String query) {
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(final String newText) {
+                searchQuery = newText == null ? "" : newText.trim();
+                if (lastResult != null) {
+                    handleResult(lastResult);
+                }
+                return true;
+            }
+        });
+    }
+
+    private List<StreamStatisticsEntry> filterBySearchQuery(
+            final List<StreamStatisticsEntry> entries) {
+        if (searchQuery.isEmpty()) {
+            return new ArrayList<>(entries);
+        }
+        final String needle = searchQuery.toLowerCase(Locale.getDefault());
+        final List<StreamStatisticsEntry> filtered = new ArrayList<>();
+        for (final StreamStatisticsEntry entry : entries) {
+            final StreamEntity stream = entry.getStreamEntity();
+            if (stream.getTitle().toLowerCase(Locale.getDefault()).contains(needle)
+                    || (stream.getUploader() != null && stream.getUploader()
+                            .toLowerCase(Locale.getDefault()).contains(needle))) {
+                filtered.add(entry);
+            }
+        }
+        return filtered;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -259,16 +306,19 @@ public class StatisticsPlaylistFragment
             return;
         }
 
+        lastResult = result;
+        final List<StreamStatisticsEntry> shown = filterBySearchQuery(result);
+
         playlistControlBinding.getRoot().setVisibility(View.VISIBLE);
 
         itemListAdapter.clearStreamItemList();
 
-        if (result.isEmpty()) {
+        if (shown.isEmpty()) {
             showEmptyState();
             return;
         }
 
-        itemListAdapter.addItems(processResult(result));
+        itemListAdapter.addItems(processResult(shown));
         if (itemsListState != null && itemsList.getLayoutManager() != null) {
             itemsList.getLayoutManager().onRestoreInstanceState(itemsListState);
             itemsListState = null;
