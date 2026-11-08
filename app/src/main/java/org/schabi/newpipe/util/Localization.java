@@ -120,6 +120,9 @@ public final class Localization {
     /**
      * The language to prefer for audio tracks. Follows the content language unless a separate
      * audio language was chosen in the settings.
+     *
+     * @param context the Android context
+     * @return the locale audio tracks should prefer
      */
     public static Locale getPreferredAudioLocale(@NonNull final Context context) {
         final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
