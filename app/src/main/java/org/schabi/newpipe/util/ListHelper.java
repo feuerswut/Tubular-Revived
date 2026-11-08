@@ -803,7 +803,7 @@ public final class ListHelper {
             @NonNull final Context context) {
         final SharedPreferences preferences =
                 PreferenceManager.getDefaultSharedPreferences(context);
-        final Locale preferredLanguage = Localization.getPreferredLocale(context);
+        final Locale preferredLanguage = Localization.getPreferredAudioLocale(context);
         final boolean preferOriginalAudio =
                 preferences.getBoolean(context.getString(R.string.prefer_original_audio_key),
                         true);

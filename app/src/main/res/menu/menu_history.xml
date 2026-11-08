@@ -4,6 +4,14 @@
     tools:context="org.schabi.newpipe.history.HistoryActivity">
 
     <item
+        android:id="@+id/action_history_search"
+        android:icon="@drawable/ic_search"
+        android:orderInCategory="900"
+        android:title="@string/search_history_hint"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
         android:id="@+id/action_history_clear"
         android:orderInCategory="940"
         android:title="@string/clear_views_history_title"
