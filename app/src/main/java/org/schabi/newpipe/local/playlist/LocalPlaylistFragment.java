@@ -31,6 +31,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,11 +62,13 @@ import org.schabi.newpipe.util.Localization;
 import org.schabi.newpipe.util.NavigationHelper;
 import org.schabi.newpipe.util.OnClickGesture;
 import org.schabi.newpipe.util.PlayButtonHelper;
+import org.schabi.newpipe.util.SortMode;
 import org.schabi.newpipe.util.debounce.DebounceSavable;
 import org.schabi.newpipe.util.debounce.DebounceSaver;
 import org.schabi.newpipe.util.external_communication.ShareUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -80,6 +83,7 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
         implements PlaylistControlViewHolder, DebounceSavable {
 
     private static final int MINIMUM_INITIAL_DRAG_VELOCITY = 12;
+    private static final String SORT_MODE_KEY = "playlist_sort_mode";
     @State
     protected Long playlistId;
     @State
@@ -186,6 +190,10 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
         super.initListeners();
 
         headerBinding.playlistTitleView.setOnClickListener(view -> createRenameDialog());
+
+        itemListAdapter.setSortMode(SortMode.parse(
+                PreferenceManager.getDefaultSharedPreferences(requireContext())
+                        .getString(SORT_MODE_KEY, null)));
 
         itemTouchHelper = new ItemTouchHelper(getItemTouchCallback());
         itemTouchHelper.attachToRecyclerView(itemsList);
@@ -376,6 +384,8 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
             createShareConfirmationDialog();
         } else if (item.getItemId() == R.id.menu_item_rename_playlist) {
             createRenameDialog();
+        } else if (item.getItemId() == R.id.menu_item_sort) {
+            showSortDialog();
         } else if (item.getItemId() == R.id.menu_item_remove_watched) {
             openRemoveWatchedConfirmationDialog();
         } else if (item.getItemId() == R.id.menu_item_remove_duplicates) {
@@ -386,6 +396,32 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
             return super.onOptionsItemSelected(item);
         }
         return true;
+    }
+
+    private void showSortDialog() {
+        if (itemListAdapter == null) {
+            return;
+        }
+        final SortMode[] modes = {SortMode.ORIGIN, SortMode.ORIGIN_REVERSE,
+                SortMode.DURATION, SortMode.DURATION_REVERSE,
+                SortMode.SORT_NAME, SortMode.SORT_NAME_REVERSE};
+        final String[] labels = {getString(R.string.sort_origin),
+                getString(R.string.sort_origin_reverse),
+                getString(R.string.sort_duration_ascending),
+                getString(R.string.sort_duration_descending),
+                getString(R.string.sort_name_ascending),
+                getString(R.string.sort_name_descending)};
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.sort)
+                .setSingleChoiceItems(labels,
+                        Arrays.asList(modes).indexOf(itemListAdapter.getSortMode()),
+                        (dialog, which) -> {
+                            itemListAdapter.setSortMode(modes[which]);
+                            PreferenceManager.getDefaultSharedPreferences(requireContext())
+                                    .edit().putString(SORT_MODE_KEY, modes[which].name()).apply();
+                            dialog.dismiss();
+                        })
+                .show();
     }
 
     /**
@@ -545,9 +581,9 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 
         final long thumbnailStreamId;
 
-        if (!itemListAdapter.getItemsList().isEmpty()) {
-            thumbnailStreamId = ((PlaylistStreamEntry) itemListAdapter.getItemsList().get(0))
-                    .getStreamEntity().getUid();
+        final List<PlaylistStreamEntry> entries = itemListAdapter.getItemsInOriginalOrder();
+        if (!entries.isEmpty()) {
+            thumbnailStreamId = entries.get(0).getStreamEntity().getUid();
         } else {
             thumbnailStreamId = PlaylistEntity.DEFAULT_THUMBNAIL_ID;
         }
@@ -601,12 +637,11 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
             return;
         }
 
-        final List<LocalItem> items = itemListAdapter.getItemsList();
-        final List<Long> streamIds = new ArrayList<>(items.size());
-        for (final LocalItem item : items) {
-            if (item instanceof PlaylistStreamEntry entry) {
-                streamIds.add(entry.getStreamId());
-            }
+        // always save the stored order, a display sort must not rewrite the playlist
+        final List<PlaylistStreamEntry> entries = itemListAdapter.getItemsInOriginalOrder();
+        final List<Long> streamIds = new ArrayList<>(entries.size());
+        for (final PlaylistStreamEntry entry : entries) {
+            streamIds.add(entry.getStreamId());
         }
 
         if (DEBUG) {
@@ -655,6 +690,11 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
                                   @NonNull final RecyclerView.ViewHolder target) {
                 if (source.getItemViewType() != target.getItemViewType()
                         || itemListAdapter == null) {
+                    return false;
+                }
+                if (!itemListAdapter.getSortMode().isOriginal()) {
+                    Toast.makeText(requireContext(), R.string.sort_reorder_unavailable,
+                            Toast.LENGTH_SHORT).show();
                     return false;
                 }
 

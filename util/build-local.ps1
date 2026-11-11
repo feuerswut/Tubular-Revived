@@ -6,6 +6,7 @@ param([string]$Task = ':app:assembleDebug')
 
 $repo = Split-Path -Parent $PSScriptRoot
 $jbrCandidates = @(
+    'D:\.tools\jdk',
     "$env:ProgramFiles\Android\Android Studio\jbr",
     "$env:LOCALAPPDATA\Programs\Android Studio\jbr",
     "$env:ProgramFiles\Android\Android Studio Preview\jbr"
@@ -15,6 +16,7 @@ if (-not $jbr) { Write-Error 'Android Studio JDK (jbr) not found; set JAVA_HOME 
 $env:JAVA_HOME = $jbr
 $env:Path = "$jbr\bin;$env:Path"
 
+if (-not $env:ANDROID_HOME -and (Test-Path 'D:\.tools\android-sdk')) { $env:ANDROID_HOME = 'D:\.tools\android-sdk' }
 if (-not $env:ANDROID_HOME) {
     $lp = Join-Path $repo 'local.properties'
     if (-not (Test-Path $lp)) {
@@ -25,5 +27,8 @@ if (-not $env:ANDROID_HOME) {
 
 New-Item -ItemType Directory -Force (Join-Path $repo 'out') | Out-Null
 Set-Location $repo
-& .\gradlew.bat $Task --console=plain 2>&1 | Tee-Object -FilePath (Join-Path $repo 'out\build-local.log')
+$toolchains = @('D:\.tools\jdk17', 'D:\.tools\jdk') | Where-Object { Test-Path $_ }
+$extra = @()
+if ($toolchains) { $extra += "-Porg.gradle.java.installations.paths=$($toolchains -join ',')" }
+& .\gradlew.bat ($Task -split ' ') $extra --console=plain 2>&1 | Tee-Object -FilePath (Join-Path $repo 'out\build-local.log')
 exit $LASTEXITCODE

@@ -10,13 +10,18 @@ import android.text.InputType;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,12 +44,18 @@ import org.schabi.newpipe.local.holder.LocalBookmarkPlaylistItemHolder;
 import org.schabi.newpipe.local.holder.RemoteBookmarkPlaylistItemHolder;
 import org.schabi.newpipe.local.playlist.LocalPlaylistManager;
 import org.schabi.newpipe.local.playlist.RemotePlaylistManager;
+import org.schabi.newpipe.util.Localization;
 import org.schabi.newpipe.util.NavigationHelper;
 import org.schabi.newpipe.util.OnClickGesture;
+import org.schabi.newpipe.util.SortMode;
 import org.schabi.newpipe.util.debounce.DebounceSavable;
 import org.schabi.newpipe.util.debounce.DebounceSaver;
 
+import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -56,6 +67,8 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         implements DebounceSavable {
 
     private static final int MINIMUM_INITIAL_DRAG_VELOCITY = 12;
+    private static final String SORT_MODE_KEY = "bookmark_sort_mode";
+    private SortMode sortMode = SortMode.ORIGIN;
     @State
     Parcelable itemsListState;
 
@@ -93,6 +106,88 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         debounceSaver = new DebounceSaver(3000, this);
 
         deletedItems = new ArrayList<>();
+        sortMode = SortMode.parse(PreferenceManager.getDefaultSharedPreferences(activity)
+                .getString(SORT_MODE_KEY, null));
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull final Menu menu,
+                                    @NonNull final MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_bookmarks, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
+        if (item.getItemId() == R.id.menu_item_sort) {
+            showSortDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showSortDialog() {
+        final SortMode[] modes = {SortMode.ORIGIN, SortMode.ORIGIN_REVERSE,
+                SortMode.SORT_NAME, SortMode.SORT_NAME_REVERSE};
+        final String[] labels = {getString(R.string.sort_origin),
+                getString(R.string.sort_origin_reverse),
+                getString(R.string.sort_name_ascending),
+                getString(R.string.sort_name_descending)};
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.sort)
+                .setSingleChoiceItems(labels, Arrays.asList(modes).indexOf(sortMode),
+                        (dialog, which) -> {
+                            changeSortMode(modes[which]);
+                            dialog.dismiss();
+                        })
+                .show();
+    }
+
+    private void changeSortMode(final SortMode mode) {
+        if (itemListAdapter == null) {
+            return;
+        }
+        final List<PlaylistLocalItem> original = originalOrder(itemListAdapter.getItemsList());
+        sortMode = mode;
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
+                .edit().putString(SORT_MODE_KEY, mode.name()).apply();
+        if (!original.isEmpty()) {
+            itemListAdapter.clearStreamItemList();
+            itemListAdapter.addItems(sorted(original, mode));
+        }
+    }
+
+    // Display index first, then name, same as MergedPlaylistManager.merge
+    private static List<PlaylistLocalItem> originalOrder(final List<? extends LocalItem> items) {
+        final List<PlaylistLocalItem> list = new ArrayList<>();
+        for (final LocalItem item : items) {
+            if (item instanceof PlaylistLocalItem playlistItem) {
+                list.add(playlistItem);
+            }
+        }
+        list.sort(Comparator
+                .comparing(PlaylistLocalItem::getDisplayIndex,
+                        Comparator.nullsFirst(Comparator.<Long>naturalOrder()))
+                .thenComparing(PlaylistLocalItem::getOrderingName,
+                        Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER)));
+        return list;
+    }
+
+    // Sorts a copy of the items for display, the stored display index is not changed.
+    private List<PlaylistLocalItem> sorted(final List<? extends LocalItem> items,
+                                           final SortMode mode) {
+        final List<PlaylistLocalItem> list = originalOrder(items);
+        final Collator collator = Collator.getInstance(Localization.getAppLocale());
+        collator.setStrength(Collator.PRIMARY);
+        final Comparator<PlaylistLocalItem> byName = Comparator.comparing(
+                i -> i.getOrderingName() == null ? "" : i.getOrderingName(), collator);
+        switch (mode) {
+            case ORIGIN_REVERSE -> Collections.reverse(list);
+            case SORT_NAME -> list.sort(byName);
+            case SORT_NAME_REVERSE -> list.sort(byName.reversed());
+            default -> { }
+        }
+        return list;
     }
 
     @Nullable
@@ -292,7 +387,7 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
             return;
         }
 
-        itemListAdapter.addItems(result);
+        itemListAdapter.addItems(sorted(result, sortMode));
         if (itemsListState != null) {
             itemsList.getLayoutManager().onRestoreInstanceState(itemsListState);
             itemsListState = null;
@@ -367,7 +462,10 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
             return;
         }
 
-        final List<LocalItem> items = itemListAdapter.getItemsList();
+        // a display sort must not rewrite the stored order
+        final List<LocalItem> items = sortMode == SortMode.ORIGIN
+                ? itemListAdapter.getItemsList()
+                : new ArrayList<>(originalOrder(itemListAdapter.getItemsList()));
         final List<PlaylistMetadataEntry> localItemsUpdate = new ArrayList<>();
         final List<Long> localItemsDeleteUid = new ArrayList<>();
         final List<PlaylistRemoteEntity> remoteItemsUpdate = new ArrayList<>();
@@ -454,6 +552,12 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
                                         || (target instanceof RemoteBookmarkPlaylistItemHolder)
                         ))
                 ) {
+                    return false;
+                }
+
+                if (sortMode != SortMode.ORIGIN) {
+                    Toast.makeText(requireContext(), R.string.sort_reorder_unavailable,
+                            Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
