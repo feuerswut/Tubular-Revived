@@ -157,7 +157,7 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         }
     }
 
-    /** Display index first, then name, same as {@link MergedPlaylistManager#merge}. */
+    // Display index first, then name, same as MergedPlaylistManager.merge
     private static List<PlaylistLocalItem> originalOrder(final List<? extends LocalItem> items) {
         final List<PlaylistLocalItem> list = new ArrayList<>();
         for (final LocalItem item : items) {
@@ -173,7 +173,7 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         return list;
     }
 
-    /** Sorts a copy of the items for display, the stored display index is not changed. */
+    // Sorts a copy of the items for display, the stored display index is not changed.
     private List<PlaylistLocalItem> sorted(final List<? extends LocalItem> items,
                                            final SortMode mode) {
         final List<PlaylistLocalItem> list = originalOrder(items);
