@@ -696,6 +696,13 @@
     <string name="remove_watched">Remove watched</string>
     <string name="remove_watched_popup_title">Remove watched streams?</string>
     <string name="remove_duplicates">Remove duplicates</string>
+    <string name="sort_origin">Playlist order</string>
+    <string name="sort_origin_reverse">Playlist order (reversed)</string>
+    <string name="sort_name_ascending">Title (A–Z)</string>
+    <string name="sort_name_descending">Title (Z–A)</string>
+    <string name="sort_duration_ascending">Duration (shortest first)</string>
+    <string name="sort_duration_descending">Duration (longest first)</string>
+    <string name="sort_reorder_unavailable">Reordering is only possible in playlist order</string>
     <string name="remove_duplicates_title">Remove duplicates?</string>
     <string name="remove_duplicates_message">Do you want to remove all duplicate streams in this playlist?</string>
     <string name="remove_watched_popup_warning">Streams that have been watched before and after being added to the playlist will be removed.

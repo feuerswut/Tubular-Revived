@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.schabi.newpipe.database.LocalItem;
+import org.schabi.newpipe.database.playlist.PlaylistStreamEntry;
 import org.schabi.newpipe.database.stream.model.StreamStateEntity;
 import org.schabi.newpipe.info_list.ItemViewMode;
 import org.schabi.newpipe.local.history.HistoryRecordManager;
@@ -32,10 +33,13 @@ import org.schabi.newpipe.local.holder.RemotePlaylistItemHolder;
 import org.schabi.newpipe.util.FallbackViewHolder;
 import org.schabi.newpipe.util.Localization;
 import org.schabi.newpipe.util.OnClickGesture;
+import org.schabi.newpipe.util.SortMode;
 
+import java.text.Collator;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -93,6 +97,7 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
     private View footer = null;
     private ItemViewMode itemViewMode = ItemViewMode.LIST;
     private boolean useItemHandle = false;
+    private SortMode sortMode = SortMode.ORIGIN;
 
     public LocalItemListAdapter(final Context context) {
         recordManager = new HistoryRecordManager(context);
@@ -122,6 +127,7 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         final int offsetStart = sizeConsideringHeader();
         localItems.addAll(data);
+        sortItems();
 
         if (DEBUG) {
             Log.d(TAG, "addItems() after > offsetStart = " + offsetStart + ", "
@@ -416,5 +422,58 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
                 return type == HEADER_TYPE || type == FOOTER_TYPE ? spanCount : 1;
             }
         };
+    }
+
+    public SortMode getSortMode() {
+        return sortMode;
+    }
+
+    /**
+     * Sets the display order. Only has an effect on {@link PlaylistStreamEntry} items.
+     * @param mode the new order
+     */
+    public void setSortMode(final SortMode mode) {
+        sortMode = mode;
+        sortItems();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * @return the playlist streams in the order they are stored in the playlist
+     */
+    public List<PlaylistStreamEntry> getItemsInOriginalOrder() {
+        final List<PlaylistStreamEntry> entries = new ArrayList<>();
+        for (final LocalItem item : localItems) {
+            if (item instanceof PlaylistStreamEntry entry) {
+                entries.add(entry);
+            }
+        }
+        // in ORIGIN the list order is authoritative, as dragging does not update join indexes
+        if (!sortMode.isOriginal()) {
+            entries.sort(Comparator.comparingInt(PlaylistStreamEntry::getJoinIndex));
+        }
+        return entries;
+    }
+
+    private void sortItems() {
+        if (!localItems.stream().allMatch(PlaylistStreamEntry.class::isInstance)) {
+            return;
+        }
+        final Comparator<LocalItem> byJoin = Comparator.comparingInt(
+                i -> ((PlaylistStreamEntry) i).getJoinIndex());
+        final Collator collator = Collator.getInstance(Localization.getAppLocale());
+        collator.setStrength(Collator.PRIMARY);
+        final Comparator<LocalItem> byName = Comparator.comparing(
+                i -> ((PlaylistStreamEntry) i).getStreamEntity().getTitle(), collator);
+        final Comparator<LocalItem> byDuration = Comparator.comparingLong(
+                i -> ((PlaylistStreamEntry) i).getStreamEntity().getDuration());
+        switch (sortMode) {
+            case ORIGIN -> localItems.sort(byJoin);
+            case ORIGIN_REVERSE -> localItems.sort(byJoin.reversed());
+            case SORT_NAME -> localItems.sort(byName.thenComparing(byJoin));
+            case SORT_NAME_REVERSE -> localItems.sort(byName.reversed().thenComparing(byJoin));
+            case DURATION -> localItems.sort(byDuration.thenComparing(byJoin));
+            case DURATION_REVERSE -> localItems.sort(byDuration.reversed().thenComparing(byJoin));
+        }
     }
 }
